@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guardlbt.mapper.CouponMapper">
+  <resultMap id="BaseResultMap" type="com.guardlbt.entity.Coupon">
+    <id column="coupon_id" jdbcType="BIGINT" property="couponId" />
+    <result column="coupon_status" jdbcType="INTEGER" property="couponStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="recy_user" jdbcType="VARCHAR" property="recyUser" />
+    <result column="coupon_encrypt" jdbcType="VARCHAR" property="couponEncrypt" />
+    <result column="coupon_manualCode" jdbcType="CHAR" property="couponManualcode" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    coupon_id, coupon_status, create_time, update_time, recy_user, coupon_encrypt, coupon_manualCode
+  </sql>
+  <select id="selectByExample" parameterType="com.guardlbt.entity.CouponExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_coupon
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_coupon
+    where coupon_id = #{couponId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_coupon
+    where coupon_id = #{couponId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.guardlbt.entity.CouponExample">
+    delete from t_coupon
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.guardlbt.entity.Coupon">
+    insert into t_coupon (coupon_id, coupon_status, create_time, 
+      update_time, recy_user, coupon_encrypt, 
+      coupon_manualCode)
+    values (#{couponId,jdbcType=BIGINT}, #{couponStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{recyUser,jdbcType=VARCHAR}, #{couponEncrypt,jdbcType=VARCHAR}, 
+      #{couponManualcode,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.guardlbt.entity.Coupon">
+    insert into t_coupon
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="couponId != null">
+        coupon_id,
+      </if>
+      <if test="couponStatus != null">
+        coupon_status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="recyUser != null">
+        recy_user,
+      </if>
+      <if test="couponEncrypt != null">
+        coupon_encrypt,
+      </if>
+      <if test="couponManualcode != null">
+        coupon_manualCode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="couponId != null">
+        #{couponId,jdbcType=BIGINT},
+      </if>
+      <if test="couponStatus != null">
+        #{couponStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recyUser != null">
+        #{recyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="couponEncrypt != null">
+        #{couponEncrypt,jdbcType=VARCHAR},
+      </if>
+      <if test="couponManualcode != null">
+        #{couponManualcode,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.guardlbt.entity.CouponExample" resultType="java.lang.Long">
+    select count(*) from t_coupon
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_coupon
+    <set>
+      <if test="record.couponId != null">
+        coupon_id = #{record.couponId,jdbcType=BIGINT},
+      </if>
+      <if test="record.couponStatus != null">
+        coupon_status = #{record.couponStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.recyUser != null">
+        recy_user = #{record.recyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.couponEncrypt != null">
+        coupon_encrypt = #{record.couponEncrypt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.couponManualcode != null">
+        coupon_manualCode = #{record.couponManualcode,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_coupon
+    set coupon_id = #{record.couponId,jdbcType=BIGINT},
+      coupon_status = #{record.couponStatus,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      recy_user = #{record.recyUser,jdbcType=VARCHAR},
+      coupon_encrypt = #{record.couponEncrypt,jdbcType=VARCHAR},
+      coupon_manualCode = #{record.couponManualcode,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.guardlbt.entity.Coupon">
+    update t_coupon
+    <set>
+      <if test="couponStatus != null">
+        coupon_status = #{couponStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recyUser != null">
+        recy_user = #{recyUser,jdbcType=VARCHAR},
+      </if>
+      <if test="couponEncrypt != null">
+        coupon_encrypt = #{couponEncrypt,jdbcType=VARCHAR},
+      </if>
+      <if test="couponManualcode != null">
+        coupon_manualCode = #{couponManualcode,jdbcType=CHAR},
+      </if>
+    </set>
+    where coupon_id = #{couponId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.guardlbt.entity.Coupon">
+    update t_coupon
+    set coupon_status = #{couponStatus,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      recy_user = #{recyUser,jdbcType=VARCHAR},
+      coupon_encrypt = #{couponEncrypt,jdbcType=VARCHAR},
+      coupon_manualCode = #{couponManualcode,jdbcType=CHAR}
+    where coupon_id = #{couponId,jdbcType=BIGINT}
+  </update>
+</mapper>
