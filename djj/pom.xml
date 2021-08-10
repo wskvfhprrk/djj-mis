@@ -22,7 +22,7 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
-    <build>
+    <!--<build>
         <plugins>
          <plugin>
                  <groupId>org.mybatis.generator</groupId>
@@ -50,6 +50,6 @@
                  </dependencies>
              </plugin>
         </plugins>
-    </build>
+    </build>-->
 
 </project>
