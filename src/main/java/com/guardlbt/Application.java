@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @EnableTransactionManagement
 @EnableCaching
-@MapperScan("com.guardlbt.mapper")
+@MapperScan(basePackages = {"com.guardlbt.mapper","com.guardlbt.autoCode"})
 @Slf4j
 public class Application {
 

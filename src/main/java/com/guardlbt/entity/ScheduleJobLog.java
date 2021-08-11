@@ -1,95 +1,44 @@
 package com.guardlbt.entity;
 
+import org.springframework.format.annotation.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+
 import java.util.Date;
-
+/**
+* Created by 代码自动生成.
+* 时间:2021-08-11 15:09:11
+*/
+@ApiModel("定时任务日志实体类")
+@Data
 public class ScheduleJobLog {
+ 
+    @ApiModelProperty("任务日志id") 
     private Long logId;
-
+ 
+    @ApiModelProperty("任务id") 
     private Long jobId;
-
+ 
+    @ApiModelProperty("spring bean名称") 
     private String beanName;
-
+ 
+    @ApiModelProperty("方法名") 
     private String methodName;
-
+ 
+    @ApiModelProperty("参数") 
     private String params;
-
-    private Byte status;
-
+ 
+    @ApiModelProperty("任务状态    0：成功    1：失败") 
+    private String status;
+ 
+    @ApiModelProperty("失败信息") 
     private String error;
-
+ 
+    @ApiModelProperty("耗时(单位：毫秒)") 
     private Integer times;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") 
+    @ApiModelProperty("创建时间") 
     private Date createTime;
-
-    public Long getLogId() {
-        return logId;
-    }
-
-    public void setLogId(Long logId) {
-        this.logId = logId;
-    }
-
-    public Long getJobId() {
-        return jobId;
-    }
-
-    public void setJobId(Long jobId) {
-        this.jobId = jobId;
-    }
-
-    public String getBeanName() {
-        return beanName;
-    }
-
-    public void setBeanName(String beanName) {
-        this.beanName = beanName == null ? null : beanName.trim();
-    }
-
-    public String getMethodName() {
-        return methodName;
-    }
-
-    public void setMethodName(String methodName) {
-        this.methodName = methodName == null ? null : methodName.trim();
-    }
-
-    public String getParams() {
-        return params;
-    }
-
-    public void setParams(String params) {
-        this.params = params == null ? null : params.trim();
-    }
-
-    public Byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(Byte status) {
-        this.status = status;
-    }
-
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error == null ? null : error.trim();
-    }
-
-    public Integer getTimes() {
-        return times;
-    }
-
-    public void setTimes(Integer times) {
-        this.times = times;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
 }

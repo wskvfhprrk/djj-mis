@@ -1,113 +1,49 @@
 package com.guardlbt.entity;
 
+import org.springframework.format.annotation.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+
+/**
+* Created by 代码自动生成.
+* 时间:2021-08-11 15:09:11
+*/
+@ApiModel("商圈实体类")
+@Data
 public class BusinessDistrict {
+ 
+    @ApiModelProperty("店铺编号") 
     private String businessDistrictId;
-
+ 
+    @ApiModelProperty("店铺名称") 
     private String name;
-
+ 
+    @ApiModelProperty("图片（可以多张）") 
     private String images;
-
+ 
+    @ApiModelProperty("省") 
     private String province;
-
+ 
+    @ApiModelProperty("市") 
     private String city;
-
+ 
+    @ApiModelProperty("县") 
     private String county;
-
+ 
+    @ApiModelProperty("区") 
     private String area;
-
+ 
+    @ApiModelProperty("详细地址") 
     private String address;
-
+ 
+    @ApiModelProperty("经度") 
     private Double longitude;
-
+ 
+    @ApiModelProperty("纬度") 
     private Double latitude;
-
+ 
+    @ApiModelProperty("店面介绍") 
     private String details;
-
-    public String getBusinessDistrictId() {
-        return businessDistrictId;
-    }
-
-    public void setBusinessDistrictId(String businessDistrictId) {
-        this.businessDistrictId = businessDistrictId == null ? null : businessDistrictId.trim();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
-    public String getImages() {
-        return images;
-    }
-
-    public void setImages(String images) {
-        this.images = images == null ? null : images.trim();
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public void setProvince(String province) {
-        this.province = province == null ? null : province.trim();
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city == null ? null : city.trim();
-    }
-
-    public String getCounty() {
-        return county;
-    }
-
-    public void setCounty(String county) {
-        this.county = county == null ? null : county.trim();
-    }
-
-    public String getArea() {
-        return area;
-    }
-
-    public void setArea(String area) {
-        this.area = area == null ? null : area.trim();
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
-    }
-
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
-
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getDetails() {
-        return details;
-    }
-
-    public void setDetails(String details) {
-        this.details = details == null ? null : details.trim();
-    }
 }

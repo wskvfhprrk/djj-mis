@@ -1,75 +1,38 @@
 package com.guardlbt.entity;
 
+import org.springframework.format.annotation.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+
 import java.util.Date;
-
+/**
+* Created by 代码自动生成.
+* 时间:2021-08-11 15:09:11
+*/
+@ApiModel("代金券明细实体类")
+@Data
 public class CouponStock {
+ 
+    @ApiModelProperty("编号（每张代金券唯一编号）") 
     private String couponNo;
-
+ 
+    @ApiModelProperty("编号") 
     private String couponId;
-
+ 
+    @ApiModelProperty("店铺（最后在哪个店铺发出）") 
     private String shopId;
-
-    private Byte status;
-
+ 
+    @ApiModelProperty("状态（0-库存 1-已领取 2-已使用 3-过期 4-作废）") 
+    private String status;
+ 
+    @ApiModelProperty("会员ID（会员领取后绑定）") 
     private String memberId;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") 
+    @ApiModelProperty("创建时间") 
     private Date createTime;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") 
+    @ApiModelProperty("修改时间") 
     private Date updateTime;
-
-    public String getCouponNo() {
-        return couponNo;
-    }
-
-    public void setCouponNo(String couponNo) {
-        this.couponNo = couponNo == null ? null : couponNo.trim();
-    }
-
-    public String getCouponId() {
-        return couponId;
-    }
-
-    public void setCouponId(String couponId) {
-        this.couponId = couponId == null ? null : couponId.trim();
-    }
-
-    public String getShopId() {
-        return shopId;
-    }
-
-    public void setShopId(String shopId) {
-        this.shopId = shopId == null ? null : shopId.trim();
-    }
-
-    public Byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(Byte status) {
-        this.status = status;
-    }
-
-    public String getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(String memberId) {
-        this.memberId = memberId == null ? null : memberId.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
 }

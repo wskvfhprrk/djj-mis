@@ -1,45 +1,29 @@
 package com.guardlbt.entity;
 
+import org.springframework.format.annotation.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+
 import java.util.Date;
-
+/**
+* Created by 代码自动生成.
+* 时间:2021-08-11 15:09:11
+*/
+@ApiModel("定位信息上报实体类")
+@Data
 public class ReportSite {
+ 
+    @ApiModelProperty("用户编号") 
     private String userId;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") 
+    @ApiModelProperty("上报时间") 
     private Date reportTime;
-
+ 
+    @ApiModelProperty("经度") 
     private Double longitude;
-
+ 
+    @ApiModelProperty("纬度") 
     private Double latitude;
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
-    }
-
-    public Date getReportTime() {
-        return reportTime;
-    }
-
-    public void setReportTime(Date reportTime) {
-        this.reportTime = reportTime;
-    }
-
-    public Double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
-    }
-
-    public Double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
-    }
 }

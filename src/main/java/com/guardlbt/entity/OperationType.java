@@ -1,23 +1,22 @@
 package com.guardlbt.entity;
 
+import org.springframework.format.annotation.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+
+/**
+* Created by 代码自动生成.
+* 时间:2021-08-11 15:09:11
+*/
+@ApiModel("操作类型实体类")
+@Data
 public class OperationType {
+ 
+    @ApiModelProperty("操作类型") 
     private String operationId;
-
+ 
+    @ApiModelProperty("操作说明") 
     private String name;
-
-    public String getOperationId() {
-        return operationId;
-    }
-
-    public void setOperationId(String operationId) {
-        this.operationId = operationId == null ? null : operationId.trim();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
 }

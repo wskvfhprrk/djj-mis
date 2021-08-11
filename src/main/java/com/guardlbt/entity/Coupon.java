@@ -1,126 +1,60 @@
 package com.guardlbt.entity;
 
+import org.springframework.format.annotation.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+
 import java.math.BigDecimal;
 import java.util.Date;
-
+/**
+* Created by 代码自动生成.
+* 时间:2021-08-11 15:09:11
+*/
+@ApiModel("代金券实体类")
+@Data
 public class Coupon {
+ 
+    @ApiModelProperty("编号") 
     private String couponId;
-
+ 
+    @ApiModelProperty("空间名称") 
     private String name;
-
+ 
+    @ApiModelProperty("所属店铺") 
     private String shopId;
-
+ 
+    @ApiModelProperty("图片") 
     private String images;
-
+ 
+    @ApiModelProperty("面值，单价（元）") 
     private BigDecimal price;
-
+ 
+    @ApiModelProperty("使用门槛（消费满多少元可以使用）") 
     private BigDecimal useThreshold;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") 
+    @ApiModelProperty("标签") 
     private Date startDate;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") 
+    @ApiModelProperty("结束日期") 
     private Date stopDate;
-
-    private Byte type;
-
-    private Byte status;
-
+ 
+    @ApiModelProperty("优惠说明") 
+    private String description;
+ 
+    @ApiModelProperty("使用须知") 
+    private String instruction;
+ 
+    @ApiModelProperty("类型（0-公开 1-内部）") 
+    private String type;
+ 
+    @ApiModelProperty("状态（0-新建 1-已上架 2-已下架）") 
+    private String status;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") 
+    @ApiModelProperty("创建时间") 
     private Date createTime;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") 
+    @ApiModelProperty("修改时间") 
     private Date updateTime;
-
-    public String getCouponId() {
-        return couponId;
-    }
-
-    public void setCouponId(String couponId) {
-        this.couponId = couponId == null ? null : couponId.trim();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
-    public String getShopId() {
-        return shopId;
-    }
-
-    public void setShopId(String shopId) {
-        this.shopId = shopId == null ? null : shopId.trim();
-    }
-
-    public String getImages() {
-        return images;
-    }
-
-    public void setImages(String images) {
-        this.images = images == null ? null : images.trim();
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public BigDecimal getUseThreshold() {
-        return useThreshold;
-    }
-
-    public void setUseThreshold(BigDecimal useThreshold) {
-        this.useThreshold = useThreshold;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getStopDate() {
-        return stopDate;
-    }
-
-    public void setStopDate(Date stopDate) {
-        this.stopDate = stopDate;
-    }
-
-    public Byte getType() {
-        return type;
-    }
-
-    public void setType(Byte type) {
-        this.type = type;
-    }
-
-    public Byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(Byte status) {
-        this.status = status;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
 }

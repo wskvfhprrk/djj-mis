@@ -1,85 +1,41 @@
 package com.guardlbt.entity;
 
+import org.springframework.format.annotation.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+
 import java.util.Date;
-
+/**
+* Created by 代码自动生成.
+* 时间:2021-08-11 15:09:11
+*/
+@ApiModel("定时任务实体类")
+@Data
 public class ScheduleJob {
+ 
+    @ApiModelProperty("任务id") 
     private Long jobId;
-
+ 
+    @ApiModelProperty("spring bean名称") 
     private String beanName;
-
+ 
+    @ApiModelProperty("方法名") 
     private String methodName;
-
+ 
+    @ApiModelProperty("参数") 
     private String params;
-
+ 
+    @ApiModelProperty("cron表达式") 
     private String cronExpression;
-
-    private Byte status;
-
+ 
+    @ApiModelProperty("任务状态  0：正常  1：暂停") 
+    private String status;
+ 
+    @ApiModelProperty("备注") 
     private String remark;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") 
+    @ApiModelProperty("创建时间") 
     private Date createTime;
-
-    public Long getJobId() {
-        return jobId;
-    }
-
-    public void setJobId(Long jobId) {
-        this.jobId = jobId;
-    }
-
-    public String getBeanName() {
-        return beanName;
-    }
-
-    public void setBeanName(String beanName) {
-        this.beanName = beanName == null ? null : beanName.trim();
-    }
-
-    public String getMethodName() {
-        return methodName;
-    }
-
-    public void setMethodName(String methodName) {
-        this.methodName = methodName == null ? null : methodName.trim();
-    }
-
-    public String getParams() {
-        return params;
-    }
-
-    public void setParams(String params) {
-        this.params = params == null ? null : params.trim();
-    }
-
-    public String getCronExpression() {
-        return cronExpression;
-    }
-
-    public void setCronExpression(String cronExpression) {
-        this.cronExpression = cronExpression == null ? null : cronExpression.trim();
-    }
-
-    public Byte getStatus() {
-        return status;
-    }
-
-    public void setStatus(Byte status) {
-        this.status = status;
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
 }

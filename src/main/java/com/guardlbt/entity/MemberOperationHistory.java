@@ -1,65 +1,35 @@
 package com.guardlbt.entity;
 
+import org.springframework.format.annotation.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+
 import java.util.Date;
-
+/**
+* Created by 代码自动生成.
+* 时间:2021-08-11 15:09:11
+*/
+@ApiModel("会员操作记录历史实体类")
+@Data
 public class MemberOperationHistory {
+ 
+    @ApiModelProperty("") 
     private Long id;
-
+ 
+    @ApiModelProperty("编号") 
     private String memberId;
-
+ 
+    @ApiModelProperty("操作类型") 
     private String operationId;
-
+ 
+    @ApiModelProperty("操作说明") 
     private String relationInfo;
-
-    private Date createTime;
-
+ 
+    @ApiModelProperty("详细信息") 
     private String detail;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(String memberId) {
-        this.memberId = memberId == null ? null : memberId.trim();
-    }
-
-    public String getOperationId() {
-        return operationId;
-    }
-
-    public void setOperationId(String operationId) {
-        this.operationId = operationId == null ? null : operationId.trim();
-    }
-
-    public String getRelationInfo() {
-        return relationInfo;
-    }
-
-    public void setRelationInfo(String relationInfo) {
-        this.relationInfo = relationInfo == null ? null : relationInfo.trim();
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public String getDetail() {
-        return detail;
-    }
-
-    public void setDetail(String detail) {
-        this.detail = detail == null ? null : detail.trim();
-    }
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") 
+    @ApiModelProperty("") 
+    private Date createTime;
 }

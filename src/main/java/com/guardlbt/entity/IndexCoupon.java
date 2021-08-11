@@ -1,23 +1,22 @@
 package com.guardlbt.entity;
 
+import org.springframework.format.annotation.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
+
+/**
+* Created by 代码自动生成.
+* 时间:2021-08-11 15:09:11
+*/
+@ApiModel("首页促销代金券实体类")
+@Data
 public class IndexCoupon {
+ 
+    @ApiModelProperty("排序") 
     private Integer sorting;
-
+ 
+    @ApiModelProperty("空间编号") 
     private String couponId;
-
-    public Integer getSorting() {
-        return sorting;
-    }
-
-    public void setSorting(Integer sorting) {
-        this.sorting = sorting;
-    }
-
-    public String getCouponId() {
-        return couponId;
-    }
-
-    public void setCouponId(String couponId) {
-        this.couponId = couponId == null ? null : couponId.trim();
-    }
 }
