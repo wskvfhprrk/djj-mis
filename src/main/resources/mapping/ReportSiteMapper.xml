@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guardlbt.mapper.ReportSiteMapper">
+  <resultMap id="BaseResultMap" type="com.guardlbt.entity.ReportSite">
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="report_time" jdbcType="TIMESTAMP" property="reportTime" />
+    <result column="longitude" jdbcType="DOUBLE" property="longitude" />
+    <result column="latitude" jdbcType="DOUBLE" property="latitude" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    user_id, report_time, longitude, latitude
+  </sql>
+  <select id="selectByExample" parameterType="com.guardlbt.entity.ReportSiteExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from report_site
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.guardlbt.entity.ReportSiteExample">
+    delete from report_site
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.guardlbt.entity.ReportSite">
+    insert into report_site (user_id, report_time, longitude, 
+      latitude)
+    values (#{userId,jdbcType=VARCHAR}, #{reportTime,jdbcType=TIMESTAMP}, #{longitude,jdbcType=DOUBLE}, 
+      #{latitude,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.guardlbt.entity.ReportSite">
+    insert into report_site
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="reportTime != null">
+        report_time,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="reportTime != null">
+        #{reportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.guardlbt.entity.ReportSiteExample" resultType="java.lang.Long">
+    select count(*) from report_site
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update report_site
+    <set>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reportTime != null">
+        report_time = #{record.reportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.longitude != null">
+        longitude = #{record.longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="record.latitude != null">
+        latitude = #{record.latitude,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update report_site
+    set user_id = #{record.userId,jdbcType=VARCHAR},
+      report_time = #{record.reportTime,jdbcType=TIMESTAMP},
+      longitude = #{record.longitude,jdbcType=DOUBLE},
+      latitude = #{record.latitude,jdbcType=DOUBLE}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
