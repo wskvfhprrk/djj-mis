@@ -1,7 +1,8 @@
 package ${servicePackage};
 
 import ${entityPackage}.${className?cap_first};
-import ${basePackage}.util.entity.*;
+<#--import ${basePackage}.util.entity.*;-->
+import ${basePackage}.common.util.*;
 
 import java.util.*;
 
@@ -18,19 +19,19 @@ public interface ${className?cap_first}Service {
     * @param ${className} 条件参数
     * @return easyui结果集
     */
-    EasyUIDataGridResult findPageBy${className?cap_first}(Integer page, Integer row, ${className?cap_first} ${className});
+    Result findPageBy${className?cap_first}(Integer page, Integer row, ${className?cap_first} ${className});
 
     /**
     * 条件查询全部数据
     * @param ${className} 条件参数
-    * @return 全部数据
+    * @return 国全部数据
     */
-    List<${className?cap_first}> findAllBy${className?cap_first}(${className?cap_first} ${className});
+    Result findAllBy${className?cap_first}(${className?cap_first} ${className});
 
     /**
     * 根据条件,只查询唯一一个值,如果存在多个只返回第一个
     * @param ${className} 条件参数
-    * @return K,V键值对类型的Map对象
+    * @return ${className?cap_first}对象
     */
     ${className?cap_first} find${className?cap_first}(${className?cap_first} ${className});
 
