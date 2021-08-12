@@ -2,8 +2,9 @@ package com.guardlbt.mapper;
 
 import com.guardlbt.entity.BusinessDistrict;
 import com.guardlbt.entity.BusinessDistrictExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface BusinessDistrictMapper {
     long countByExample(BusinessDistrictExample example);

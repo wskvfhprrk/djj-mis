@@ -1,7 +1,7 @@
 package ${servicePackage};
 
 import ${entityPackage}.${className?cap_first};
-<#--import ${basePackage}.util.entity.*;-->
+import com.guardlbt.dto.*;
 import ${basePackage}.common.util.*;
 
 import java.util.*;
@@ -14,12 +14,10 @@ import java.util.*;
 public interface ${className?cap_first}Service {
     /**
     * 分页查询
-    * @param page 页码
-    * @param row 每页最行数
-    * @param ${className} 条件参数
+    * @param ${className}PageDto 条件参数
     * @return easyui结果集
     */
-    Result findPageBy${className?cap_first}(Integer page, Integer row, ${className?cap_first} ${className});
+    Result findPage${className?cap_first}( ${className?cap_first}PageDto dto);
 
     /**
     * 条件查询全部数据

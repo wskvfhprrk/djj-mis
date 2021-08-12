@@ -24,6 +24,14 @@ public class AutoCode {
      */
     private String entity = "entity";
     /**
+     * dto包名
+     */
+    private String dto = "dto";
+    /**
+     * vo包名
+     */
+    private String vo = "vo";
+    /**
      * dao包名
      */
     private String dao = "dao";

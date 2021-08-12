@@ -7,7 +7,9 @@ import ${entityPackage}.${className?cap_first};
 import ${servicePackage}.${className?cap_first}Service;
 import ${basePackage}.util.*;
 import ${basePackage}.common.util.*;
+import com.guardlbt.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,13 +29,16 @@ public class ${className?cap_first}ServiceImpl implements ${className?cap_first}
     private ${className?cap_first}Dao dao;
 
     @Override
-    public Result findPageBy${className?cap_first}(Integer page, Integer row, ${className?cap_first} ${className}) {
+    public Result findPage${className?cap_first}(${className?cap_first}PageDto dto) {
         PageResult pageResult=new PageResult();
-        PageHelper.startPage(page,row);
+        PageHelper.startPage(dto.getPageNumber(),dto.getPageSize());
+        ${className?cap_first} ${className}=new ${className?cap_first}();
+        BeanUtils.copyProperties(dto,${className});
         List<${className?cap_first}> list = dao.select${className?cap_first}s(${className});
         PageInfo<${className?cap_first}> info=new PageInfo<>(list);
         pageResult.setTotle(info.getTotal());
-        pageResult.setPageSize(page);
+        pageResult.setPageSize(dto.getPageSize());
+        pageResult.setPageNumber(dto.getPageNumber());
         pageResult.setPages(info.getList());
         return Result.ok(pageResult);
     }

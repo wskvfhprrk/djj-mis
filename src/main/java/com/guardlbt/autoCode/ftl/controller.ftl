@@ -8,8 +8,10 @@ import ${entityPackage}.${className?cap_first};
 import ${servicePackage}.${className?cap_first}Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import com.guardlbt.dto.*;
 
 import java.util.*;
+import javax.validation.*;
 
 /**
 * Created by 代码自动生成.
@@ -25,8 +27,8 @@ public class ${className?cap_first}Controller {
 
     @RequestMapping(value = "getPage", method = RequestMethod.GET)
 	@ApiOperation("分页条件查询${moduleName}")
-    public Result getPage(@RequestParam(defaultValue="1") Integer page,  @RequestParam(defaultValue="30")Integer rows, ${className?cap_first} ${className}){
-        return service.findPageBy${className?cap_first}(page,rows,${className});
+    public Result getPage(@Valid ${className?cap_first}PageDto dto){
+        return service.findPage${className?cap_first}(dto);
     }
 
     @RequestMapping(method = RequestMethod.GET)
