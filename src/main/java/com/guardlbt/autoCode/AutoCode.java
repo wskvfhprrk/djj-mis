@@ -47,11 +47,12 @@ public class AutoCode {
      * controller包名
      */
     private String controller = "controller";
+
     /**
      * 网页路径
      */
     private String pagePath = "src/main/resources/templates/";
-
+    private String VuePagePath = "src/main/resources/vue/";
 
     public AutoCode() {
     }

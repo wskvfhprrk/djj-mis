@@ -14,7 +14,7 @@ import java.util.*;
 public interface ${className?cap_first}Service {
     /**
     * 分页查询
-    * @param ${className}PageDto 条件参数
+    * @param dto 条件参数
     * @return easyui结果集
     */
     Result findPage${className?cap_first}( ${className?cap_first}PageDto dto);
@@ -35,16 +35,16 @@ public interface ${className?cap_first}Service {
 
     /**
     * 添加
-    * @param ${className} 条件参数
+    * @param dto 条件参数
     * @return 结果集
     */
-    Result insert(${className?cap_first} ${className});
+    Result insert(${className?cap_first}SaveDto dto);
     /**
     * 修改
     * @param ${className} 条件参数
     * @return 结果集
     */
-    Result update(${className?cap_first} ${className});
+    Result update(${className?cap_first}UpdateDto dto);
     /**
     * 删除
     * @param ${className} 条件参数
@@ -57,4 +57,10 @@ public interface ${className?cap_first}Service {
     * @return 结果集
     */
     Result deleteAll(String ids);
+    /**
+    * 根据id查询
+    * @param id
+    * @return
+    */
+    Result getById(String id);
 }

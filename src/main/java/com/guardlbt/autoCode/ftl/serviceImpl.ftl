@@ -59,7 +59,9 @@ public class ${className?cap_first}ServiceImpl implements ${className?cap_first}
     }
 
     @Override
-    public Result insert(${className?cap_first} ${className}) {
+    public Result insert(${className?cap_first}SaveDto dto) {
+        ${className?cap_first} ${className}=new ${className?cap_first}();
+        BeanUtils.copyProperties(dto,${className});
         <#list data as d><#if d.id==true && d.extpa==false >${className}.set${d.beanName?cap_first}(UuidUtild.getUUID());//如果多主键此处要更改</#if></#list>
         <#list data as d><#if d.isNull==false && d.id==false>
         if(${className}.get${d.beanName?cap_first}()==null || ${className}.get${d.beanName?cap_first}().toString().length()==0){
@@ -76,7 +78,9 @@ public class ${className?cap_first}ServiceImpl implements ${className?cap_first}
     }
 
     @Override
-    public Result update(${className?cap_first} ${className}) {
+    public Result update(${className?cap_first}UpdateDto dto) {
+        ${className?cap_first} ${className}=new ${className?cap_first}();
+        BeanUtils.copyProperties(dto,${className});
         <#list data as d><#if d.isNull==false>
         if(${className}.get${d.beanName?cap_first}()==null || ${className}.get${d.beanName?cap_first}().toString().length()==0){
             return Result.error(500,"${d.commentName}不能为空值");
@@ -116,5 +120,16 @@ public class ${className?cap_first}ServiceImpl implements ${className?cap_first}
             e.printStackTrace();
             return Result.error(500,e.getCause().getMessage());
         }
+    }
+
+    @Override
+    public Result getById(String id) {
+        ${className?cap_first} ${className}=new ${className?cap_first}();
+        ${className}.set<#list data as d><#if d.id==true>${d.beanName?cap_first}</#if></#list>(id);
+        List<${className?cap_first}> ${className}s = dao.select${className?cap_first}s(${className});
+        if(${className}s.isEmpty()){
+            return Result.ok();
+        }
+        return Result.ok(${className}s.get(0));
     }
 }

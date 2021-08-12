@@ -54,9 +54,49 @@ public class CreateCodeService {
         // 生成list页面
         createListPage(code, map);
         // 生成add页面
-        createAddPage(code, map);
+//        createAddPage(code, map);
+        //生成vue页面
+        createVueAddPage(code, map);
+        //生成vue的index页面
+        createVueIndexPage(code, map);
+
     }
 
+
+    private void createVueIndexPage(AutoCode code, Map<String, Object> map) {
+        StringBuffer addPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+        addPathAndName.append("autoCode/ftl/vue-index.ftl");
+        // 输出路径+名称
+        StringBuffer addOutFile = new StringBuffer(code.getVuePagePath());
+        // 先看是否存在路径没有先创建
+        AutoCodeUtil.getPath(addOutFile.toString());
+        addOutFile.append( AutoCodeUtil.getBeanName(code.getTableName()));
+        addOutFile.append("/");
+        // 先看是否存在路径没有先创建
+        AutoCodeUtil.getPath(addOutFile.toString());
+        addOutFile.append(AutoCodeUtil.getBeanName("index.vue"));
+        AutoCodeUtil.getNewFile(addPathAndName.toString(), map, addOutFile.toString());
+        System.out.println("-------------------------------------"
+                + AutoCodeUtil.getBeanName(code.getTableName())
+                + "vue-index页面生成完毕------------------------------------");
+    }
+    private void createVueAddPage(AutoCode code, Map<String, Object> map) {
+        StringBuffer addPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+        addPathAndName.append("autoCode/ftl/vue-view.ftl");
+        // 输出路径+名称
+        StringBuffer addOutFile = new StringBuffer(code.getVuePagePath());
+        // 先看是否存在路径没有先创建
+        AutoCodeUtil.getPath(addOutFile.toString());
+        addOutFile.append( AutoCodeUtil.getBeanName(code.getTableName()));
+        addOutFile.append("/");
+        // 先看是否存在路径没有先创建
+        AutoCodeUtil.getPath(addOutFile.toString());
+        addOutFile.append(AutoCodeUtil.getBeanName("view.vue"));
+        AutoCodeUtil.getNewFile(addPathAndName.toString(), map, addOutFile.toString());
+        System.out.println("-------------------------------------"
+                + AutoCodeUtil.getBeanName(code.getTableName())
+                + "vue-add页面生成完毕------------------------------------");
+    }
     private void createAddPage(AutoCode code, Map<String, Object> map) {
         StringBuffer addPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
         addPathAndName.append("autoCode/ftl/html-add.ftl");
@@ -288,6 +328,9 @@ public class CreateCodeService {
             } else {
                 typeMap.put("isNull", true);
             }
+            //最多字符数_CHARACTER_MAXIMUM_LENGTH
+            typeMap.put("maximumLength",aList.get("CHARACTER_MAXIMUM_LENGTH")==null?0:
+                    aList.get("CHARACTER_MAXIMUM_LENGTH").toString());
             // javaBean字段名
             typeMap.put("beanName", AutoCodeUtil.getBeanName(aList.get("COLUMN_NAME").toString()));
             // 是否为KEY

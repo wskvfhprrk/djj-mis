@@ -1,4 +1,4 @@
-package ${entityPackage};
+package ${dtoPackage};
 
 import org.springframework.format.annotation.*;
 import io.swagger.annotations.ApiModel;

@@ -12,7 +12,7 @@ import java.util.Map;
  */
 @Mapper
 public interface AutoCodeMapper {
-    @Select("SELECT COLUMN_NAME, COLUMN_COMMENT,DATA_TYPE,COLUMN_KEY,IS_NULLABLE,EXTRA FROM information_schema.columns" +
+    @Select("SELECT COLUMN_NAME, COLUMN_COMMENT,DATA_TYPE,COLUMN_KEY,IS_NULLABLE,EXTRA,CHARACTER_MAXIMUM_LENGTH FROM information_schema.columns" +
             " WHERE table_schema = #{table_schema}  AND table_name = #{table_name}")
     List<Map<String,Object>> selectTable(@Param("table_schema") String table_schema, @Param("table_name") String table_name);
 }

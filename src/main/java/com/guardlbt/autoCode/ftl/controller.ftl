@@ -8,6 +8,7 @@ import ${entityPackage}.${className?cap_first};
 import ${servicePackage}.${className?cap_first}Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.annotation.Validated;
 import com.guardlbt.dto.*;
 
 import java.util.*;
@@ -25,33 +26,33 @@ public class ${className?cap_first}Controller {
     @Autowired
     public ${className?cap_first}Service service;
 
-    @RequestMapping(value = "getPage", method = RequestMethod.GET)
+    @GetMapping
 	@ApiOperation("分页条件查询${moduleName}")
-    public Result getPage(@Valid ${className?cap_first}PageDto dto){
+    public Result getPage(@Validated ${className?cap_first}PageDto dto){
         return service.findPage${className?cap_first}(dto);
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-	@ApiOperation("根据实体类查询全部${moduleName}")
-    public Result getAll(${className?cap_first} ${className}){
-        return service.findAllBy${className?cap_first}(${className});
-    }
-
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
 	@ApiOperation("添加${moduleName}")
-    public Result add(${className?cap_first} ${className}){
-        return service.insert(${className});
+    public Result add(@Validated @RequestBody ${className?cap_first}SaveDto dto){
+        return service.insert(dto);
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @PutMapping
 	@ApiOperation("修改${moduleName}")
-    public Result update(${className?cap_first} ${className}){
-        return service.update(${className});
+    public Result update(@Validated @RequestBody ${className?cap_first}UpdateDto dto){
+        return service.update(dto);
     }
     
-    @RequestMapping(method = RequestMethod.DELETE)
-	@ApiOperation("批量或单个删除${moduleName}")
-    public Result deleteAll(String ids){
-        return service.deleteAll(ids);
+    @DeleteMapping("/{id}")
+	@ApiOperation("根据ID删除")
+    public Result deleteAll(@PathVariable String id){
+        return service.deleteAll(id);
+    }
+
+    @GetMapping("/{id}")
+    @ApiOperation("根据ID查询")
+    public Result getById(@PathVariable String id){
+        return service.getById(id);
     }
 }
