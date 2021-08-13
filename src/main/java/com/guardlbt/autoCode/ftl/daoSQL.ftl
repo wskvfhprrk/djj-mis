@@ -2,6 +2,7 @@ package ${daoPackage};
 
 import ${entityPackage}.${className?cap_first};
 import org.apache.ibatis.jdbc.SQL;
+import org.apache.commons.lang3.StringUtils;
 
 /**
 * ${moduleName}SQL语句
@@ -15,11 +16,11 @@ public class ${className?cap_first}DaoSQL {
             SELECT("<#list data as d><#if d_index==0>a.${d.columnName}<#else> ,a.${d.columnName}</#if></#list>");
             FROM("${tableName} a");
             <#list data as d><#if d.type=='String'>
-            if(StringUtils.isNotBlank(${className}.get${className?cap_first}Id())){
-                WHERE("a.business_district_id = #{${className}Id}");
+            if(StringUtils.isNotBlank(${className}.get${d.beanName?cap_first}())){
+                WHERE("a.${d.beanName?cap_first} = ${r"#{"}${d.beanName}}");
             }</#if><#if d.type!='String'>
-            if(${className}.getLongitude()!=null && ${className}.getLongitude().toString().length()>0){
-                WHERE("a.longitude = #{longitude}");
+            if(${className}.get${d.beanName?cap_first}()!=null && ${className}.get${d.beanName?cap_first}().toString().length()>0){
+                WHERE("a.${d.beanName?cap_first} = ${r"#{"}${d.beanName}}");
             }</#if></#list>
         }}.toString();
     }

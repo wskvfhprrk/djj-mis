@@ -2,10 +2,10 @@
     <div v-loading="loading">
         <!-- 操作 start -->
         <div class="searchBox">
-            <el-row :gutter="20" class="operation"><#list data as d><#if d.id==false>
+            <el-row model="queryParms" :gutter="20" class="operation"><#list data as d><#if d.id==false>
                 <el-col class="marginBottom" :span="8">
                     <span class="labelSpan">${d.commentName}： </span>
-                    <el-input class="SearchInput" v-model="${d.beanName}" placeholder="请输入${d.commentName}"></el-input>
+                    <el-input class="SearchInput" v-model="queryParms.${d.beanName}" placeholder="请输入${d.commentName}"></el-input>
                 </el-col></#if></#list>
                 <el-col :span="8">
                     <span class="labelSpan">状态： </span>
@@ -102,6 +102,7 @@
         },
         data() {
             return {
+                queryParms:{},//查询参数
                 fromdata:'',
                 searchParam: '',                //当前查询条件
                 center: true,
@@ -148,16 +149,14 @@
             fetchData(param) {//查询
                 var vm = this;
                 vm.loading = true;
-                let params = {}
-                params.phone = vm.phone;
-                params.islock = vm.islock;
-                params.pageSize = vm.pageSize;
-                params.pageNumber = vm.pageNumber
+                let queryParms = this.queryParms;
+                queryParms.pageSize = vm.pageSize;
+                queryParms.pageNumber = vm.pageNumber
 
                 var str = '';
-                for (var i in params) {
-                    if (params[i]) {
-                        str += i + '=' + params[i] + '&';
+                for (var i in queryParms) {
+                    if (queryParms[i]) {
+                        str += i + '=' + queryParms[i] + '&';
                     }
                 }
                 str.slice(0, str.length - 1)

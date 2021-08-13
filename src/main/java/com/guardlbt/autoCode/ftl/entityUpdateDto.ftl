@@ -7,8 +7,7 @@ import javax.validation.constraints.*;
 import lombok.Data;
 
 
-<#list data as d>
-    <#if d.type=='Timestamp' ||d.type=='Date'>
+<#list data as d>    <#if d.type=='Timestamp' ||d.type=='Date'>
 import java.util.Date;
 	<#break>
     </#if>
