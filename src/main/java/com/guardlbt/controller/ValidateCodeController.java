@@ -1,5 +1,6 @@
 package com.guardlbt.controller;
 
+import com.guardlbt.entity.ImageCode;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
