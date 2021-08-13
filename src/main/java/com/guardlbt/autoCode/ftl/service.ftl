@@ -62,5 +62,5 @@ public interface ${className?cap_first}Service {
     * @param id
     * @return
     */
-    Result getById(<#list data as d><#if d.id==true>${d.type} ${d.beanName}</#if></#list>);</#if>
+    Result getById(<#list data as d><#if d.id==true>${d.type} ${d.columnName}</#if></#list>);</#if>
 }

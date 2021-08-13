@@ -3,8 +3,8 @@
         <#---->
         <el-row :gutter="16"><#list data as d><#if d.id==false>
             <el-col :span="12">
-                <el-form-item label="${d.commentName}" :label-width="formLabelWidth" prop="${d.beanName}">
-                    <el-input :disabled="disabled=='1'" v-model="form.${d.beanName}" autocomplete="off"></el-input>
+                <el-form-item label="${d.commentName}" :label-width="formLabelWidth" prop="${d.columnName}">
+                    <el-input :disabled="disabled=='1'" v-model="form.${d.columnName}" autocomplete="off"></el-input>
                 </el-form-item>
             </el-col></#if></#list>
         </el-row>
@@ -25,7 +25,7 @@
                 formLabelWidth: '120px',
                 partData: [],
                 rules: {<#list data as d><#if d.id==false>
-                    ${d.beanName}: [
+                    ${d.columnName}: [
                         {required: <#if d.isNull==false>true<#else>false</#if>, message: '请输入${d.commentName}', trigger: 'blur'},<#if d.maximumLength?string!="0">
                         {max: ${d.maximumLength}, message: '输入最大长度为 ${d.maximumLength} 个字符', trigger: 'blur'},</#if><#if d.type=='String'>
                         {pattern: /^[\u4E00-\u9FA5A-Za-z0-9_]+$/, message: '输入字符非法'}</#if><#if d.type=='Double'>{pattern: /^\d+(\.\d+)?$/, message: '输入字符非法'}</#if>

@@ -53,7 +53,7 @@ public class ${className?cap_first}Controller {
 
     @GetMapping("/{id}")
     @ApiOperation("根据ID查询")
-    public Result getById(@PathVariable <#list data as d><#if d.id==true>${d.type} ${d.beanName}</#if></#list>){
-        return service.getById(<#list data as d><#if d.id==true>${d.beanName}</#if></#list>);
+    public Result getById(@PathVariable <#list data as d><#if d.id==true>${d.type} ${d.columnName}</#if></#list>){
+        return service.getById(<#list data as d><#if d.id==true>${d.columnName}</#if></#list>);
     }</#if>
 }

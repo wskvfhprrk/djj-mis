@@ -44,7 +44,7 @@ public class Entity {
         /**
          * javaBean字段名
          */
-        private String beanName;
+        private String columnName;
         /**
          * 类型
          */

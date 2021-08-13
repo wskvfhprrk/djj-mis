@@ -29,6 +29,6 @@ public class  ${className?cap_first}PageDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")</#if> <#if d.type=="date">
     @DateTimeFormat(pattern = "yyyy-MM-dd")</#if>
     @ApiModelProperty("${d.commentName}") 
-    private <#if d.type=='Timestamp'>Date<#else>${d.type}</#if> ${d.beanName};
+    private <#if d.type=='Timestamp'>Date<#else>${d.type}</#if> ${d.columnName};
 </#list>
 }

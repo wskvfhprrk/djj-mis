@@ -23,6 +23,6 @@ public class ${className?cap_first}SaveDto {
     @ApiModelProperty("${d.commentName}") <#if d.type=='String'>
     @NotBlank(message = "${d.commentName}不能为空值")<#else>@NotNull(message = "${d.commentName}不能为空值")
     </#if>
-    private <#if d.type=='Timestamp'>Date<#else>${d.type}</#if> ${d.beanName};
+    private <#if d.type=='Timestamp'>Date<#else>${d.type}</#if> ${d.columnName};
 </#list>
 }

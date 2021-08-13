@@ -5,7 +5,7 @@
             <el-row model="queryParms" :gutter="20" class="operation"><#list data as d><#if d.id==false>
                 <el-col class="marginBottom" :span="8">
                     <span class="labelSpan">${d.commentName}： </span>
-                    <el-input class="SearchInput" v-model="queryParms.${d.beanName}" placeholder="请输入${d.commentName}"></el-input>
+                    <el-input class="SearchInput" v-model="queryParms.${d.columnName}" placeholder="请输入${d.commentName}"></el-input>
                 </el-col></#if></#list>
                 <el-col :span="8">
                     <span class="labelSpan">状态： </span>
@@ -35,7 +35,7 @@
                 </el-button>
             </el-row>
             <el-table :data="list" border style="width: 100%"><#list data as d><#if d.id==false>
-                <el-table-column prop="${d.beanName}" label="${d.commentName}" align="center"></el-table-column></#if></#list>
+                <el-table-column prop="${d.columnName}" label="${d.commentName}" align="center"></el-table-column></#if></#list>
                 <el-table-column label="操作" width="200" align="center">
                     <template slot-scope="scope">
                         <el-button v-allow="${className}_put" size="mini" type="info" @click="edit(scope.$index,scope.row)">
@@ -225,7 +225,7 @@
             },
             getViewInfo(data) {
                 var vm = this;
-                ${className}.view.r(data.<#list data as d><#if d.id==true>${d.beanName}</#if></#list>).then(res => {
+                ${className}.view.r(data.<#list data as d><#if d.id==true>${d.columnName}</#if></#list>).then(res => {
                     if (res.data.success) {
                         vm.fromdata = JSON.stringify(res.data.content);
                         if (vm.$refs.formPage) {
@@ -329,7 +329,7 @@
             deleteHandel(item, data) {
                 var vm = this;
                 vm.loading = true;
-                var param = data.<#list data as d><#if d.id==true>${d.beanName}</#if></#list>;
+                var param = data.<#list data as d><#if d.id==true>${d.columnName}</#if></#list>;
                 ${className}.remove.r(param).then(res => {
                     if (res.data.success) {
                         vm.$message.success('已删除');

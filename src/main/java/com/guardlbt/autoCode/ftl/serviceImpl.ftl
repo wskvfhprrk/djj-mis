@@ -78,7 +78,7 @@ public class ${className?cap_first}ServiceImpl implements ${className?cap_first}
         BeanUtils.copyProperties(dto,${className});<#list data as d><#if d.id==true && d.extpa==false && d.type=="Long">
         //todo 此处报错的原因是数据库设计不合理，主键是数据类型，但不是自增的，请修改数据结构为自增类型，如果确实需要数据不自增，请修错误代码！</#if><#if d.id==true && d.extpa==false && d.type=="Integer">
         //todo 此处报错的原因是数据库设计不合理，主键是数据类型，但不是自增的，请修改数据结构为自增类型，如果确实需要数据不自增，请修错误代码！</#if></#list>
-        <#list data as d><#if d.id==true && d.extpa==false >${className}.set${d.beanName?cap_first}(UuidUtild.getUUID());</#if></#list>
+        <#list data as d><#if d.id==true && d.extpa==false >${className}.set${d.columnName?cap_first}(UuidUtild.getUUID());</#if></#list>
         try{
             dao.insert(${className});
             return Result.ok();
@@ -129,9 +129,9 @@ public class ${className?cap_first}ServiceImpl implements ${className?cap_first}
     }
 
     @Override
-    public Result getById(<#list data as d><#if d.id==true>${d.type} ${d.beanName}</#if></#list>) {
+    public Result getById(<#list data as d><#if d.id==true>${d.type} ${d.columnName}</#if></#list>) {
         ${className?cap_first} ${className}=new ${className?cap_first}();
-        ${className}.set<#list data as d><#if d.id==true>${d.beanName?cap_first}</#if></#list>(<#list data as d><#if d.id==true>${d.beanName}</#if></#list>);
+        ${className}.set<#list data as d><#if d.id==true>${d.columnName?cap_first}</#if></#list>(<#list data as d><#if d.id==true>${d.columnName}</#if></#list>);
         List<${className?cap_first}> ${className}s = dao.select${className?cap_first}s(${className});
         if(${className}s.isEmpty()){
             return Result.ok();

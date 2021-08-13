@@ -20,7 +20,7 @@ public interface ${className?cap_first}Dao {
     */
     @Results(<#--id = "${className}Result", -->value = {
     <#list data as d>
-        @Result(column = "${d.columnName}", property = "${d.beanName}"${d.id?string(", id=true","")}),
+        @Result(column = "${d.columnName}", property = "${d.columnName}"${d.id?string(", id=true","")}),
     </#list>
     })
     @SelectProvider(type = ${className?cap_first}DaoSQL.class, method = "select${className?cap_first}s")

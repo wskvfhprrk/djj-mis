@@ -16,11 +16,11 @@ public class ${className?cap_first}DaoSQL {
             SELECT("<#list data as d><#if d_index==0>a.${d.columnName}<#else> ,a.${d.columnName}</#if></#list>");
             FROM("${tableName} a");
             <#list data as d><#if d.type=='String'>
-            if(StringUtils.isNotBlank(${className}.get${d.beanName?cap_first}())){
-                WHERE("a.${d.beanName?cap_first} = ${r"#{"}${d.beanName}}");
+            if(StringUtils.isNotBlank(${className}.get${d.columnName?cap_first}())){
+                WHERE("a.${d.columnName?cap_first} = ${r"#{"}${d.columnName}}");
             }</#if><#if d.type!='String'>
-            if(${className}.get${d.beanName?cap_first}()!=null && ${className}.get${d.beanName?cap_first}().toString().length()>0){
-                WHERE("a.${d.beanName?cap_first} = ${r"#{"}${d.beanName}}");
+            if(${className}.get${d.columnName?cap_first}()!=null && ${className}.get${d.columnName?cap_first}().toString().length()>0){
+                WHERE("a.${d.columnName?cap_first} = ${r"#{"}${d.columnName}}");
             }</#if></#list>
         }}.toString();
     }
@@ -30,9 +30,9 @@ public class ${className?cap_first}DaoSQL {
             INSERT_INTO("${tableName}");
             <#list data as d>
 
-            if(${className}.get${d.beanName?cap_first}()!=null && ${className}.get${d.beanName?cap_first}().toString().length()>0){
+            if(${className}.get${d.columnName?cap_first}()!=null && ${className}.get${d.columnName?cap_first}().toString().length()>0){
                 <#assign str = "#\{"/>
-                VALUES("${d.columnName}", "${str}${d.beanName}}");
+                VALUES("${d.columnName}", "${str}${d.columnName}}");
             }
             </#list>
     }}.toString();
@@ -42,15 +42,15 @@ public class ${className?cap_first}DaoSQL {
         return new SQL(){{
             UPDATE("${tableName}");
             <#list data as d>
-            if(${className}.get${d.beanName?cap_first}()!=null && ${className}.get${d.beanName?cap_first}().toString().length()>0){
+            if(${className}.get${d.columnName?cap_first}()!=null && ${className}.get${d.columnName?cap_first}().toString().length()>0){
                 <#assign str = "#\{"/>
-                SET("${d.columnName} = ${str}${d.beanName}}");
+                SET("${d.columnName} = ${str}${d.columnName}}");
             }
             </#list>
             <#list data as d><#if d.id=true>
-            if(${className}.get${d.beanName?cap_first}()!=null && ${className}.get${d.beanName?cap_first}().toString().length()>0){
+            if(${className}.get${d.columnName?cap_first}()!=null && ${className}.get${d.columnName?cap_first}().toString().length()>0){
                 <#assign str = "#\{"/>
-                WHERE("${d.columnName} = ${str}${d.beanName}}");
+                WHERE("${d.columnName} = ${str}${d.columnName}}");
             }
             </#if></#list>
         }}.toString();
@@ -60,9 +60,9 @@ public class ${className?cap_first}DaoSQL {
         return new SQL(){{
             DELETE_FROM("${tableName}");
             <#list data as d>
-            if(${className}.get${d.beanName?cap_first}()!=null && ${className}.get${d.beanName?cap_first}().toString().length()>0){
+            if(${className}.get${d.columnName?cap_first}()!=null && ${className}.get${d.columnName?cap_first}().toString().length()>0){
                 <#assign str = "#\{"/>
-                WHERE("${d.columnName} = ${str}${d.beanName}}");
+                WHERE("${d.columnName} = ${str}${d.columnName}}");
             }
             </#list>
         }}.toString();

@@ -73,7 +73,7 @@ public class CreateCodeService {
             data.setMaximumLength(aList.get("CHARACTER_MAXIMUM_LENGTH") == null ? 0 :
                     Integer.valueOf(aList.get("CHARACTER_MAXIMUM_LENGTH").toString()));
             // javaBean字段名
-            data.setBeanName(AutoCodeUtil.getBeanName(aList.get("COLUMN_NAME").toString()));
+            data.setColumnName(AutoCodeUtil.getBeanName(aList.get("COLUMN_NAME").toString()));
             // 是否为KEY
             data.setId(aList.get("COLUMN_KEY") != null
                     && aList.get("COLUMN_KEY").toString().equals("PRI") ? true : false);
