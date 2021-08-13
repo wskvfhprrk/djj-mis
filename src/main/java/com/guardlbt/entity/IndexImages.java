@@ -4,11 +4,11 @@ import org.springframework.format.annotation.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-
-
+    
+    
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-11 15:09:11
+* 时间:2021-08-13 10:48:06
 */
 @ApiModel("轮播图实体类")
 @Data

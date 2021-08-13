@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-
 /**
  * 代码实现类
  *
@@ -23,366 +21,354 @@ public class CreateCodeService {
     @Value("${database-name}")
     private String databaseName;
 
-    public void start(AutoCode code) {
+    public void start() {
         // 所需要参数
-        Map<String, Object> map = getJavaObject(code);
+        Entity map = getEntity();
         // java类名(首字母大写)
-        String className = AutoCodeUtil.captureName(AutoCodeUtil.getBeanName(code.getTableName()));
+        String className = AutoCodeUtil.captureName(AutoCodeUtil.getBeanName(AutoCode.tableName));
         // 生成实体类
-        creatEntity(code, map, className);
+        creatEntity(map, className);
         //生成分页查询dto
-        creatPageDto(code, map, className);
+        creatPageDto(map, className);
         //生成添加dto
-        creatSaveDto(code, map, className);
+        creatSaveDto(map, className);
         //生成修改dto
-        creatUpdateDto(code, map, className);
+        creatUpdateDto(map, className);
         //生成分页查询Vo
-        creatPageVo(code, map, className);
+        creatPageVo(map, className);
         //生成单条查询Vo
-        creatVo(code, map, className);
+        creatVo(map, className);
         //生成修改在
         // 生成修改dto——没有主键
-        createDao(code, map, className);
+        createDao(map, className);
         // 生成daoSQL类
-        createDaoSQL(code, map, className);
+        createDaoSQL(map, className);
         // 生成service接口类
-        createService(code, map, className);
+        createService(map, className);
         // 生成serviceImpl实现类
-        createServiceImpl(code, map, className);
+        createServiceImpl(map, className);
         // 生成controller实现类
-        createController(code, map, className);
+        createController(map, className);
         // 生成list页面
-        createListPage(code, map);
+//        createListPage( map);
         // 生成add页面
-//        createAddPage(code, map);
+//        createAddPage( map);
         //生成vue页面
-        createVueAddPage(code, map);
+        createVueAddPage(map);
         //生成vue的index页面
-        createVueIndexPage(code, map);
+        createVueIndexPage(map);
         //生成vue js页面
-        createVueJs(code, map);
+        createVueJs(map);
 
     }
 
-
-    private void createVueJs(AutoCode code, Map<String, Object> map) {
-        StringBuffer addPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+    private void createVueJs(Entity map) {
+        StringBuffer addPathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         addPathAndName.append("autoCode/ftl/vue-js.ftl");
         // 输出路径+名称
-        StringBuffer addOutFile = new StringBuffer(code.getVuePagePath());
+        StringBuffer addOutFile = new StringBuffer(AutoCode.VuePagePath);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(addOutFile.toString());
         addOutFile.append("api/");
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(addOutFile.toString());
-        addOutFile.append(AutoCodeUtil.getBeanName(code.getTableName()+".js"));
+        addOutFile.append(AutoCodeUtil.getBeanName(AutoCode.tableName + ".js"));
         AutoCodeUtil.getNewFile(addPathAndName.toString(), map, addOutFile.toString());
         System.out.println("-------------------------------------"
-                + AutoCodeUtil.getBeanName(code.getTableName())
+                + AutoCodeUtil.getBeanName(AutoCode.tableName)
                 + "vue-js页面生成完毕------------------------------------");
     }
-    private void createVueIndexPage(AutoCode code, Map<String, Object> map) {
-        StringBuffer addPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+
+    private void createVueIndexPage(Entity entity) {
+        StringBuffer addPathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         addPathAndName.append("autoCode/ftl/vue-index.ftl");
         // 输出路径+名称
-        StringBuffer addOutFile = new StringBuffer(code.getVuePagePath());
+        StringBuffer addOutFile = new StringBuffer(AutoCode.VuePagePath);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(addOutFile.toString());
-        addOutFile.append( AutoCodeUtil.getBeanName(code.getTableName()));
+        addOutFile.append(AutoCodeUtil.getBeanName(AutoCode.tableName));
         addOutFile.append("/");
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(addOutFile.toString());
         addOutFile.append(AutoCodeUtil.getBeanName("index.vue"));
-        AutoCodeUtil.getNewFile(addPathAndName.toString(), map, addOutFile.toString());
+        AutoCodeUtil.getNewFile(addPathAndName.toString(), entity, addOutFile.toString());
         System.out.println("-------------------------------------"
-                + AutoCodeUtil.getBeanName(code.getTableName())
+                + AutoCodeUtil.getBeanName(AutoCode.tableName)
                 + "vue-index页面生成完毕------------------------------------");
     }
-    private void createVueAddPage(AutoCode code, Map<String, Object> map) {
-        StringBuffer addPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+
+    private void createVueAddPage(Entity entity) {
+        StringBuffer addPathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         addPathAndName.append("autoCode/ftl/vue-view.ftl");
         // 输出路径+名称
-        StringBuffer addOutFile = new StringBuffer(code.getVuePagePath());
+        StringBuffer addOutFile = new StringBuffer(AutoCode.pagePath);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(addOutFile.toString());
-        addOutFile.append( AutoCodeUtil.getBeanName(code.getTableName()));
+        addOutFile.append(AutoCodeUtil.getBeanName(AutoCode.tableName));
         addOutFile.append("/");
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(addOutFile.toString());
         addOutFile.append(AutoCodeUtil.getBeanName("view.vue"));
-        AutoCodeUtil.getNewFile(addPathAndName.toString(), map, addOutFile.toString());
+        AutoCodeUtil.getNewFile(addPathAndName.toString(), entity, addOutFile.toString());
         System.out.println("-------------------------------------"
-                + AutoCodeUtil.getBeanName(code.getTableName())
+                + AutoCodeUtil.getBeanName(AutoCode.tableName)
                 + "vue-add页面生成完毕------------------------------------");
     }
-    private void createAddPage(AutoCode code, Map<String, Object> map) {
-        StringBuffer addPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+
+    private void createAddPage(Entity entity) {
+        StringBuffer addPathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         addPathAndName.append("autoCode/ftl/html-add.ftl");
         // 输出路径+名称
-        StringBuffer addOutFile = new StringBuffer(code.getPagePath());
+        StringBuffer addOutFile = new StringBuffer(AutoCode.pagePath);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(addOutFile.toString());
-        addOutFile.append(AutoCodeUtil.getBeanName(code.getTableName())
+        addOutFile.append(AutoCodeUtil.getBeanName(AutoCode.tableName)
                 + "-add.html");
-        AutoCodeUtil.getNewFile(addPathAndName.toString(), map, addOutFile.toString());
+        AutoCodeUtil.getNewFile(addPathAndName.toString(), entity, addOutFile.toString());
         System.out.println("-------------------------------------"
-                + AutoCodeUtil.getBeanName(code.getTableName())
+                + AutoCodeUtil.getBeanName(AutoCode.tableName)
                 + "-add页面生成完毕------------------------------------");
     }
 
-    private void createListPage(AutoCode code, Map<String, Object> map) {
-        StringBuffer pagePathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+    private void createListPage(Entity entity) {
+        StringBuffer pagePathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         pagePathAndName.append("autoCode/ftl/html-list.ftl");
         // 输出路径+名称
-        StringBuffer listOutFile = new StringBuffer(code.getPagePath());
+        StringBuffer listOutFile = new StringBuffer(AutoCode.pagePath);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(listOutFile.toString());
-        listOutFile.append(AutoCodeUtil.getBeanName(code.getTableName())
+        listOutFile.append(AutoCodeUtil.getBeanName(AutoCode.tableName)
                 + "-list.html");
-        AutoCodeUtil.getNewFile(pagePathAndName.toString(), map, listOutFile.toString());
+        AutoCodeUtil.getNewFile(pagePathAndName.toString(), entity, listOutFile.toString());
         System.out.println("-------------------------------------"
-                + AutoCodeUtil.getBeanName(code.getTableName())
+                + AutoCodeUtil.getBeanName(AutoCode.tableName)
                 + "-list页面生成完毕------------------------------------");
     }
 
-    private void createController(AutoCode code, Map<String, Object> map, String className) {
-        StringBuffer controllerPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+    private void createController(Entity entity, String className) {
+        StringBuffer controllerPathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         controllerPathAndName.append("autoCode/ftl/controller.ftl");
         // 输出路径+名称
-        StringBuffer controllerOutFile = AutoCodeUtil.getPathByCom(code.getBasePackage() + "." + code.getController());
+        StringBuffer controllerOutFile = AutoCodeUtil.getPathByCom(AutoCode.basePackage + "." + AutoCode.controller);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(controllerOutFile.toString());
         controllerOutFile.append(className + "Controller.java");
-        AutoCodeUtil.getNewFile(controllerPathAndName.toString(), map, controllerOutFile.toString());
+        AutoCodeUtil.getNewFile(controllerPathAndName.toString(), entity, controllerOutFile.toString());
         System.out.println("-------------------------------------"
-                + AutoCodeUtil.getBeanName(code.getTableName())
+                + AutoCodeUtil.getBeanName(AutoCode.tableName)
                 + "Controller实现类生成完毕----------------------------");
     }
 
-    private void createServiceImpl(AutoCode code, Map<String, Object> map, String className) {
-        StringBuffer serviceImplPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+    private void createServiceImpl(Entity entity, String className) {
+        StringBuffer serviceImplPathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         serviceImplPathAndName.append("autoCode/ftl/serviceImpl.ftl");
         // 输出路径+名称
-        StringBuffer serviceImplOutFile = AutoCodeUtil.getPathByCom(code.getBasePackage() + "." + code.getServiceImpl());
+        StringBuffer serviceImplOutFile = AutoCodeUtil.getPathByCom(AutoCode.basePackage + "." + AutoCode.serviceImpl);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(serviceImplOutFile.toString());
         serviceImplOutFile.append(className + "ServiceImpl.java");
-        AutoCodeUtil.getNewFile(serviceImplPathAndName.toString(), map, serviceImplOutFile.toString());
+        AutoCodeUtil.getNewFile(serviceImplPathAndName.toString(), entity, serviceImplOutFile.toString());
         System.out.println("-------------------------------------"
-                + AutoCodeUtil.getBeanName(code.getTableName())
+                + AutoCodeUtil.getBeanName(AutoCode.tableName)
                 + "ServiceImpl实现类生成完毕--------------------------");
     }
 
-    private void createService(AutoCode code, Map<String, Object> map, String className) {
-        StringBuffer servicePathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+    private void createService(Entity entity, String className) {
+        StringBuffer servicePathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         servicePathAndName.append("autoCode/ftl/service.ftl");
         // 输出路径+名称
-        StringBuffer serviceOutFile = AutoCodeUtil.getPathByCom(code.getBasePackage() + "." + code.getService());
+        StringBuffer serviceOutFile = AutoCodeUtil.getPathByCom(AutoCode.basePackage + "." + AutoCode.service);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(serviceOutFile.toString());
         serviceOutFile.append(className + "Service.java");
-        AutoCodeUtil.getNewFile(servicePathAndName.toString(), map, serviceOutFile.toString());
+        AutoCodeUtil.getNewFile(servicePathAndName.toString(), entity, serviceOutFile.toString());
         System.out.println("-------------------------------------"
-                + AutoCodeUtil.getBeanName(code.getTableName())
+                + AutoCodeUtil.getBeanName(AutoCode.tableName)
                 + "Service接口类生成完毕-----------------------------");
     }
 
-    private void createDaoSQL(AutoCode code, Map<String, Object> map, String className) {
-        StringBuffer daoSQLPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+    private void createDaoSQL(Entity entity, String className) {
+        StringBuffer daoSQLPathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         daoSQLPathAndName.append("autoCode/ftl/daoSQL.ftl");
         // 输出路径+名称
-        StringBuffer daoSQLOutFile = AutoCodeUtil.getPathByCom(code.getBasePackage() + "." + code.getDao());
+        StringBuffer daoSQLOutFile = AutoCodeUtil.getPathByCom(AutoCode.basePackage + "." + AutoCode.dao);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(daoSQLOutFile.toString());
         daoSQLOutFile.append(className + "DaoSQL.java");
-        AutoCodeUtil.getNewFile(daoSQLPathAndName.toString(), map, daoSQLOutFile.toString());
+        AutoCodeUtil.getNewFile(daoSQLPathAndName.toString(), entity, daoSQLOutFile.toString());
         System.out.println("-------------------------------------"
-                + AutoCodeUtil.getBeanName(code.getTableName())
+                + AutoCodeUtil.getBeanName(AutoCode.tableName)
                 + "DaoSQL类生成完毕---------------------------------");
     }
 
-    private void createDao(AutoCode code, Map<String, Object> map, String className) {
-        StringBuffer daoPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+    private void createDao(Entity entity, String className) {
+        StringBuffer daoPathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         daoPathAndName.append("autoCode/ftl/dao.ftl");
         // 输出路径+名称
-        StringBuffer daoOutFile = AutoCodeUtil.getPathByCom(code.getBasePackage()
-                + "." + code.getDao());
+        StringBuffer daoOutFile = AutoCodeUtil.getPathByCom(AutoCode.basePackage
+                + "." + AutoCode.dao);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(daoOutFile.toString());
         daoOutFile.append(className + "Dao.java");
-        AutoCodeUtil.getNewFile(daoPathAndName.toString(), map, daoOutFile.toString());
+        AutoCodeUtil.getNewFile(daoPathAndName.toString(), entity, daoOutFile.toString());
         System.out.println("-------------------------------------"
-                + AutoCodeUtil.getBeanName(code.getTableName())
+                + AutoCodeUtil.getBeanName(AutoCode.tableName)
                 + "Dao类生成完毕------------------------------------");
     }
 
-    private void creatPageDto(AutoCode code, Map<String, Object> map, String className) {
-        StringBuffer entityPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+    private void creatPageDto(Entity entity, String className) {
+        StringBuffer entityPathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         entityPathAndName.append("autoCode/ftl/entityPageDto.ftl");
         // 输出路径+名称
-        StringBuffer dtoOutFile = AutoCodeUtil.getPathByCom(code.getBasePackage() + "." + code.getDto());
+        StringBuffer dtoOutFile = AutoCodeUtil.getPathByCom(AutoCode.basePackage + "." + AutoCode.dto);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(dtoOutFile.toString());
         dtoOutFile.append(className + "PageDto.java");
-        AutoCodeUtil.getNewFile(entityPathAndName.toString(), map, dtoOutFile.toString());
+        AutoCodeUtil.getNewFile(entityPathAndName.toString(), entity, dtoOutFile.toString());
         System.out.println("-------------------------------------"
-                + AutoCodeUtil.getBeanName(code.getTableName())
+                + AutoCodeUtil.getBeanName(AutoCode.tableName)
                 + "PageDto生成完毕------------------------------------");
     }
 
-    private void creatSaveDto(AutoCode code, Map<String, Object> map, String className) {
-        StringBuffer entityPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+    private void creatSaveDto(Entity entity, String className) {
+        StringBuffer entityPathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         entityPathAndName.append("autoCode/ftl/entitySaveDto.ftl");
         // 输出路径+名称
-        StringBuffer entityOutFile = AutoCodeUtil.getPathByCom(code.getBasePackage() + "." + code.getDto());
+        StringBuffer entityOutFile = AutoCodeUtil.getPathByCom(AutoCode.basePackage + "." + AutoCode.dto);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(entityOutFile.toString());
         entityOutFile.append(className + "SaveDto.java");
-        AutoCodeUtil.getNewFile(entityPathAndName.toString(), map, entityOutFile.toString());
+        AutoCodeUtil.getNewFile(entityPathAndName.toString(), entity, entityOutFile.toString());
         System.out.println("-------------------------------------"
-                + AutoCodeUtil.getBeanName(code.getTableName())
+                + AutoCodeUtil.getBeanName(AutoCode.tableName)
                 + "SaveDto生成完毕------------------------------------");
     }
 
-    private void creatUpdateDto(AutoCode code, Map<String, Object> map, String className) {
-        StringBuffer entityPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+    private void creatUpdateDto(Entity entity, String className) {
+        StringBuffer entityPathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         entityPathAndName.append("autoCode/ftl/entityUpdateDto.ftl");
         // 输出路径+名称
-        StringBuffer entityOutFile = AutoCodeUtil.getPathByCom(code.getBasePackage() + "." + code.getDto());
+        StringBuffer entityOutFile = AutoCodeUtil.getPathByCom(AutoCode.basePackage + "." + AutoCode.dto);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(entityOutFile.toString());
         entityOutFile.append(className + "UpdateDto.java");
-        AutoCodeUtil.getNewFile(entityPathAndName.toString(), map, entityOutFile.toString());
+        AutoCodeUtil.getNewFile(entityPathAndName.toString(), entity, entityOutFile.toString());
         System.out.println("-------------------------------------"
-                + AutoCodeUtil.getBeanName(code.getTableName())
+                + AutoCodeUtil.getBeanName(AutoCode.tableName)
                 + "UpdateDto生成完毕------------------------------------");
     }
 
-    private void creatEntity(AutoCode code, Map<String, Object> map, String className) {
-        StringBuffer entityPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+    private void creatEntity(Entity entity, String className) {
+        StringBuffer entityPathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         entityPathAndName.append("autoCode/ftl/entity.ftl");
         // 输出路径+名称
-        StringBuffer entityOutFile = AutoCodeUtil.getPathByCom(code.getBasePackage() + "." + code.getEntity());
+        StringBuffer entityOutFile = AutoCodeUtil.getPathByCom(AutoCode.basePackage + "." + AutoCode.entity);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(entityOutFile.toString());
         entityOutFile.append(className + ".java");
-        AutoCodeUtil.getNewFile(entityPathAndName.toString(), map, entityOutFile.toString());
+        AutoCodeUtil.getNewFile(entityPathAndName.toString(), entity, entityOutFile.toString());
         System.out.println("-------------------------------------"
-                + AutoCodeUtil.getBeanName(code.getTableName())
+                + AutoCodeUtil.getBeanName(AutoCode.tableName)
                 + "实体类生成完毕------------------------------------");
     }
 
-    private void creatPageVo(AutoCode code, Map<String, Object> map, String className) {
-        StringBuffer entityPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+    private void creatPageVo(Entity entity, String className) {
+        StringBuffer entityPathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         entityPathAndName.append("autoCode/ftl/entityPageVo.ftl");
         // 输出路径+名称
-        StringBuffer entityOutFile = AutoCodeUtil.getPathByCom(code.getBasePackage() + "." + code.getVo());
+        StringBuffer entityOutFile = AutoCodeUtil.getPathByCom(AutoCode.basePackage + "." + AutoCode.vo);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(entityOutFile.toString());
         entityOutFile.append(className + "PageVo.java");
-        AutoCodeUtil.getNewFile(entityPathAndName.toString(), map, entityOutFile.toString());
+        AutoCodeUtil.getNewFile(entityPathAndName.toString(), entity, entityOutFile.toString());
         System.out.println("-------------------------------------"
-                + AutoCodeUtil.getBeanName(code.getTableName())
+                + AutoCodeUtil.getBeanName(AutoCode.tableName)
                 + "PageVo生成完毕------------------------------------");
     }
 
-    private void creatVo(AutoCode code, Map<String, Object> map, String className) {
-        StringBuffer entityPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+    private void creatVo(Entity entity, String className) {
+        StringBuffer entityPathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         entityPathAndName.append("autoCode/ftl/entityVo.ftl");
         // 输出路径+名称
-        StringBuffer entityOutFile = AutoCodeUtil.getPathByCom(code.getBasePackage() + "." + code.getVo());
+        StringBuffer entityOutFile = AutoCodeUtil.getPathByCom(AutoCode.basePackage + "." + AutoCode.vo);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(entityOutFile.toString());
         entityOutFile.append(className + "Vo.java");
-        AutoCodeUtil.getNewFile(entityPathAndName.toString(), map, entityOutFile.toString());
+        AutoCodeUtil.getNewFile(entityPathAndName.toString(), entity, entityOutFile.toString());
         System.out.println("-------------------------------------"
-                + AutoCodeUtil.getBeanName(code.getTableName())
+                + AutoCodeUtil.getBeanName(AutoCode.tableName)
                 + "vo生成完毕------------------------------------");
     }
 
-    private Map<String, Object> getJavaObject(AutoCode code) {
+    private Entity getEntity() {
         List<Map<String, Object>> columnNameList = autoCodeMapper.selectTable(
-                databaseName, code.getTableName());
+                databaseName, AutoCode.tableName);
         if (columnNameList.isEmpty()) {
             System.out.println("查询无此表，请检查表名是否正确");
             return null;
         }
-        Map<String, Object> map = new HashMap<String, Object>();
+        Entity entity = new Entity();
         // 原来表名
-        map.put("tableName", code.getTableName());
+        entity.setTableName(AutoCode.tableName);
         // 模块名称---解释使用
-        map.put("moduleName", code.getModuleName());
+        entity.setModuleName(AutoCode.moduleName);
         // java类名称(首字母小写)
-        map.put("className", AutoCodeUtil.getBeanName(code.getTableName()));
+        entity.setClassName(AutoCodeUtil.getBeanName(AutoCode.tableName));
         // 基础包
-        map.put("basePackage", code.getBasePackage());
+        entity.setBasePackage(AutoCode.basePackage);
         // 实体类包名
-        map.put("entityPackage", code.getBasePackage() + "." + code.getEntity());
-        map.put("dtoPackage", code.getBasePackage() + "." + code.getDto());
-        map.put("voPackage", code.getBasePackage() + "." + code.getVo());
+        entity.setEntityPackage(AutoCode.basePackage + "." + AutoCode.entity);
+        entity.setDtoPackage(AutoCode.basePackage + "." + AutoCode.dto);
+        entity.setVoPackage(AutoCode.basePackage + "." + AutoCode.vo);
         // dao类包名
-        map.put("daoPackage", code.getBasePackage() + "." + code.getDao());
+        entity.setDaoPackage(AutoCode.basePackage + "." + AutoCode.dao);
         // service类包名
-        map.put("servicePackage", code.getBasePackage() + "." + code.getService());
+        entity.setServicePackage(AutoCode.basePackage + "." + AutoCode.service);
         // serviceImpl类包名
-        map.put("serviceImplPackage", code.getBasePackage() + "." + code.getServiceImpl());
+        entity.setServiceImplPackage(AutoCode.basePackage + "." + AutoCode.serviceImpl);
         // controller类包名
-        map.put("controllerPackage", code.getBasePackage() + "." + code.getController());
-        List<Map<String, Object>> l = searchType(columnNameList);
-        map.put("data", l);
-        return map;
+        entity.setControllerPackage(AutoCode.basePackage + "." + AutoCode.controller);
+        List<Entity.data> l = searchEntity(columnNameList);
+        entity.setDataList(l);
+        //计算主键个数
+        long count = l.stream().filter(Entity.data::getId).count();
+        entity.setIdNumber((int) count);
+        return entity;
     }
 
-    private List<Map<String, Object>> searchType(List<Map<String, Object>> list) {
-        List<Map<String, Object>> l = new ArrayList<>();
+    private List<Entity.data> searchEntity(List<Map<String, Object>> list) {
+        List<Entity.data> l = new ArrayList<>();
         for (Map<String, Object> aList : list) {
-            Map<String, Object> typeMap = new HashMap<>();
+            Entity.data data = new Entity.data();
             // 原来数据库字段名
-            typeMap.put("columnName", aList.get("COLUMN_NAME").toString());
+            data.setCommentName(aList.get("COLUMN_NAME").toString());
             // javaBean字段是否为空
             if (aList.get("IS_NULLABLE") != null
                     && aList.get("IS_NULLABLE").toString().equals("NO")) {
-                typeMap.put("isNull", false);
+                data.setIsNull(false);
             } else {
-                typeMap.put("isNull", true);
+                data.setIsNull(true);
             }
             //最多字符数_CHARACTER_MAXIMUM_LENGTH
-            typeMap.put("maximumLength",aList.get("CHARACTER_MAXIMUM_LENGTH")==null?0:
-                    aList.get("CHARACTER_MAXIMUM_LENGTH").toString());
+            data.setMaximumLength(aList.get("CHARACTER_MAXIMUM_LENGTH") == null ? 0 :
+                    Integer.valueOf(aList.get("CHARACTER_MAXIMUM_LENGTH").toString()));
             // javaBean字段名
-            typeMap.put("beanName", AutoCodeUtil.getBeanName(aList.get("COLUMN_NAME").toString()));
+            data.setBeanName(AutoCodeUtil.getBeanName(aList.get("COLUMN_NAME").toString()));
             // 是否为KEY
-            if (aList.get("COLUMN_KEY") != null
-                    && aList.get("COLUMN_KEY").toString().equals("PRI")) {
-                typeMap.put("id", true);
-            } else {
-                typeMap.put("id", false);
-            }
-            // 是否有外键
-            if (aList.get("COLUMN_KEY") != null
-                    && aList.get("COLUMN_KEY").toString().equals("MUL")) {
-                typeMap.put("mul", true);
-            } else {
-                typeMap.put("mul", false);
-            }
+            data.setId(aList.get("COLUMN_KEY") != null
+                    && aList.get("COLUMN_KEY").toString().equals("PRI") ? true : false);
             // 是否为自增
-            if (aList.get("EXTRA") != null
-                    && aList.get("EXTRA").toString().length() > 0) {
-                typeMap.put("extpa", true);
-            } else {
-                typeMap.put("extpa", false);
-            }
+            data.setExtpa(aList.get("EXTRA") != null
+                    && aList.get("EXTRA").toString().length() > 0 ? true : false);
             // 由数据库类型转JAVA类型
             String s = AutoCodeUtil.ColumnTypeEnum.getColumnTypeEnumByDBType(aList.get("DATA_TYPE").toString().toUpperCase());
             int i1 = s.lastIndexOf(".");
-            typeMap.put("type", s.substring(i1 + 1));
+            data.setType(s.substring(i1 + 1));
             // 备注,仅用于实体类,是可无的对象
-            if (aList.get("COLUMN_COMMENT") != null) {
-                typeMap.put("commentName", aList.get("COLUMN_COMMENT")
-                        .toString());
-            }
-            l.add(typeMap);
+            data.setCommentName(aList.get("COLUMN_COMMENT") == null ? "" : aList.get("COLUMN_COMMENT")
+                    .toString());
         }
         return l;
     }
+
 }

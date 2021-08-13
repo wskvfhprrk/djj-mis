@@ -6,67 +6,59 @@ import lombok.Data;
  * Created by Administrator on 2017/7/6.
  */
 @Data
-public class AutoCode {
+public class  AutoCode {
     /**
      * 基础类包
      */
-    private String basePackage = "com.guardlbt";
+    public static String basePackage = "com.guardlbt";
     /**
      * 表名
      */
-    private String tableName = "tableName";
+    public static String tableName = "tableName";
     /**
      * 模块名称
      */
-    private String moduleName = "moduleName";
+    public static String moduleName = "moduleName";
     /**
      * 实体类包名
      */
-    private String entity = "entity";
+    public static String entity = "entity";
     /**
      * dto包名
      */
-    private String dto = "dto";
+    public static String dto = "dto";
     /**
      * vo包名
      */
-    private String vo = "vo";
+    public static String vo = "vo";
     /**
      * dao包名
      */
-    private String dao = "dao";
+    public static String dao = "dao";
     /**
      * service包名
      */
-    private String service = "service";
+    public static String service = "service";
     /**
      * serviceImpl包名
      */
-    private String serviceImpl = "service.Impl";
+    public static String serviceImpl = "service.Impl";
     /**
      * controller包名
      */
-    private String controller = "controller";
+    public static String controller = "controller";
 
     /**
-     * 网页路径
+     * html网页路径
      */
-    private String pagePath = "src/main/resources/templates/";
-    private String VuePagePath = "src/main/resources/vue/";
-
-    public AutoCode() {
-    }
+    public static String pagePath = "src/main/resources/templates/";
+    /**
+     * vue
+     */
+    public static String VuePagePath = "src/main/resources/vue/";
 
     /**
-     * 构造方法
-     *
-     * @param tableName  数据表名
-     * @param moduleName 模块名称
+     * sql路径
      */
-    public AutoCode(String tableName, String moduleName) {
-        super();
-        this.tableName = tableName;
-        this.moduleName = moduleName;
-    }
-
+    public static String sqlPath="src/main/resources/sql/addMenu.sql";
 }

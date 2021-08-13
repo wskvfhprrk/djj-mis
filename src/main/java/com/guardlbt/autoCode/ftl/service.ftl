@@ -18,7 +18,7 @@ public interface ${className?cap_first}Service {
     * @return easyui结果集
     */
     Result findPage${className?cap_first}( ${className?cap_first}PageDto dto);
-
+<#if idNumber!=0>
     /**
     * 条件查询全部数据
     * @param ${className} 条件参数
@@ -62,5 +62,5 @@ public interface ${className?cap_first}Service {
     * @param id
     * @return
     */
-    Result getById(String id);
+    Result getById(<#list data as d><#if d.id==true>${d.type} ${d.beanName}</#if></#list>);</#if>
 }

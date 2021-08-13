@@ -18,10 +18,10 @@ public class AutoCodeUtil {
      * 调用freemarker生成静态文件
      *
      * @param modelPathAndName 模版路径+文件名（带后缀.ftl）
-     * @param map              带进去的参数值
+     * @param entity              带进去的参数值
      * @param outFile          生成文件路径+名称+后缀
      */
-    public static String getNewFile(String modelPathAndName, Map map, String outFile) {
+    public static String getNewFile(String modelPathAndName, Entity entity, String outFile) {
         int i = modelPathAndName.lastIndexOf("/");
         String urlPath = modelPathAndName.substring(0, i);
         String fileName = modelPathAndName.substring(i + 1);
@@ -31,7 +31,7 @@ public class AutoCodeUtil {
             configuration.setDefaultEncoding("utf-8");
             Template template = configuration.getTemplate(fileName);
             Writer out = new FileWriter(new File(outFile));
-            template.process(map, out);
+            template.process(entity, out);
             out.flush();
             out.close();
         } catch (Exception e) {

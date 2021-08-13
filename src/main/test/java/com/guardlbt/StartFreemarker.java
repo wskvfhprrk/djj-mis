@@ -9,6 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,10 +47,28 @@ public class StartFreemarker {
 //        map.put("report_site","定位信息上报");
 //        map.put("schedule_job","定时任务");
 //        map.put("schedule_job_log","定时任务日志");
-        map.forEach((k,v)->{
-            AutoCode code = new AutoCode(k.toString(), v.toString());
-            c.start(code);
-        });
+        //生成代码
+//        map.forEach((k,v)->{
+//            AutoCode code = new AutoCode(k.toString(), v.toString());
+//            c.start(code);
+//        });
+        //生成菜单数据
+//        createSql("map");
+    }
+
+    private void createSql(String s) {
+        String path=AutoCode.sqlPath;
+        File file=new File(path);
+        if(!file.exists())file.canExecute();
+        try {
+            BufferedWriter out=new BufferedWriter(new FileWriter(file));
+            out.write(s+"\n");
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+
+        }
     }
 
 }

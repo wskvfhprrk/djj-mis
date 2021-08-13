@@ -32,7 +32,7 @@ public class ${className?cap_first}Controller {
     public Result getPage(@Validated ${className?cap_first}PageDto dto){
         return service.findPage${className?cap_first}(dto);
     }
-
+<#if idNumber!=0>
     @PostMapping
 	@ApiOperation("添加${moduleName}")
     public Result add(@Validated @RequestBody ${className?cap_first}SaveDto dto){
@@ -53,7 +53,7 @@ public class ${className?cap_first}Controller {
 
     @GetMapping("/{id}")
     @ApiOperation("根据ID查询")
-    public Result getById(@PathVariable String id){
-        return service.getById(id);
-    }
+    public Result getById(@PathVariable <#list data as d><#if d.id==true>${d.type} ${d.beanName}</#if></#list>){
+        return service.getById(<#list data as d><#if d.id==true>${d.beanName}</#if></#list>);
+    }</#if>
 }
