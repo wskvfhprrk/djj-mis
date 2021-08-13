@@ -1,7 +1,6 @@
 package com.guardlbt;
 
-import com.guardlbt.autoCode.AutoCode;
-import com.guardlbt.autoCode.CreateCodeService;
+import com.guardlbt.autoCode.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,16 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.lang.reflect.Field;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static java.util.Arrays.asList;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Created by Administrator on 2017/7/7 0007.
@@ -32,43 +28,95 @@ public class StartFreemarker {
 
     @Test
     public void createCode() {
-        Map map=new HashMap<>();
-        map.put("business_district","商圈");
-//        map.put("coupon","代金券");
-//        map.put("coupon_history","代金券历史");
-//        map.put("coupon_stock","代金券明细");
-//        map.put("goods","商品");
-//        map.put("index_coupon","首页促销代金券");
-//        map.put("index_images","轮播图");
-//        map.put("index_shop","首页促销店铺");
-//        map.put("member","会员");
-//        map.put("member_operation_history","会员操作记录历史");
-//        map.put("operation_type","操作类型");
-//        map.put("report_site","定位信息上报");
-//        map.put("schedule_job","定时任务");
-//        map.put("schedule_job_log","定时任务日志");
+        List<Entity> tableNames=new ArrayList<>();
+        tableNames.add(new Entity("business_district", "商圈"));
+//        tableNames.add(new Entity("coupon","代金券"));
+//        tableNames.add(new Entity("coupon_history","代金券历史"));
+//        tableNames.add(new Entity("coupon_stock","代金券明细"));
+//        tableNames.add(new Entity("goods","商品"));
+//        tableNames.add(new Entity("index_coupon","首页促销代金券"));
+//        tableNames.add(new Entity("index_images","轮播图"));
+//        tableNames.add(new Entity("index_shop","首页促销店铺"));
+//        tableNames.add(new Entity("member","会员"));
+//        tableNames.add(new Entity("member_operation_history","会员操作记录历史"));
+//        tableNames.add(new Entity("operation_type","操作类型"));
+//        tableNames.add(new Entity("report_site","定位信息上报"));
+//        tableNames.add(new Entity("schedule_job","定时任务"));
+//        tableNames.add(new Entity("schedule_job_log","定时任务日志"));
         //生成代码
-//        map.forEach((k,v)->{
-//            AutoCode code = new AutoCode(k.toString(), v.toString());
-//            c.start(code);
-//        });
+        for (Entity tableName : tableNames) {
+            c.start(tableName);
+        }
         //生成菜单数据
-//        createSql("map");
+        createSql(tableNames);
     }
 
-    private void createSql(String s) {
-        String path=AutoCode.sqlPath;
-        File file=new File(path);
-        if(!file.exists())file.canExecute();
+    private void createSql(List<Entity> tableNames) {
+        String path = AutoCode.sqlPath;
+        File file = new File(path);
         try {
-            BufferedWriter out=new BufferedWriter(new FileWriter(file));
-            out.write(s+"\n");
-            out.close();
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+            //menu数据库自增最后值
+            int num = 86;
+            //初始化数据库
+            StringBuffer sb = new StringBuffer(
+                    "-- 初始化数据库\n" +
+                            "-- 清除usre中除超级管理员外\n" +
+                            "DELETE FROM t_user WHERE user_id!=1;\n" +
+                            "-- 清除role中除超级管理员外\n" +
+                            "DELETE FROM t_role WHERE role_id!=1;\n" +
+                            "-- 清除中间表中menu_id大的值\n" +
+                            "DELETE FROM m_role_menu WHERE menu_id>" + num + ";\n" +
+                            "-- 清除菜单表中menu_id大的值\n" +
+                            "DELETE FROM t_menu WHERE menu_id>" + num + ";\n" +
+                            "-- 设置自增值\n" +
+                            "alter table t_menu AUTO_INCREMENT=" + (num + 1) + ";\n" +
+                            "alter table t_user AUTO_INCREMENT=2;\n" +
+                            "alter table t_role AUTO_INCREMENT=2;\n");
+            //自增menu_id用了一个了
+
+            //1、添加模块值
+//            for (Map.Entry<String, String> o : tableNames.entrySet()) {
+            for (Entity tableName : tableNames) {
+                num++;
+                int id = num;
+                sb.append("-- 添加菜单识别\n");
+                sb.append("INSERT INTO `coupon`.`t_menu` (`menu_id`, `menu_name`, `url`, `m_pid`, `menu_code`, `permission_ui`, `permission`, `menu_describe`, `order_by`, `menu_type`) " +
+                        "VALUES (" + id + ", '" + tableName.getModuleName() + "', '', 0, NULL, NULL, NULL, NULL, " + id + ", 0);\n");
+                num++;
+                int id2 = num;
+                sb.append("-- 添加菜单带名称\n");
+                sb.append("INSERT INTO `coupon`.`t_menu` (`menu_id`, `menu_name`, `url`, `m_pid`, `menu_code`, `permission_ui`, `permission`, `menu_describe`, `order_by`, `menu_type`) " +
+                        "VALUES (" + id2 + ", '" +tableName.getModuleName()+"', '" + AutoCodeUtil.getBeanName(tableName.getTableName())  + "', " + id + ", NULL, NULL, NULL, NULL, " + id2 + ", 0);\n");
+                num++;
+                sb.append("-- 添加分页查询权限\n");
+                sb.append("INSERT INTO `coupon`.`t_menu` (`menu_id`, `menu_name`, `url`, `m_pid`, `menu_code`, `permission_ui`, `permission`, `menu_describe`, `order_by`, `menu_type`) " +
+                        "VALUES (" + num + ", '" + tableName.getModuleName()+"分页查询', NULL, " + id2 + ", NULL, '"+AutoCodeUtil.getBeanName(tableName.getTableName())+"_get', '/" +AutoCodeUtil.getBeanName(tableName.getTableName()) +"@get', NULL, " + num + ", 1);\n");
+                num++;
+                sb.append("-- 添加添加权限\n");
+                sb.append("INSERT INTO `coupon`.`t_menu` (`menu_id`, `menu_name`, `url`, `m_pid`, `menu_code`, `permission_ui`, `permission`, `menu_describe`, `order_by`, `menu_type`) " +
+                        "VALUES (" + num + ", '" +tableName.getModuleName()+"添加', NULL, " + id2 + ", NULL, '"+AutoCodeUtil.getBeanName(tableName.getTableName())+"_save', '/" +AutoCodeUtil.getBeanName(tableName.getTableName())  +"@post', NULL, " + num + ", 1);\n");
+                num++;
+                sb.append("-- 添加修改权限\n");
+                sb.append("INSERT INTO `coupon`.`t_menu` (`menu_id`, `menu_name`, `url`, `m_pid`, `menu_code`, `permission_ui`, `permission`, `menu_describe`, `order_by`, `menu_type`) " +
+                        "VALUES (" + num + ", '" +tableName.getModuleName()+"修改', NULL, " + id2 + ", NULL, '"+AutoCodeUtil.getBeanName(tableName.getTableName())+"_update', '/" +AutoCodeUtil.getBeanName(tableName.getTableName())  +"@put', NULL, " + num + ", 1);\n");
+                num++;
+                sb.append("-- 添加根据id查询权限\n");
+                sb.append("INSERT INTO `coupon`.`t_menu` (`menu_id`, `menu_name`, `url`, `m_pid`, `menu_code`, `permission_ui`, `permission`, `menu_describe`, `order_by`, `menu_type`) " +
+                        "VALUES (" + num + ", '" +tableName.getModuleName() +"根据id查询', NULL, " + id2 + ", NULL, '"+AutoCodeUtil.getBeanName(tableName.getTableName())+"_*_get', '/" +AutoCodeUtil.getBeanName(tableName.getTableName())  +"/*@get', NULL, " + num + ", 1);\n");
+                num++;
+                sb.append("-- 添加根据id删除权限\n");
+                sb.append("INSERT INTO `coupon`.`t_menu` (`menu_id`, `menu_name`, `url`, `m_pid`, `menu_code`, `permission_ui`, `permission`, `menu_describe`, `order_by`, `menu_type`) " +
+                        "VALUES (" + num + ", '" +tableName.getModuleName() +"根据id删除', NULL, " + id2 + ", NULL, '"+AutoCodeUtil.getBeanName(tableName.getTableName())+"_*_delete','/" +AutoCodeUtil.getBeanName(tableName.getTableName())  +"/*@delete', NULL, " + num + ", 1);\n");
+            }
+            for (String s : sb.toString().split("\n")) {
+                bw.write(s + "\n");
+            }
+            bw.newLine();
+            bw.flush();
+            bw.close();
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
-
         }
     }
-
 }

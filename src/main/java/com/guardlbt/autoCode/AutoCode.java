@@ -12,14 +12,6 @@ public class  AutoCode {
      */
     public static String basePackage = "com.guardlbt";
     /**
-     * 表名
-     */
-    public static String tableName = "tableName";
-    /**
-     * 模块名称
-     */
-    public static String moduleName = "moduleName";
-    /**
      * 实体类包名
      */
     public static String entity = "entity";
@@ -60,5 +52,7 @@ public class  AutoCode {
     /**
      * sql路径
      */
-    public static String sqlPath="src/main/resources/sql/addMenu.sql";
+    public static String sqlPath="/Users/hejianzhe/IdeaProjects/djj-mis/src/main/addMenu.sql";
+
+
 }

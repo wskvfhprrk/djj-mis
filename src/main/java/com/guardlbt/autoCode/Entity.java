@@ -21,19 +21,22 @@ public class Entity {
     private String servicePackage;
     private String serviceImplPackage;
     private String controllerPackage;
-    private List<data> dataList;
+    private List<data> data;
     /**
      * 主键数量值
      */
     private Integer idNumber;
 
+    public Entity() {
+    }
+
+    public Entity(String tableName, String moduleName) {
+        this.tableName = tableName;
+        this.moduleName = moduleName;
+    }
 
     @Data
     public static class data {
-        /**
-         * 行名称
-         */
-        private String data;
         /**
          * 数据库备注——中文
          */
@@ -59,10 +62,6 @@ public class Entity {
          * 是否为主键
          */
         private Boolean id;
-        /**
-         * 是否有外链接——此字段没有太多用处
-         */
-        private Boolean mul;
         /**
          * 是否为主键数据自增
          */

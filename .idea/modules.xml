@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/djj-mis.iml" filepath="$PROJECT_DIR$/.idea/djj-mis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hbhmisserver.iml" filepath="$PROJECT_DIR$/hbhmisserver.iml" />
     </modules>
   </component>
 </project>
