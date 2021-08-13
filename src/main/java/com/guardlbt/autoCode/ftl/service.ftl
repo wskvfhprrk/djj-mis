@@ -59,8 +59,8 @@ public interface ${className?cap_first}Service {
     Result deleteAll(String ids);
     /**
     * 根据id查询${moduleName}
-    * @param id
+    * @param <#list data as d><#if d.id==true>${d.beanName}</#if></#list>
     * @return
     */
-    Result getById(<#list data as d><#if d.id==true>${d.type} ${d.columnName}</#if></#list>);</#if>
+    Result getById(<#list data as d><#if d.id==true>${d.type} ${d.beanName}</#if></#list>);</#if>
 }

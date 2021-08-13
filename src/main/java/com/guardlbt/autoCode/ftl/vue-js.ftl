@@ -8,7 +8,7 @@ const list = {
         return instance.get(`${r"${"}preUrlPath}/${className}?` + params)
     }
 };
-const remove = {
+const remove = {®
     p: ['get,/menu/list'],
     r: params => {
         return instance.delete(`${r"${"}preUrlPath}/${className}/${r"${"}params}`)

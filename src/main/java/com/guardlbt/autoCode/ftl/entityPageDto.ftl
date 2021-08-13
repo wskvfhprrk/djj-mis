@@ -25,10 +25,9 @@ public class  ${className?cap_first}PageDto {
     @NotNull(message = "pageSize不能为空")
     @ApiModelProperty("每页多少条（默认值为30）")
     private Integer pageSize;
-<#list data as d>    <#if d.type=="Timestamp">
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")</#if> <#if d.type=="date">
-    @DateTimeFormat(pattern = "yyyy-MM-dd")</#if>
+<#list data as d><#if d.id==false><#if d.type=="Timestamp" || d.type=='Date'>
+    DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")</#if>
     @ApiModelProperty("${d.commentName}") 
-    private <#if d.type=='Timestamp'>Date<#else>${d.type}</#if> ${d.columnName};
+    private <#if d.type=='Timestamp'>Date<#else>${d.type}</#if> ${d.beanName};</#if>
 </#list>
 }

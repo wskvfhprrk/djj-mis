@@ -4,7 +4,7 @@
     <tr>
         <th data-options="field:'ck',checkbox:true"></th>
     <#list data as d>
-        <th data-options="field:'${d.columnName}',align:'center'${d.id?string(",hidden:true","")}">${d.commentName}</th>
+        <th data-options="field:'${d.beanName}',align:'center'${d.id?string(",hidden:true","")}">${d.commentName}</th>
     </#list>
     </tr>
     </thead>
@@ -25,35 +25,35 @@
         <#if d.mul=true>
         <#--请根据数据库外键关联进行更改-->
             <span style="padding-left: 10px;">${d.commentName}:</span>
-            <input class="easyui-combobox" name="${d.columnName}" id="${className}-list-${d.columnName}" style="width:110px;"
+            <input class="easyui-combobox" name="${d.beanName}" id="${className}-list-${d.beanName}" style="width:110px;"
                    data-options="prompt:'请选择${d.commentName}',
-                        valueField: '${d.columnName}',
+                        valueField: '${d.beanName}',
                         textField: '开发时请修改此处',
                         url: '开发时在此修改关联类名/getAll'
                        "/>
         </#if>
         <#if d.type=='Timestamp'>
             <span style="padding-left: 10px;">${d.commentName}:</span>
-            <input class="easyui-datetimebox" name="${d.columnName}" id="${className}-list-${d.columnName}"
+            <input class="easyui-datetimebox" name="${d.beanName}" id="${className}-list-${d.beanName}"
                    style="width:110px;"
                    data-options="prompt:'请填写${d.commentName}'"/>
         <#elseif d.type=='Date'>
             <span style="padding-left: 10px;">${d.commentName}:</span>
-            <input class="easyui-datebox" name="${d.columnName}" id="${className}-list-${d.columnName}" style="width:110px;"
+            <input class="easyui-datebox" name="${d.beanName}" id="${className}-list-${d.beanName}" style="width:110px;"
                    data-options="prompt:'请填写${d.commentName}'"/>
         <#elseif d.type=='Time'>
             <span style="padding-left: 10px;">${d.commentName}:</span>
-            <input class="easyui-timespinner" name="${d.columnName}" id="${className}-list-${d.columnName}"
+            <input class="easyui-timespinner" name="${d.beanName}" id="${className}-list-${d.beanName}"
                    style="width:110px;"
                    data-options="prompt:'请填写${d.commentName}'"/>
         <#elseif d.type=='Integer' || d.type=='Long' || d.type=='Float' || d.type=='DOUBLE' >
             <span style="padding-left: 10px;">${d.commentName}:</span>
-            <input class="easyui-numberbox" name="${d.columnName}" id="${className}-list-${d.columnName}"
+            <input class="easyui-numberbox" name="${d.beanName}" id="${className}-list-${d.beanName}"
                    style="width:110px;"
                    data-options="prompt:'请填写${d.commentName}',min:0,precision:<#if d.type=='Integer' || d.type=='Long'>0</#if><#if  d.type=='Float' || d.type=='DOUBLE'>2</#if>"/>
         <#elseif d.type=='String' && d.mul=false>
             <span style="padding-left: 10px;">${d.commentName}:</span>
-            <input class="easyui-textbox" name="${d.columnName}" id="${className}-list-${d.columnName}" style="width:110px;"
+            <input class="easyui-textbox" name="${d.beanName}" id="${className}-list-${d.beanName}" style="width:110px;"
                    data-options="prompt:'请填写${d.commentName}'"/>
         </#if>
     </#if>
@@ -154,9 +154,9 @@
             var ids = "";
             rows.forEach(function (val, index) {
                 if (index == 0) {
-                    ids = rows[index]["<#list data as d><#if d.id=true>${d.columnName}</#if></#list>"];//此处如果是多主键此处和SQL都要改为一个对应的
+                    ids = rows[index]["<#list data as d><#if d.id=true>${d.beanName}</#if></#list>"];//此处如果是多主键此处和SQL都要改为一个对应的
                 } else {
-                    ids = ids + "," + rows[index]["<#list data as d><#if d.id=true>${d.columnName}</#if></#list>"];//此处如果是多主键此处和SQL都要改为一个对应的
+                    ids = ids + "," + rows[index]["<#list data as d><#if d.id=true>${d.beanName}</#if></#list>"];//此处如果是多主键此处和SQL都要改为一个对应的
                 }
             })
             $.messager.confirm("确认", "您确认想要删除该信息吗？", function (r) {

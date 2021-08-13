@@ -44,6 +44,10 @@ public class Entity {
         /**
          * javaBean字段名
          */
+        private String beanName;
+        /**
+         * 行数据库名称
+         */
         private String columnName;
         /**
          * 类型
@@ -52,7 +56,7 @@ public class Entity {
         /**
          * 数据允许的最大值
          */
-        private Integer maximumLength;
+        private String maximumLength;
 
         /**
          * 是否充许为空值

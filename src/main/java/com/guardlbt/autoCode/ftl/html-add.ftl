@@ -3,15 +3,15 @@
     <form class="easyui-form" id="${className}-form" method="post">
         <!-- 一般情况主键id要隐藏 -->
     <#list data as d><#if d.id=true>
-        <input type="hidden" id="${className}-${d.columnName}" name="${d.columnName}"/><!--${d.commentName}-->
+        <input type="hidden" id="${className}-${d.beanName}" name="${d.beanName}"/><!--${d.commentName}-->
     </#if></#list>
     <#list data as d><#if d.id=false>
         <#if d.mul=true>
             <#--请根据数据库外键关联进行更改-->
             <div style="margin-bottom:20px">
-                <input class="easyui-combobox" name="${d.columnName}" id="${className}-${d.columnName}" style="width:50%;"
+                <input class="easyui-combobox" name="${d.beanName}" id="${className}-${d.beanName}" style="width:50%;"
                        data-options="label:'${d.commentName}:',prompt:'请选择${d.commentName}'<#if d.isNull==false>,required:true</#if>,
-                        valueField: '${d.columnName}',
+                        valueField: '${d.beanName}',
                         textField: '开发时请修改此处',
                         url: '开发时在此修改关联类名(首字母小写)',
                         type:'post'
@@ -20,27 +20,27 @@
         <#else>
         <#if d.type=='Timestamp'>
             <div style="margin-bottom:20px">
-                <input class="easyui-datetimebox" name="${d.columnName}" id="${className}-${d.columnName}" style="width:50%;"
+                <input class="easyui-datetimebox" name="${d.beanName}" id="${className}-${d.beanName}" style="width:50%;"
                        data-options="label:'${d.commentName}:',prompt:'请填写${d.commentName}'<#if d.isNull==false>,required:true</#if>"/>
             </div>
         <#elseif d.type=='Date'>
             <div style="margin-bottom:20px">
-                <input class="easyui-datebox" name="${d.columnName}" id="${className}-${d.columnName}" style="width:50%;"
+                <input class="easyui-datebox" name="${d.beanName}" id="${className}-${d.beanName}" style="width:50%;"
                        data-options="label:'${d.commentName}:',prompt:'请填写${d.commentName}'<#if d.isNull==false>,required:true</#if>"/>
             </div>
         <#elseif d.type=='Time'>
             <div style="margin-bottom:20px">
-                <input class="easyui-timespinner" name="${d.columnName}" id="${className}-${d.columnName}" style="width:50%;"
+                <input class="easyui-timespinner" name="${d.beanName}" id="${className}-${d.beanName}" style="width:50%;"
                        data-options="label:'${d.commentName}:',prompt:'请填写${d.commentName}'<#if d.isNull==false>,required:true</#if>"/>
             </div>
         <#elseif d.type=='Integer' || d.type=='Long' || d.type=='Float' || d.type=='DOUBLE' >
             <div style="margin-bottom:20px">
-                <input class="easyui-numberbox" name="${d.columnName}" id="${className}-${d.columnName}" style="width:50%;"
+                <input class="easyui-numberbox" name="${d.beanName}" id="${className}-${d.beanName}" style="width:50%;"
                        data-options="label:'${d.commentName}:',prompt:'请填写${d.commentName}'<#if d.isNull==false>,required:true</#if>,min:0,precision:<#if d.type=='Integer' || d.type=='Long'>0</#if><#if  d.type=='Float' || d.type=='DOUBLE'>2</#if>"/>
             </div>
         <#elseif d.type=='String'>
             <div style="margin-bottom:20px">
-                <input class="easyui-textbox" name="${d.columnName}" id="${className}-${d.columnName}" style="width:50%;"
+                <input class="easyui-textbox" name="${d.beanName}" id="${className}-${d.beanName}" style="width:50%;"
                        data-options="label:'${d.commentName}:',prompt:'请填写${d.commentName}'<#if d.isNull==false>,required:true</#if>"/>
             </div>
         </#if>
@@ -59,7 +59,7 @@
             var s = sessionStorage.${className};//从sessionStorage得到数据  （json格式对象）
             s = JSON.parse(s);//将json格式转为js对象
         <#list data as d>
-            $("#${className}-${d.columnName}").val(s.${d.columnName});
+            $("#${className}-${d.beanName}").val(s.${d.beanName});
         </#list>
         }
     });
@@ -78,7 +78,7 @@
     function ${className}Sub() {
         var params = $("#${className}-form").serialize();
         var type = "post";
-        if ($("#${className}-<#list data as d><#if d.id=true>${d.columnName}</#if></#list>").val()) {
+        if ($("#${className}-<#list data as d><#if d.id=true>${d.beanName}</#if></#list>").val()) {
             type = "put";
         }
         $.ajax({

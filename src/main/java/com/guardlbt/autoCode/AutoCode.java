@@ -47,7 +47,7 @@ public class  AutoCode {
     /**
      * vue
      */
-    public static String VuePagePath = "src/main/resources/vue/";
+    public static String vuePagePath = "src/main/resources/vue/";
 
     /**
      * sql路径

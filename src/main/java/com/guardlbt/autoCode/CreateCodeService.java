@@ -61,7 +61,9 @@ public class CreateCodeService {
         for (Map<String, Object> aList : list) {
             Entity.data data = new Entity.data();
             // 原来数据库字段名
-            data.setCommentName(aList.get("COLUMN_NAME").toString());
+            data.setCommentName(aList.get("COLUMN_COMMENT").toString());
+            //数据库字体
+            data.setColumnName(aList.get("COLUMN_NAME").toString());
             // javaBean字段是否为空
             if (aList.get("IS_NULLABLE") != null
                     && aList.get("IS_NULLABLE").toString().equals("NO")) {
@@ -70,10 +72,10 @@ public class CreateCodeService {
                 data.setIsNull(true);
             }
             //最多字符数_CHARACTER_MAXIMUM_LENGTH
-            data.setMaximumLength(aList.get("CHARACTER_MAXIMUM_LENGTH") == null ? 0 :
-                    Integer.valueOf(aList.get("CHARACTER_MAXIMUM_LENGTH").toString()));
+            data.setMaximumLength(aList.get("CHARACTER_MAXIMUM_LENGTH") == null ? "0" :
+                    aList.get("CHARACTER_MAXIMUM_LENGTH").toString());
             // javaBean字段名
-            data.setColumnName(AutoCodeUtil.getBeanName(aList.get("COLUMN_NAME").toString()));
+            data.setBeanName(AutoCodeUtil.getBeanName(aList.get("COLUMN_NAME").toString()));
             // 是否为KEY
             data.setId(aList.get("COLUMN_KEY") != null
                     && aList.get("COLUMN_KEY").toString().equals("PRI") ? true : false);
@@ -133,7 +135,7 @@ public class CreateCodeService {
         StringBuffer addPathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         addPathAndName.append("autoCode/ftl/vue-js.ftl");
         // 输出路径+名称
-        StringBuffer addOutFile = new StringBuffer(AutoCode.VuePagePath);
+        StringBuffer addOutFile = new StringBuffer(AutoCode.vuePagePath);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(addOutFile.toString());
         addOutFile.append("api/");
@@ -150,14 +152,14 @@ public class CreateCodeService {
         StringBuffer addPathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         addPathAndName.append("autoCode/ftl/vue-index.ftl");
         // 输出路径+名称
-        StringBuffer addOutFile = new StringBuffer(AutoCode.VuePagePath);
+        StringBuffer addOutFile = new StringBuffer(AutoCode.vuePagePath);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(addOutFile.toString());
         addOutFile.append(AutoCodeUtil.getBeanName(entity.getTableName()));
         addOutFile.append("/");
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(addOutFile.toString());
-        addOutFile.append(AutoCodeUtil.getBeanName("index.vue"));
+        addOutFile.append("index.vue");
         AutoCodeUtil.getNewFile(addPathAndName.toString(), entity, addOutFile.toString());
         System.out.println("-------------------------------------"
                 + AutoCodeUtil.getBeanName(entity.getTableName())
@@ -168,14 +170,14 @@ public class CreateCodeService {
         StringBuffer addPathAndName = AutoCodeUtil.getPathByCom(AutoCode.basePackage);
         addPathAndName.append("autoCode/ftl/vue-view.ftl");
         // 输出路径+名称
-        StringBuffer addOutFile = new StringBuffer(AutoCode.pagePath);
+        StringBuffer addOutFile = new StringBuffer(AutoCode.vuePagePath);
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(addOutFile.toString());
         addOutFile.append(AutoCodeUtil.getBeanName(entity.getTableName()));
         addOutFile.append("/");
         // 先看是否存在路径没有先创建
         AutoCodeUtil.getPath(addOutFile.toString());
-        addOutFile.append(AutoCodeUtil.getBeanName("view.vue"));
+        addOutFile.append("view.vue");
         AutoCodeUtil.getNewFile(addPathAndName.toString(), entity, addOutFile.toString());
         System.out.println("-------------------------------------"
                 + AutoCodeUtil.getBeanName(entity.getTableName())

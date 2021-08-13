@@ -16,10 +16,9 @@ import java.util.Date;<#break></#if></#list>
 @Data
 public class ${className?cap_first} {
 <#list data as d>
-    <#if d.type=="Timestamp">
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")</#if> <#if d.type=="date">
-    @DateTimeFormat(pattern = "yyyy-MM-dd")</#if>
+    <#if d.type=="Timestamp" || d.type=='Date'>
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")</#if>
     @ApiModelProperty("${d.commentName}") 
-    private <#if d.type=='Timestamp'>Date<#else>${d.type}</#if> ${d.columnName};
+    private <#if d.type=='Timestamp'>Date<#else>${d.type}</#if> ${d.beanName};
 </#list>
 }
