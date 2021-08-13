@@ -34,31 +34,31 @@ public interface ${className?cap_first}Service {
     ${className?cap_first} find${className?cap_first}(${className?cap_first} ${className});
 
     /**
-    * 添加
+    * 添加${moduleName}
     * @param dto 条件参数
     * @return 结果集
     */
     Result insert(${className?cap_first}SaveDto dto);
     /**
-    * 修改
-    * @param ${className} 条件参数
+    * 修改${moduleName}
+    * @param dto 条件参数
     * @return 结果集
     */
     Result update(${className?cap_first}UpdateDto dto);
     /**
-    * 删除
+    * 删除${moduleName}
     * @param ${className} 条件参数
     * @return 结果集
     */
     Result delete(${className?cap_first} ${className});
     /**
-    * 批量删除
-    * @param ids 以逗号隔开的主键字符串
+    * 批量删除${moduleName}
+    * @param ids 以逗号隔开的主键字符串,对于单个id也适用
     * @return 结果集
     */
     Result deleteAll(String ids);
     /**
-    * 根据id查询
+    * 根据id查询${moduleName}
     * @param id
     * @return
     */

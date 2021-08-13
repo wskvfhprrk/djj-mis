@@ -59,10 +59,28 @@ public class CreateCodeService {
         createVueAddPage(code, map);
         //生成vue的index页面
         createVueIndexPage(code, map);
+        //生成vue js页面
+        createVueJs(code, map);
 
     }
 
 
+    private void createVueJs(AutoCode code, Map<String, Object> map) {
+        StringBuffer addPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
+        addPathAndName.append("autoCode/ftl/vue-js.ftl");
+        // 输出路径+名称
+        StringBuffer addOutFile = new StringBuffer(code.getVuePagePath());
+        // 先看是否存在路径没有先创建
+        AutoCodeUtil.getPath(addOutFile.toString());
+        addOutFile.append("api/");
+        // 先看是否存在路径没有先创建
+        AutoCodeUtil.getPath(addOutFile.toString());
+        addOutFile.append(AutoCodeUtil.getBeanName(code.getTableName()+".js"));
+        AutoCodeUtil.getNewFile(addPathAndName.toString(), map, addOutFile.toString());
+        System.out.println("-------------------------------------"
+                + AutoCodeUtil.getBeanName(code.getTableName())
+                + "vue-js页面生成完毕------------------------------------");
+    }
     private void createVueIndexPage(AutoCode code, Map<String, Object> map) {
         StringBuffer addPathAndName = AutoCodeUtil.getPathByCom(code.getBasePackage());
         addPathAndName.append("autoCode/ftl/vue-index.ftl");

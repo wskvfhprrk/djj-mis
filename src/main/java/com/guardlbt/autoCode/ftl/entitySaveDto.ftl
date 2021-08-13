@@ -1,8 +1,9 @@
-package ${basePackage}.dto;
+package ${dtoPackage};
 
 import org.springframework.format.annotation.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import javax.validation.constraints.*;
 import lombok.Data;
 
 
@@ -23,7 +24,9 @@ public class ${className?cap_first}SaveDto {
     <#if d.type=="Timestamp">
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")</#if> <#if d.type=="date">
     @DateTimeFormat(pattern = "yyyy-MM-dd")</#if>
-    @ApiModelProperty("${d.commentName}") 
+    @ApiModelProperty("${d.commentName}") <#if d.type=='String'>
+    @NotBlank(message = "${d.commentName}不能为空值")<#else>@NotNull(message = "${d.commentName}不能为空值")
+    </#if>
     private <#if d.type=='Timestamp'>Date<#else>${d.type}</#if> ${d.beanName};
 </#list>
 }

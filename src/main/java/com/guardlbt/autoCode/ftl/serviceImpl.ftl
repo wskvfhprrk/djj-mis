@@ -8,12 +8,14 @@ import ${servicePackage}.${className?cap_first}Service;
 import ${basePackage}.util.*;
 import ${basePackage}.common.util.*;
 import com.guardlbt.dto.*;
+import com.guardlbt.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 /**
@@ -39,14 +41,26 @@ public class ${className?cap_first}ServiceImpl implements ${className?cap_first}
         pageResult.setTotle(info.getTotal());
         pageResult.setPageSize(dto.getPageSize());
         pageResult.setPageNumber(dto.getPageNumber());
-        pageResult.setPages(info.getList());
+        //转换vo出去
+        List<${className?cap_first}PageVo> vos = info.getList().stream().map(l -> {
+            ${className?cap_first}PageVo vo = new ${className?cap_first}PageVo();
+            BeanUtils.copyProperties(l, vo);
+            return vo;
+        }).collect(Collectors.toList());
+        pageResult.setPages(vos);
         return Result.ok(pageResult);
     }
 
     @Override
     public Result findAllBy${className?cap_first}(${className?cap_first} ${className}) {
         List<${className?cap_first}> ${className}s = dao.select${className?cap_first}s(${className});
-        return Result.ok(${className}s);
+        //转换vo出去
+        List<${className?cap_first}PageVo> vos = ${className}s.stream().map(l -> {
+        ${className?cap_first}PageVo vo = new ${className?cap_first}PageVo();
+        BeanUtils.copyProperties(l, vo);
+        return vo;
+        }).collect(Collectors.toList());
+        return Result.ok(vos);
     }
 
     @Override
@@ -63,11 +77,6 @@ public class ${className?cap_first}ServiceImpl implements ${className?cap_first}
         ${className?cap_first} ${className}=new ${className?cap_first}();
         BeanUtils.copyProperties(dto,${className});
         <#list data as d><#if d.id==true && d.extpa==false >${className}.set${d.beanName?cap_first}(UuidUtild.getUUID());//如果多主键此处要更改</#if></#list>
-        <#list data as d><#if d.isNull==false && d.id==false>
-        if(${className}.get${d.beanName?cap_first}()==null || ${className}.get${d.beanName?cap_first}().toString().length()==0){
-            return Result.error(500,"${d.commentName}不能为空值");
-        }
-        </#if></#list>
         try{
             dao.insert(${className});
             return Result.ok();
@@ -81,11 +90,6 @@ public class ${className?cap_first}ServiceImpl implements ${className?cap_first}
     public Result update(${className?cap_first}UpdateDto dto) {
         ${className?cap_first} ${className}=new ${className?cap_first}();
         BeanUtils.copyProperties(dto,${className});
-        <#list data as d><#if d.isNull==false>
-        if(${className}.get${d.beanName?cap_first}()==null || ${className}.get${d.beanName?cap_first}().toString().length()==0){
-            return Result.error(500,"${d.commentName}不能为空值");
-        }
-        </#if></#list>
         try{
             dao.update(${className});
             return Result.ok();

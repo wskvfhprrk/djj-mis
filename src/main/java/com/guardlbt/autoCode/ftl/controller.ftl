@@ -9,6 +9,7 @@ import ${servicePackage}.${className?cap_first}Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.annotation.Validated;
+import javax.validation.constraints.*;
 import com.guardlbt.dto.*;
 
 import java.util.*;

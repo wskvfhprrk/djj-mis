@@ -14,17 +14,13 @@ public class ${className?cap_first}DaoSQL {
         return new SQL(){{
             SELECT("<#list data as d><#if d_index==0>a.${d.columnName}<#else> ,a.${d.columnName}</#if></#list>");
             FROM("${tableName} a");
-            <#list data as d>
-
-            if(${className}.get${d.beanName?cap_first}()!=null && ${className}.get${d.beanName?cap_first}().toString().length()>0){
-                <#assign str = "#\{"/>
-                <#if d.type=='String' && d.id=false >
-                WHERE("a.${d.columnName} like CONCAT(CONCAT('%', ${str}${d.beanName}}), '%')");
-                <#else>
-                WHERE("a.${d.columnName} = ${str}${d.beanName}}");
-                </#if>
-            }
-            </#list>
+            <#list data as d><#if d.type=='String'>
+            if(StringUtils.isNotBlank(${className}.get${className?cap_first}Id())){
+                WHERE("a.business_district_id = #{${className}Id}");
+            }</#if><#if d.type!='String'>
+            if(${className}.getLongitude()!=null && ${className}.getLongitude().toString().length()>0){
+                WHERE("a.longitude = #{longitude}");
+            }</#if></#list>
         }}.toString();
     }
 
