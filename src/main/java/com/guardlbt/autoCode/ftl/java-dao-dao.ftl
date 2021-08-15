@@ -23,7 +23,7 @@ public interface ${className?cap_first}Dao {
         @Result(column = "${d.columnName}", property = "${d.beanName}"${d.id?string(", id=true","")}),
     </#list>
     })
-    @SelectProvider(type = ${className?cap_first}DaoSQL.class, method = "select${className?cap_first}s")
+    @SelectProvider(type = ${className?cap_first}DaoSql.class, method = "select${className?cap_first}s")
     List<${className?cap_first}> select${className?cap_first}s(${className?cap_first} ${className});
 
 
@@ -31,28 +31,28 @@ public interface ${className?cap_first}Dao {
     * 添加
     * @param ${className}
     */
-    @SelectProvider(type = ${className?cap_first}DaoSQL.class, method = "insert")
+    @SelectProvider(type = ${className?cap_first}DaoSql.class, method = "insert")
     void insert(${className?cap_first} ${className});
 
     /**
     * 更新
     * @param ${className}
     */
-    @SelectProvider(type = ${className?cap_first}DaoSQL.class, method = "update")
+    @SelectProvider(type = ${className?cap_first}DaoSql.class, method = "update")
     void update(${className?cap_first} ${className});
 
     /**
     * 根据条件删除
     * @param ${className}
     */
-    @SelectProvider(type = ${className?cap_first}DaoSQL.class, method = "delete")
+    @SelectProvider(type = ${className?cap_first}DaoSql.class, method = "delete")
     void delete(${className?cap_first} ${className});
 
     /**
     * 根据主键IDS批量删除(只适合单主键,不支持多主键批量删除,多主键时请删除SQL中多余主键字段)
     * @param ids 主键字符串集合
     */
-    <#--@SelectProvider(type = ${className?cap_first}DaoSQL.class, method = "deleteAll")-->
+    <#--@SelectProvider(type = ${className?cap_first}DaoSql.class, method = "deleteAll")-->
     @Select("<script>" +
     <#assign str='#\{item}' >
         "DELETE FROM ${tableName} WHERE <#list data as d><#if d.id=true>${d.columnName} </#if></#list>IN " +

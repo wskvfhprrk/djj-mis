@@ -10,11 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Created by Administrator on 2017/7/7 0007.
@@ -24,38 +20,42 @@ import java.util.concurrent.atomic.AtomicReference;
 public class StartFreemarker {
 
     @Autowired
-    private CreateCodeService c;
+    private CreateCodeService createCodeService;
+    @Autowired
+    private CreateEntity createEntity;
 
     @Test
     public void createCode() {
-        List<Entity> tableNames=new ArrayList<>();
-        tableNames.add(new Entity("business_district", "商圈"));
-        tableNames.add(new Entity("coupon","代金券"));
-        tableNames.add(new Entity("coupon_history","代金券历史"));
-        tableNames.add(new Entity("coupon_stock","代金券明细"));
-        tableNames.add(new Entity("goods","商品"));
-        tableNames.add(new Entity("index_coupon","首页促销代金券"));
-        tableNames.add(new Entity("index_images","轮播图"));
-        tableNames.add(new Entity("index_shop","首页促销店铺"));
-        tableNames.add(new Entity("member","会员"));
-        tableNames.add(new Entity("member_operation_history","会员操作记录历史"));
-        tableNames.add(new Entity("operation_type","操作类型"));
-        tableNames.add(new Entity("report_site","定位信息上报"));
-        tableNames.add(new Entity("schedule_job","定时任务"));
-        tableNames.add(new Entity("schedule_job_log","定时任务日志"));
-        //生成代码——把访问数据库写实体类
-        for (Entity tableName : tableNames) {
-            c.start(tableName);
+        List<Entity> entities=new ArrayList<>();
+        entities.add(new Entity("business_district", "商圈"));
+        entities.add(new Entity("coupon","代金券"));
+        entities.add(new Entity("coupon_history","代金券历史"));
+        entities.add(new Entity("coupon_stock","代金券明细"));
+        entities.add(new Entity("goods","商品"));
+        entities.add(new Entity("index_coupon","首页促销代金券"));
+        entities.add(new Entity("index_images","轮播图"));
+        entities.add(new Entity("index_shop","首页促销店铺"));
+        entities.add(new Entity("member","会员"));
+        entities.add(new Entity("member_operation_history","会员操作记录历史"));
+        entities.add(new Entity("operation_type","操作类型"));
+        entities.add(new Entity("report_site","定位信息上报"));
+        entities.add(new Entity("schedule_job","定时任务"));
+        entities.add(new Entity("schedule_job_log","定时任务日志"));
+        //生成实体类
+        //生成代码
+        for (Entity entity : entities) {
+            createEntity.createEntity(entity);
+            createCodeService.creatCode(entity);
         }
         //生成菜单数据
-        createSql(tableNames);
+        createSql(entities);
         //生成fullpath追加路径
-        createFullpath(tableNames);
+        createFullpath(entities);
 
     }
 
     private void createFullpath(List<Entity> tableNames) {
-        String path = AutoCode.fullpath;
+        String path = AutoCodeConstant.fullpath;
         File file = new File(path);
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));
@@ -81,7 +81,7 @@ public class StartFreemarker {
         }
     }
     private void createSql(List<Entity> tableNames) {
-        String path = AutoCode.sqlPath;
+        String path = AutoCodeConstant.sqlPath;
         File file = new File(path);
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(file));

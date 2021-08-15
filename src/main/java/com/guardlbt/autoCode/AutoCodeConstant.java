@@ -6,7 +6,7 @@ import lombok.Data;
  * Created by Administrator on 2017/7/6.
  */
 @Data
-public class  AutoCode {
+public class AutoCodeConstant {
     /**
      * 基础类包
      */
@@ -44,6 +44,10 @@ public class  AutoCode {
      * html网页路径
      */
     public static String pagePath = "src/main/resources/templates/";
+    /**
+     * 模板路径前缀
+     */
+    public static String ftlPath = "autoCode/ftl/";
     /**
      * vue
      */

@@ -30,7 +30,7 @@ public class AutoCodeUtil {
             configuration.setDirectoryForTemplateLoading(new File(urlPath));
             configuration.setDefaultEncoding("utf-8");
             Template template = configuration.getTemplate(fileName);
-            Writer out = new FileWriter(new File(outFile));
+            Writer out = new FileWriter(outFile);
             template.process(entity, out);
             out.flush();
             out.close();

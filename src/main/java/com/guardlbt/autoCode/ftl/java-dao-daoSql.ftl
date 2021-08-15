@@ -9,7 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 * Created by 代码自动生成.
 * 时间:${.now?string("yyyy-MM-dd HH:mm:ss")}
 */
-public class ${className?cap_first}DaoSQL {
+public class ${className?cap_first}DaoSql {
 
     public static String select${className?cap_first}s(final ${className?cap_first} ${className}){
         return new SQL(){{
