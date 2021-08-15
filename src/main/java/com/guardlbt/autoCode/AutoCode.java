@@ -53,6 +53,10 @@ public class  AutoCode {
      * sql路径
      */
     public static String sqlPath="/Users/hejianzhe/IdeaProjects/djj-mis/src/main/addMenu.sql";
+    /**
+     * fullpath追加路径文件
+     */
+    public static String fullpath="/Users/hejianzhe/IdeaProjects/djj-mis/src/main/fullpath";
 
 
 }

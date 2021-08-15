@@ -48,7 +48,7 @@ public class ${className?cap_first}Controller {
     @DeleteMapping("/{<#list data as d><#if d.id==true>${d.beanName}</#if></#list>}")
 	@ApiOperation("根据ID删除")
     public Result deleteAll(@PathVariable <#list data as d><#if d.id==true>${d.type} ${d.beanName}</#if></#list>){
-        return service.deleteAll(<#list data as d><#if d.id==true>${d.beanName}</#if></#list>);
+        return service.deleteAll(<#list data as d><#if d.id==true>${d.beanName}</#if><#if d.type!='String'>.toString()</#if></#list>);
     }
 
     @GetMapping("/{<#list data as d><#if d.id==true>${d.beanName}</#if></#list>}")

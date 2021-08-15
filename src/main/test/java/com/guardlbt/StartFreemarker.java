@@ -30,27 +30,56 @@ public class StartFreemarker {
     public void createCode() {
         List<Entity> tableNames=new ArrayList<>();
         tableNames.add(new Entity("business_district", "商圈"));
-//        tableNames.add(new Entity("coupon","代金券"));
-//        tableNames.add(new Entity("coupon_history","代金券历史"));
-//        tableNames.add(new Entity("coupon_stock","代金券明细"));
-//        tableNames.add(new Entity("goods","商品"));
-//        tableNames.add(new Entity("index_coupon","首页促销代金券"));
-//        tableNames.add(new Entity("index_images","轮播图"));
-//        tableNames.add(new Entity("index_shop","首页促销店铺"));
-//        tableNames.add(new Entity("member","会员"));
-//        tableNames.add(new Entity("member_operation_history","会员操作记录历史"));
-//        tableNames.add(new Entity("operation_type","操作类型"));
-//        tableNames.add(new Entity("report_site","定位信息上报"));
-//        tableNames.add(new Entity("schedule_job","定时任务"));
-//        tableNames.add(new Entity("schedule_job_log","定时任务日志"));
-        //生成代码
+        tableNames.add(new Entity("coupon","代金券"));
+        tableNames.add(new Entity("coupon_history","代金券历史"));
+        tableNames.add(new Entity("coupon_stock","代金券明细"));
+        tableNames.add(new Entity("goods","商品"));
+        tableNames.add(new Entity("index_coupon","首页促销代金券"));
+        tableNames.add(new Entity("index_images","轮播图"));
+        tableNames.add(new Entity("index_shop","首页促销店铺"));
+        tableNames.add(new Entity("member","会员"));
+        tableNames.add(new Entity("member_operation_history","会员操作记录历史"));
+        tableNames.add(new Entity("operation_type","操作类型"));
+        tableNames.add(new Entity("report_site","定位信息上报"));
+        tableNames.add(new Entity("schedule_job","定时任务"));
+        tableNames.add(new Entity("schedule_job_log","定时任务日志"));
+        //生成代码——把访问数据库写实体类
         for (Entity tableName : tableNames) {
             c.start(tableName);
         }
         //生成菜单数据
         createSql(tableNames);
+        //生成fullpath追加路径
+        createFullpath(tableNames);
+
     }
 
+    private void createFullpath(List<Entity> tableNames) {
+        String path = AutoCode.fullpath;
+        File file = new File(path);
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+            StringBuffer sb=new StringBuffer();
+            //1、添加模块值
+            for (Entity tableName : tableNames) {
+                sb.append(",{\n" +
+                        "    path: '/"+tableName.getClassName()+"',\n" +
+                        "    name: '"+tableName.getModuleName()+"',                     //"+tableName.getModuleName()+"\n" +
+                        "    meta: {\n" +
+                        "      name: '"+tableName.getModuleName()+"'\n" +
+                        "    },\n" +
+                        "    component: (resolve) => require(['@/views/"+tableName.getClassName()+"/index.vue'], resolve)}\n");
+            }
+            for (String s : sb.toString().split("\n")) {
+                bw.write(s + "\n");
+            }
+            bw.newLine();
+            bw.flush();
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     private void createSql(List<Entity> tableNames) {
         String path = AutoCode.sqlPath;
         File file = new File(path);
@@ -76,7 +105,6 @@ public class StartFreemarker {
             //自增menu_id用了一个了
 
             //1、添加模块值
-//            for (Map.Entry<String, String> o : tableNames.entrySet()) {
             for (Entity tableName : tableNames) {
                 num++;
                 int id = num;
