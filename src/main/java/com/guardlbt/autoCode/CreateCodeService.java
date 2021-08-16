@@ -43,6 +43,8 @@ public class CreateCodeService {
         // 生成controller实现类
         ftlsuffixPath = "java-service-serviceImpl.ftl";
         createCode(entity, ftlsuffixPath);
+        ftlsuffixPath = "java-controller.ftl";
+        createCode(entity, ftlsuffixPath);
         // 生成list页面
 //        createListPage(entity);
         // 生成add页面
