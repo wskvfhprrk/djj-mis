@@ -2,10 +2,11 @@
     <div v-loading="loading">
         <!-- 操作 start -->
         <div class="searchBox">
-            <el-row model="queryParms" :gutter="20" class="operation"><#list data as d><#if d.id==false>
+            <el-row v-model="queryParms" :gutter="20" class="operation"><#list data as d><#if d.id==false>
                 <el-col class="marginBottom" :span="8">
-                    <span class="labelSpan">${d.commentName}： </span>
-                    <el-input class="SearchInput" v-model="queryParms.${d.beanName}" placeholder="请输入${d.commentName}"></el-input>
+                    <span class="labelSpan">${d.commentName}： </span><#if d.type=='Date'|| d.type=='Timestamp'>
+                    <el-date-picker class="SearchInput"  v-model="queryParms.${d.beanName}" type="date" placeholder="选择${d.commentName}"></el-date-picker><#else>
+                    <el-input class="SearchInput" v-model="queryParms.${d.beanName}" placeholder="请输入${d.commentName}"></el-input></#if>
                 </el-col></#if></#list>
                 <el-col :span="8">
                     <span class="labelSpan">状态： </span>
@@ -225,7 +226,8 @@
             },
             getViewInfo(data) {
                 var vm = this;
-                ${className}.view.r(data.<#list data as d><#if d.id==true>${d.beanName}</#if></#list>).then(res => {
+                <#if idNumber==0>//todo 如果没有主键此处为空值，请及时处理</#if>
+                ${className}.view.r(data.<#if idNumber==0>null<#else><#list data as d><#if d.id==true>${d.beanName}</#if></#list></#if>).then(res => {
                     if (res.data.success) {
                         vm.fromdata = JSON.stringify(res.data.content);
                         if (vm.$refs.formPage) {
@@ -297,7 +299,8 @@
             clock(item, data) {
                 var vm = this;
                 vm.loading = true;
-                var param = data.phone;
+                <#if idNumber==0>//todo 如果没有主键此处为空值，请及时处理</#if>
+                var param = data.<#if idNumber==0>null<#else><#list data as d><#if d.id==true>${d.beanName}</#if></#list></#if>;
                 ${className}.clock.r(param).then(res => {
                     if (res.data.success) {
                         vm.$message.success('切换');
@@ -313,7 +316,8 @@
             click(item, data) {
                 var vm = this;
                 vm.loading = true;
-                var param = data.phone;
+                <#if idNumber==0>//todo 如果没有主键此处为空值，请及时处理</#if>
+                var param = data.<#if idNumber==0>null<#else><#list data as d><#if d.id==true>${d.beanName}</#if></#list></#if>;
                 ${className}.click.r(param).then(res => {
                     if (res.data.success) {
                         vm.$message.success('切换');
@@ -329,7 +333,8 @@
             deleteHandel(item, data) {
                 var vm = this;
                 vm.loading = true;
-                var param = data.<#list data as d><#if d.id==true>${d.beanName}</#if></#list>;
+                <#if idNumber==0>//todo 如果没有主键此处为空值，请及时处理</#if>
+                var param = data.<#if idNumber==0>null<#else><#list data as d><#if d.id==true>${d.beanName}</#if></#list></#if>;
                 ${className}.remove.r(param).then(res => {
                     if (res.data.success) {
                         vm.$message.success('已删除');
