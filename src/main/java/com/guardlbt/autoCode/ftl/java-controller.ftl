@@ -32,6 +32,12 @@ public class ${className?cap_first}Controller {
     public Result getPage(@Validated ${className?cap_first}PageDto dto){
         return service.findPage${className?cap_first}(dto);
     }
+
+    @GetMapping("all")
+    @ApiOperation("获取所有${moduleName}")
+    public Result getAll(){
+        return service.getAll();
+    }
 <#if idNumber!=0>
     @PostMapping
 	@ApiOperation("添加${moduleName}")

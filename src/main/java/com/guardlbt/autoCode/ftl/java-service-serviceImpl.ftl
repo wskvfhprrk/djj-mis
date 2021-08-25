@@ -50,6 +50,13 @@ public class ${className?cap_first}ServiceImpl implements ${className?cap_first}
         pageResult.setPages(vos);
         return Result.ok(pageResult);
     }
+
+    @Override
+    public Result getAll() {
+        List<${className?cap_first}> ${className}s = dao.select${className?cap_first}s(null);
+        return Result.ok(${className}s);
+    }
+        
     <#if idNumber!=0>
     @Override
     public Result findAllBy${className?cap_first}(${className?cap_first} ${className}) {

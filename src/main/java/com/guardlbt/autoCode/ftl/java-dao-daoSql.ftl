@@ -16,10 +16,10 @@ public class ${className?cap_first}DaoSql {
             SELECT("<#list data as d><#if d_index==0>a.${d.columnName}<#else> ,a.${d.columnName}</#if></#list>");
             FROM("${tableName} a");
             <#list data as d><#if d.type=='String'>
-            if(StringUtils.isNotBlank(${className}.get${d.beanName?cap_first}())){
+            if(${className}!=null && StringUtils.isNotBlank(${className}.get${d.beanName?cap_first}())){
                 WHERE("a.${d.columnName?cap_first} like CONCAT('%',${r"#{"}${d.beanName}},'%')");
             }</#if><#if d.type!='String'>
-            if(${className}.get${d.beanName?cap_first}()!=null && ${className}.get${d.beanName?cap_first}().toString().length()>0){
+            if(${className}!=null && ${className}.get${d.beanName?cap_first}()!=null && ${className}.get${d.beanName?cap_first}().toString().length()>0){
                 WHERE("a.${d.columnName?cap_first} = ${r"#{"}${d.beanName}}");
             }</#if></#list>
         }}.toString();

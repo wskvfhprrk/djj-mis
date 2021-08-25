@@ -18,6 +18,13 @@ public interface ${className?cap_first}Service {
     * @return easyui结果集
     */
     Result findPage${className?cap_first}( ${className?cap_first}PageDto dto);
+
+    /**
+    * 获取所有商圈
+    * @return
+    */
+    Result getAll();
+
 <#if idNumber!=0>
     /**
     * 条件查询全部数据

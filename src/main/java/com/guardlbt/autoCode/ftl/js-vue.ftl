@@ -8,6 +8,12 @@ const list = {
         return instance.get(`${r"${"}preUrlPath}/${className}?` + params)
     }
 };
+const getAll = {
+    p: ['get,/menu/list'],
+    r: params=> {
+        return instance.get(`${r"${"}preUrlPath}/${className}/all`)
+    }
+};
 const remove = {
     p: ['get,/menu/list'],
     r: params => {
@@ -58,5 +64,7 @@ export {
     add,
     excelFileF,
     clock,
-    click
+    click,
+    getAll
+
 }

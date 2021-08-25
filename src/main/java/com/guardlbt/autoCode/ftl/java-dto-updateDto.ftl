@@ -1,5 +1,6 @@
 package ${dtoPackage};
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.format.annotation.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -17,7 +18,7 @@ import java.util.Date;<#break></#if></#list>
 @Data
 public class ${className?cap_first}UpdateDto {
 <#list data as d><#if d.type=="Timestamp" || d.type=='Date'>
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")</#if>
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")</#if>
     @ApiModelProperty("${d.commentName}") <#if d.type=='String'>
     @NotBlank(message = "${d.commentName}不能为空值")<#else>@NotNull(message = "${d.commentName}不能为空值")
 </#if>
