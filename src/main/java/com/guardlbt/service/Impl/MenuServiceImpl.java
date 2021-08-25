@@ -1,4 +1,4 @@
-package com.guardlbt.service.impl;
+package com.guardlbt.service.Impl;
 
 import com.guardlbt.common.util.Result;
 import com.guardlbt.common.util.ResultErrorCode;
@@ -15,7 +15,6 @@ import com.guardlbt.service.MenuService;
 import com.guardlbt.vo.MenuVo;
 import com.guardlbt.vo.SelectAllMenuByRoleIdVo;
 import com.guardlbt.vo.SelectMenuByMenuIdVo;
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -24,9 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service("menuService")

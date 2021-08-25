@@ -1,16 +1,19 @@
 package com.guardlbt;
 
+import com.github.tobato.fastdfs.FdfsClientConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+@Import(FdfsClientConfig.class)
 @SpringBootApplication
 @EnableTransactionManagement
 @EnableCaching
-@MapperScan("com.guardlbt.mapper")
+@MapperScan(basePackages = {"com.guardlbt.mapper","com.guardlbt.autoCode","com.guardlbt.dao"})
 @Slf4j
 public class Application {
 

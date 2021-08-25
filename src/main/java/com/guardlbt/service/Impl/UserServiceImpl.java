@@ -1,5 +1,5 @@
 
-package com.guardlbt.service.impl;
+package com.guardlbt.service.Impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
