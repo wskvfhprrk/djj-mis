@@ -21,8 +21,28 @@ spring:
 #  application:
 #    name: hhhh
 #不需要权限认证模块路径
-noCertification: /login@post;/checkPicture@get;/swagger-ui.html@get;/webjars/**@get;/error@get;/swagger-resources/**@get;/swagger-resources@get;/getSite@get;/recycleCouponByCouponIds@get;/logout@get;/couponDown/*@get;/getCouponById@post;/loadStore@post;/admin/login@post;/code/image@get;/admin/valiteCode@post;/error@*
-#token失效时间（分钟）
+noCertification:
+  -/login@post
+  -/menus@get
+  -/setPassword@get
+  -/checkPicture@get
+  -/swagger-ui.html@get
+  -/webjars/**@get
+  -/error@get
+  -/swagger-resources/**@get
+  -/swagger-resources@get
+  -/getSite@get
+  -/recycleCouponByCouponIds@get
+  -/logout@get
+  -/couponDown/*@get
+  -/getCouponById@post
+  -/loadStore@post
+  -/admin/login@post
+  -/code/image@get
+  -/admin/valiteCode@post
+  -/error@*
+  -/fdfs@*
+#token失效时间（分钟
 token_time: 30
 #mybatis设置
 mybatis:
@@ -35,3 +55,15 @@ server:
   servlet:
     context-path: /AlipayAward
   port: 8080
+# ===================================================================
+# 分布式文件系统FDFS配置
+# ===================================================================
+fdfs:
+  so-timeout: 1501
+  connect-timeout: 601
+  thumb-image:             #缩略图生成参数
+    width: 150
+    height: 150
+  tracker-list:            #TrackerList参数,支持多个
+    - 192.168.5.183:22122
+  webServerUrl: http://192.168.5.183:8080/ #说路径
