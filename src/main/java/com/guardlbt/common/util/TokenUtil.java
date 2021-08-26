@@ -37,8 +37,7 @@ public class TokenUtil {
 //        }
         return token;
     }
-
-    public User getUserByToken(String token) {
+    public  User getUserByToken(String token) {
         if(token==null){
             return null;
         }
