@@ -16,6 +16,9 @@ import lombok.Data;
 @Data
 public class IndexCouponSaveDto {
 
+    @ApiModelProperty("排序")
+    @NotNull(message = "排序编号不能为空值")
+    private Integer sorting;
 
     @ApiModelProperty("代金券编号") 
     @NotBlank(message = "代金券编号不能为空值")
