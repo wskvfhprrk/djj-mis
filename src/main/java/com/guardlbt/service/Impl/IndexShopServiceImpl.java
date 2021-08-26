@@ -82,8 +82,6 @@ public class IndexShopServiceImpl implements IndexShopService {
     public Result insert(IndexShopSaveDto dto) {
         IndexShop indexShop=new IndexShop();
         BeanUtils.copyProperties(dto,indexShop);
-        //todo 此处报错的原因是数据库设计不合理，主键是数据类型，但不是自增的，请修改数据结构为自增类型，如果确实需要数据不自增，请修错误代码！
-        //indexShop.setSorting(UuidUtild.getUUID());
         try{
             dao.insert(indexShop);
             return Result.ok();

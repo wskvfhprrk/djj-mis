@@ -82,8 +82,6 @@ public class IndexCouponServiceImpl implements IndexCouponService {
     public Result insert(IndexCouponSaveDto dto) {
         IndexCoupon indexCoupon=new IndexCoupon();
         BeanUtils.copyProperties(dto,indexCoupon);
-        //todo 此处报错的原因是数据库设计不合理，主键是数据类型，但不是自增的，请修改数据结构为自增类型，如果确实需要数据不自增，请修错误代码！
-        //indexCoupon.setSorting(UuidUtild.getUUID());
         try{
             dao.insert(indexCoupon);
             return Result.ok();
