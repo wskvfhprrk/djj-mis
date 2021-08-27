@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.guardlbt</groupId>
-    <artifactId>hbhmisserver</artifactId>
+    <artifactId>djj-xcx</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
