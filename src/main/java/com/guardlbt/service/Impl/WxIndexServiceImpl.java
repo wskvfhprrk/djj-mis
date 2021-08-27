@@ -1,4 +1,4 @@
-package com.guardlbt.service.impl;
+package com.guardlbt.service.Impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.guardlbt.common.util.Result;
@@ -10,6 +10,7 @@ import com.guardlbt.entity.*;
 import com.guardlbt.eum.OperationType;
 import com.guardlbt.https.HttpsUtil;
 import com.guardlbt.service.WxIndexService;
+import com.guardlbt.util.UuidUtild;
 import com.guardlbt.vo.*;
 import com.guardlbt.wx.WxConfigurationProperties;
 import com.guardlbt.wx.vo.Code2SessionVo;
@@ -107,6 +108,8 @@ public class WxIndexServiceImpl implements WxIndexService {
         if (shopUsers.isEmpty() && members.isEmpty()) {
             Member member1 = new Member();
             BeanUtils.copyProperties(memberSaveDto, member1);
+            member1.setRegisterTime(new Date());
+            member1.setMemberId(UuidUtild.getUUID());
             memberDao.insert(member1);
         }
         // 记录会员操作记录表

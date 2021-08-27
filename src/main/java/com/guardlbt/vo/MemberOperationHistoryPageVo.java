@@ -9,27 +9,27 @@ import lombok.Data;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:27
+* 时间:2021-08-27 13:42:56
 */
 @ApiModel("会员操作记录历史实体类")
 @Data
 public class MemberOperationHistoryPageVo {
 
-    @ApiModelProperty("") 
+    @ApiModelProperty(value ="")
     private Long id;
 
-    @ApiModelProperty("编号") 
+    @ApiModelProperty(value ="编号")
     private String memberId;
 
-    @ApiModelProperty("操作类型") 
+    @ApiModelProperty(value ="操作类型")
     private String operationId;
 
-    @ApiModelProperty("操作说明") 
+    @ApiModelProperty(value ="操作说明")
     private String relationInfo;
 
-    @ApiModelProperty("详细信息") 
+    @ApiModelProperty(value ="详细信息")
     private String detail;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("") 
+    @ApiModelProperty(value ="")
     private Date createTime;
 }

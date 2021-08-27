@@ -11,7 +11,7 @@ import javax.validation.constraints.*;
 
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:26
+* 时间:2021-08-27 13:42:55
 */
 @ApiModel("商店部门管理PageDto")
 @Data
@@ -26,15 +26,15 @@ public class  SysDeptPageDto {
     private Integer pageSize;
 
 
-    @ApiModelProperty("上级部门ID，一级部门为0") 
+    @ApiModelProperty(value ="上级部门ID，一级部门为0")
     private Long parentId;
 
-    @ApiModelProperty("部门名称") 
+    @ApiModelProperty(value ="部门名称")
     private String name;
 
-    @ApiModelProperty("排序") 
+    @ApiModelProperty(value ="排序")
     private Integer orderNum;
 
-    @ApiModelProperty("是否删除  -1：已删除  0：正常") 
+    @ApiModelProperty(value ="是否删除  -1：已删除  0：正常")
     private String delFlag;
 }

@@ -9,15 +9,15 @@ import lombok.Data;
   
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:27
+* 时间:2021-08-27 13:42:56
 */
 @ApiModel("首页促销店铺实体类")
 @Data
 public class IndexShop {
 
-    @ApiModelProperty("排序") 
+    @ApiModelProperty(value ="排序")
     private Integer sorting;
 
-    @ApiModelProperty("店铺编号") 
+    @ApiModelProperty(value ="店铺编号")
     private String shopId;
 }

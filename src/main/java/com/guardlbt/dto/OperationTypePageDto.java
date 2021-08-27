@@ -11,7 +11,7 @@ import javax.validation.constraints.*;
 
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:27
+* 时间:2021-08-27 13:42:56
 */
 @ApiModel("操作类型PageDto")
 @Data
@@ -26,6 +26,6 @@ public class  OperationTypePageDto {
     private Integer pageSize;
 
 
-    @ApiModelProperty("操作说明") 
+    @ApiModelProperty(value ="操作说明")
     private String name;
 }

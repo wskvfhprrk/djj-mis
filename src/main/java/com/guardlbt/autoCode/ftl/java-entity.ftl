@@ -19,7 +19,7 @@ public class ${className?cap_first} {
 <#list data as d>
     <#if d.type=="Timestamp" || d.type=='Date'>
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")</#if>
-    @ApiModelProperty("${d.commentName}") 
+    @ApiModelProperty(value ="${d.commentName}")
     private <#if d.type=='Timestamp'>Date<#else>${d.type}</#if> ${d.beanName};
 </#list>
 }

@@ -9,7 +9,7 @@ import java.util.*;
 /**
 * 商店部门管理方法类接口
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:26
+* 时间:2021-08-27 13:42:55
 */
 public interface SysDeptService {
     /**

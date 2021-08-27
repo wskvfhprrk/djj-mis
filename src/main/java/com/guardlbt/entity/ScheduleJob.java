@@ -10,33 +10,33 @@ import java.util.Date;
         
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:27
+* 时间:2021-08-27 13:42:56
 */
 @ApiModel("定时任务实体类")
 @Data
 public class ScheduleJob {
 
-    @ApiModelProperty("任务id") 
+    @ApiModelProperty(value ="任务id")
     private Long jobId;
 
-    @ApiModelProperty("spring bean名称") 
+    @ApiModelProperty(value ="spring bean名称")
     private String beanName;
 
-    @ApiModelProperty("方法名") 
+    @ApiModelProperty(value ="方法名")
     private String methodName;
 
-    @ApiModelProperty("参数") 
+    @ApiModelProperty(value ="参数")
     private String params;
 
-    @ApiModelProperty("cron表达式") 
+    @ApiModelProperty(value ="cron表达式")
     private String cronExpression;
 
-    @ApiModelProperty("任务状态  0：正常  1：暂停") 
+    @ApiModelProperty(value ="任务状态  0：正常  1：暂停")
     private String status;
 
-    @ApiModelProperty("备注") 
+    @ApiModelProperty(value ="备注")
     private String remark;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("创建时间") 
+    @ApiModelProperty(value ="创建时间")
     private Date createTime;
 }

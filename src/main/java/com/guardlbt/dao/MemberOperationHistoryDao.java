@@ -8,7 +8,7 @@ import java.util.*;
 /**
 * 会员操作记录历史dao方法
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:27
+* 时间:2021-08-27 13:42:56
 */
 @Mapper
 public interface MemberOperationHistoryDao {

@@ -10,48 +10,49 @@ import lombok.Data;
            
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:26
+* 时间:2021-08-27 13:42:55
 */
 @ApiModel("商圈实体类")
 @Data
 public class BusinessDistrictSaveDto {
 
-
-    @ApiModelProperty("店铺名称") 
+    @ApiModelProperty(value ="店铺名称",example = "")
     @NotBlank(message = "店铺名称不能为空值")
     private String name;
 
-    @ApiModelProperty("图片（可以多张）") 
+    @ApiModelProperty(value ="图片（可以多张）",example = "")
     @NotBlank(message = "图片（可以多张）不能为空值")
     private String images;
 
-    @ApiModelProperty("省") 
+    @ApiModelProperty(value ="省",example = "")
     @NotBlank(message = "省不能为空值")
     private String province;
 
-    @ApiModelProperty("市") 
+    @ApiModelProperty(value ="市",example = "")
     @NotBlank(message = "市不能为空值")
     private String city;
 
-    @ApiModelProperty("县") 
+    @ApiModelProperty(value ="县",example = "")
     @NotBlank(message = "县不能为空值")
     private String county;
 
-    @ApiModelProperty("区") 
+    @ApiModelProperty(value ="区",example = "")
     @NotBlank(message = "区不能为空值")
     private String area;
 
-    @ApiModelProperty("详细地址") 
+    @ApiModelProperty(value ="详细地址",example = "")
     @NotBlank(message = "详细地址不能为空值")
     private String address;
 
-    @ApiModelProperty("经度") @NotNull(message = "经度不能为空值")
+    @ApiModelProperty(value ="经度",example = "")
+    @NotNull(message = "经度不能为空值")
     private Double longitude;
 
-    @ApiModelProperty("纬度") @NotNull(message = "纬度不能为空值")
+    @ApiModelProperty(value ="纬度",example = "")
+    @NotNull(message = "纬度不能为空值")
     private Double latitude;
 
-    @ApiModelProperty("店面介绍") 
+    @ApiModelProperty(value ="店面介绍",example = "")
     @NotBlank(message = "店面介绍不能为空值")
     private String details;
 }

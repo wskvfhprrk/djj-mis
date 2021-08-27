@@ -12,7 +12,7 @@ import java.util.Date;
 
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:27
+* 时间:2021-08-27 13:42:56
 */
 @ApiModel("会员操作记录历史PageDto")
 @Data
@@ -27,18 +27,18 @@ public class  MemberOperationHistoryPageDto {
     private Integer pageSize;
 
 
-    @ApiModelProperty("编号") 
+    @ApiModelProperty(value ="编号")
     private String memberId;
 
-    @ApiModelProperty("操作类型") 
+    @ApiModelProperty(value ="操作类型")
     private String operationId;
 
-    @ApiModelProperty("操作说明") 
+    @ApiModelProperty(value ="操作说明")
     private String relationInfo;
 
-    @ApiModelProperty("详细信息") 
+    @ApiModelProperty(value ="详细信息")
     private String detail;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("") 
+    @ApiModelProperty(value ="",example = "2000-12-12 10:10:10")
     private Date createTime;
 }

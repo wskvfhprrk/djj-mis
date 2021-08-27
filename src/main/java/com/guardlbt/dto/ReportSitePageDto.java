@@ -12,7 +12,7 @@ import java.util.Date;
 
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:27
+* 时间:2021-08-27 13:42:56
 */
 @ApiModel("定位信息上报PageDto")
 @Data
@@ -26,15 +26,15 @@ public class  ReportSitePageDto {
     @ApiModelProperty("每页多少条（默认值为30）")
     private Integer pageSize;
 
-    @ApiModelProperty("用户编号") 
+    @ApiModelProperty(value ="用户编号")
     private String userId;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("上报时间") 
+    @ApiModelProperty(value ="上报时间",example = "2000-12-12 10:10:10")
     private Date reportTime;
 
-    @ApiModelProperty("经度") 
+    @ApiModelProperty(value ="经度")
     private Double longitude;
 
-    @ApiModelProperty("纬度") 
+    @ApiModelProperty(value ="纬度")
     private Double latitude;
 }

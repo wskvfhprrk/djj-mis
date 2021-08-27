@@ -12,7 +12,7 @@ import java.util.Date;
 
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:27
+* 时间:2021-08-27 13:42:56
 */
 @ApiModel("图片管理PageDto")
 @Data
@@ -27,18 +27,18 @@ public class  PicturePageDto {
     private Integer pageSize;
 
 
-    @ApiModelProperty("图片访问路径") 
+    @ApiModelProperty(value ="图片访问路径")
     private String url;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("创建时间") 
+    @ApiModelProperty(value ="创建时间",example = "2000-12-12 10:10:10")
     private Date createTime;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("修改时间") 
+    @ApiModelProperty(value ="修改时间",example = "2000-12-12 10:10:10")
     private Date updateTime;
 
-    @ApiModelProperty("是否有缩略图") 
+    @ApiModelProperty(value ="是否有缩略图")
     private Integer isThumbImage;
 
-    @ApiModelProperty("状态（0:弃用，1:在用）") 
+    @ApiModelProperty(value ="状态（0:弃用，1:在用）")
     private Integer status;
 }

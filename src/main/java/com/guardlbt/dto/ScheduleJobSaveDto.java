@@ -11,37 +11,39 @@ import lombok.Data;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:27
+* 时间:2021-08-27 13:42:56
 */
 @ApiModel("定时任务实体类")
 @Data
 public class ScheduleJobSaveDto {
 
-
-    @ApiModelProperty("spring bean名称") 
+    @ApiModelProperty(value ="spring bean名称",example = "")
     @NotBlank(message = "spring bean名称不能为空值")
     private String beanName;
 
-    @ApiModelProperty("方法名") 
+    @ApiModelProperty(value ="方法名",example = "")
     @NotBlank(message = "方法名不能为空值")
     private String methodName;
 
-    @ApiModelProperty("参数") 
+    @ApiModelProperty(value ="参数",example = "")
     @NotBlank(message = "参数不能为空值")
     private String params;
 
-    @ApiModelProperty("cron表达式") 
+    @ApiModelProperty(value ="cron表达式",example = "")
     @NotBlank(message = "cron表达式不能为空值")
     private String cronExpression;
 
-    @ApiModelProperty("任务状态  0：正常  1：暂停") 
+    @ApiModelProperty(value ="任务状态  0：正常  1：暂停",example = "")
     @NotBlank(message = "任务状态  0：正常  1：暂停不能为空值")
     private String status;
 
-    @ApiModelProperty("备注") 
+    @ApiModelProperty(value ="备注",example = "")
     @NotBlank(message = "备注不能为空值")
     private String remark;
+
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("创建时间") @NotNull(message = "创建时间不能为空值")
+    @ApiModelProperty(value ="创建时间",example = "2000-12-12 10:10:10")
+    @NotNull(message = "创建时间不能为空值")
     private Date createTime;
 }

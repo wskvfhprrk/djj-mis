@@ -93,10 +93,6 @@
                             message: '请输入性别（0：未知,1:男，2:女）',
                             trigger: 'blur'
                         }, 
-                        {
-                            pattern: /^[\u4E00-\u9FA5A-Za-z0-9_]+$/,
-                            message: '输入字符非法'
-                        }
                     ],                     birthday: [
                         {
                             required: false,

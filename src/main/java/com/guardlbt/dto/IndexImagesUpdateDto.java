@@ -10,21 +10,21 @@ import lombok.Data;
     
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:27
+* 时间:2021-08-27 13:42:55
 */
 @ApiModel("轮播图实体类")
 @Data
 public class IndexImagesUpdateDto {
 
-    @ApiModelProperty("序号") @NotNull(message = "序号不能为空值")
+    @ApiModelProperty(value ="序号") @NotNull(message = "序号不能为空值")
      private Integer id;
 
-    @ApiModelProperty("图片地址") 
+    @ApiModelProperty(value ="图片地址") 
     @NotBlank(message = "图片地址不能为空值")     private String imageUrl;
 
-    @ApiModelProperty("类型（0-店铺 1-代金券 2-网址 ）") 
+    @ApiModelProperty(value ="类型（0-店铺 1-代金券 2-网址 ）") 
     @NotBlank(message = "类型（0-店铺 1-代金券 2-网址 ）不能为空值")     private String type;
 
-    @ApiModelProperty("链接地址") 
+    @ApiModelProperty(value ="链接地址") 
     @NotBlank(message = "链接地址不能为空值")     private String address;
 }

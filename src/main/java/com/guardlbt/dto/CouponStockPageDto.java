@@ -12,7 +12,7 @@ import java.util.Date;
 
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:26
+* 时间:2021-08-27 13:42:55
 */
 @ApiModel("代金券明细PageDto")
 @Data
@@ -27,21 +27,21 @@ public class  CouponStockPageDto {
     private Integer pageSize;
 
 
-    @ApiModelProperty("编号") 
+    @ApiModelProperty(value ="编号")
     private String couponId;
 
-    @ApiModelProperty("店铺（最后在哪个店铺发出）") 
+    @ApiModelProperty(value ="店铺（最后在哪个店铺发出）")
     private String shopId;
 
-    @ApiModelProperty("状态（0-库存 1-已领取 2-已使用 3-过期 4-作废）") 
+    @ApiModelProperty(value ="状态（0-库存 1-已领取 2-已使用 3-过期 4-作废）")
     private String status;
 
-    @ApiModelProperty("会员ID（会员领取后绑定）") 
+    @ApiModelProperty(value ="会员ID（会员领取后绑定）")
     private String memberId;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("创建时间") 
+    @ApiModelProperty(value ="创建时间",example = "2000-12-12 10:10:10")
     private Date createTime;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("修改时间") 
+    @ApiModelProperty(value ="修改时间",example = "2000-12-12 10:10:10")
     private Date updateTime;
 }

@@ -12,7 +12,7 @@ import java.util.Date;
 
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:27
+* 时间:2021-08-27 13:42:55
 */
 @ApiModel("商品PageDto")
 @Data
@@ -27,18 +27,18 @@ public class  GoodsPageDto {
     private Integer pageSize;
 
 
-    @ApiModelProperty("名称") 
+    @ApiModelProperty(value ="名称")
     private String name;
 
-    @ApiModelProperty("店铺编号") 
+    @ApiModelProperty(value ="店铺编号")
     private String shopId;
 
-    @ApiModelProperty("图片（可以多张）") 
+    @ApiModelProperty(value ="图片（可以多张）")
     private String images;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("创建时间") 
+    @ApiModelProperty(value ="创建时间",example = "2000-12-12 10:10:10")
     private Date createTime;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("修改时间") 
+    @ApiModelProperty(value ="修改时间",example = "2000-12-12 10:10:10")
     private Date updateTime;
 }

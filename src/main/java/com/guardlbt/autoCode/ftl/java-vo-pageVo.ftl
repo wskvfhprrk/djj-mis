@@ -17,7 +17,7 @@ import java.util.Date;<#break></#if></#list>
 public class ${className?cap_first}PageVo {
 <#list data as d><#if d.type=="Timestamp" || d.type=='Date'>
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")</#if>
-    @ApiModelProperty("${d.commentName}") 
+    @ApiModelProperty(value ="${d.commentName}")
     private <#if d.type=='Timestamp'>Date<#elseif d.type=='Time'>String<#else>${d.type}</#if> ${d.beanName};
 </#list>
 }

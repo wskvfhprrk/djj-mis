@@ -17,7 +17,7 @@ import javax.validation.*;
 
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:27
+* 时间:2021-08-27 13:42:56
 */
 @Api("会员控制器")
 @RestController
@@ -53,7 +53,7 @@ public class MemberController {
     @DeleteMapping("/{memberId}")
 	@ApiOperation("根据ID删除")
     public Result deleteAll(@PathVariable String memberId){
-        return service.deleteAll(memberId.toString().toString());
+        return service.deleteAll(memberId.toString().toString().toString());
     }
 
     @GetMapping("/{memberId}")

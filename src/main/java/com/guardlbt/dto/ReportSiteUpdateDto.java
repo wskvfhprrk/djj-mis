@@ -11,21 +11,21 @@ import lombok.Data;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:27
+* 时间:2021-08-27 13:42:56
 */
 @ApiModel("定位信息上报实体类")
 @Data
 public class ReportSiteUpdateDto {
 
-    @ApiModelProperty("用户编号") 
+    @ApiModelProperty(value ="用户编号") 
     @NotBlank(message = "用户编号不能为空值")     private String userId;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("上报时间") @NotNull(message = "上报时间不能为空值")
+    @ApiModelProperty(value ="上报时间",example = "2000-12-12 10:10:10") @NotNull(message = "上报时间不能为空值")
      private Date reportTime;
 
-    @ApiModelProperty("经度") @NotNull(message = "经度不能为空值")
+    @ApiModelProperty(value ="经度") @NotNull(message = "经度不能为空值")
      private Double longitude;
 
-    @ApiModelProperty("纬度") @NotNull(message = "纬度不能为空值")
+    @ApiModelProperty(value ="纬度") @NotNull(message = "纬度不能为空值")
      private Double latitude;
 }

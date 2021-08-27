@@ -28,7 +28,7 @@ public class  ${className?cap_first}PageDto {
     private Integer pageSize;
 <#list data as d><#if d.id==false><#if d.type=="Timestamp" || d.type=='Date'>
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")</#if>
-    @ApiModelProperty("${d.commentName}") 
+    @ApiModelProperty(value ="${d.commentName}"<#if d.type=='Timestamp'>,example = "2000-12-12 10:10:10"</#if>)
     private <#if d.type=='Timestamp'>Date<#elseif d.type=='Time'>String<#else>${d.type}</#if> ${d.beanName};</#if>
 </#list>
 }

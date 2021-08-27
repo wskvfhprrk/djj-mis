@@ -11,28 +11,33 @@ import lombok.Data;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:27
+* 时间:2021-08-27 13:42:55
 */
 @ApiModel("商品实体类")
 @Data
 public class GoodsSaveDto {
 
-
-    @ApiModelProperty("名称") 
+    @ApiModelProperty(value ="名称",example = "")
     @NotBlank(message = "名称不能为空值")
     private String name;
 
-    @ApiModelProperty("店铺编号") 
+    @ApiModelProperty(value ="店铺编号",example = "")
     @NotBlank(message = "店铺编号不能为空值")
     private String shopId;
 
-    @ApiModelProperty("图片（可以多张）") 
+    @ApiModelProperty(value ="图片（可以多张）",example = "")
     @NotBlank(message = "图片（可以多张）不能为空值")
     private String images;
+
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("创建时间") @NotNull(message = "创建时间不能为空值")
+    @ApiModelProperty(value ="创建时间",example = "2000-12-12 10:10:10")
+    @NotNull(message = "创建时间不能为空值")
     private Date createTime;
+
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("修改时间") @NotNull(message = "修改时间不能为空值")
+    @ApiModelProperty(value ="修改时间",example = "2000-12-12 10:10:10")
+    @NotNull(message = "修改时间不能为空值")
     private Date updateTime;
 }

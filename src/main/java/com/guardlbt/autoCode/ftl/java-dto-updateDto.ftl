@@ -19,7 +19,7 @@ import java.util.Date;<#break></#if></#list>
 public class ${className?cap_first}UpdateDto {
 <#list data as d><#if d.type=="Timestamp" || d.type=='Date'>
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")</#if>
-    @ApiModelProperty("${d.commentName}") <#if d.type=='String'>
+    @ApiModelProperty(value ="${d.commentName}"<#if d.type=='Timestamp'>,example = "2000-12-12 10:10:10"</#if>) <#if d.type=='String'>
     @NotBlank(message = "${d.commentName}不能为空值")<#else>@NotNull(message = "${d.commentName}不能为空值")
 </#if>
      private <#if d.type=='Timestamp'>Date<#elseif d.type=='Time'>String<#else>${d.type}</#if> ${d.beanName};

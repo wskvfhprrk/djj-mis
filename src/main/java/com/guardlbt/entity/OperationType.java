@@ -9,15 +9,15 @@ import lombok.Data;
   
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-26 16:20:27
+* 时间:2021-08-27 13:42:56
 */
 @ApiModel("操作类型实体类")
 @Data
 public class OperationType {
 
-    @ApiModelProperty("操作类型") 
+    @ApiModelProperty(value ="操作类型")
     private String operationId;
 
-    @ApiModelProperty("操作说明") 
+    @ApiModelProperty(value ="操作说明")
     private String name;
 }
