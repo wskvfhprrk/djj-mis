@@ -54,6 +54,8 @@ public class WxIndexServiceImpl implements WxIndexService {
     private ShopDao shopDao;
     @Autowired
     private CouponDao couponDao;
+    @Autowired
+    private GoodsDao goodsDao;
 
     @Override
     public Result<String> login(String code) {
@@ -198,10 +200,22 @@ public class WxIndexServiceImpl implements WxIndexService {
     }
 
     @Override
+    public Result<GoodsPageVo> shopGoods(String shopId) {
+        Goods goods=new Goods();
+        goods.setShopId(shopId);
+        List<GoodsPageVo> collect = goodsDao.selectGoodss(goods).stream().map(goods1 -> {
+            GoodsPageVo goodsPageVo = new GoodsPageVo();
+            BeanUtils.copyProperties(goods1, goodsPageVo);
+            return goodsPageVo;
+        }).collect(Collectors.toList());
+        return Result.ok(collect);
+    }
+
+    @Override
     public Result useCoupon(UseCouponDto useCouponDto) {
         //会员操作记录表
         //促销券库存
         //代金券历史
-        return null;
+        return Result.ok();
     }
 }
