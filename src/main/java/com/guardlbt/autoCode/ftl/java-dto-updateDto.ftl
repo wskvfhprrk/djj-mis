@@ -22,6 +22,6 @@ public class ${className?cap_first}UpdateDto {
     @ApiModelProperty("${d.commentName}") <#if d.type=='String'>
     @NotBlank(message = "${d.commentName}不能为空值")<#else>@NotNull(message = "${d.commentName}不能为空值")
 </#if>
-    private <#if d.type=='Timestamp'>Date<#else>${d.type}</#if> ${d.beanName};
+     private <#if d.type=='Timestamp'>Date<#elseif d.type=='Time'>String<#else>${d.type}</#if> ${d.beanName};
 </#list>
 }

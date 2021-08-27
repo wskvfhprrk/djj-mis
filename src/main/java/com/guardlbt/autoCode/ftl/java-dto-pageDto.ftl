@@ -10,6 +10,7 @@ import javax.validation.constraints.*;
 import java.math.BigDecimal;<#break></#if></#list>
 <#list data as d> <#if d.type=='Timestamp' ||d.type=='Date'>
 import java.util.Date;<#break></#if></#list>
+
 /**
 * Created by 代码自动生成.
 * 时间:${.now?string("yyyy-MM-dd HH:mm:ss")}
@@ -28,6 +29,6 @@ public class  ${className?cap_first}PageDto {
 <#list data as d><#if d.id==false><#if d.type=="Timestamp" || d.type=='Date'>
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")</#if>
     @ApiModelProperty("${d.commentName}") 
-    private <#if d.type=='Timestamp'>Date<#else>${d.type}</#if> ${d.beanName};</#if>
+    private <#if d.type=='Timestamp'>Date<#elseif d.type=='Time'>String<#else>${d.type}</#if> ${d.beanName};</#if>
 </#list>
 }

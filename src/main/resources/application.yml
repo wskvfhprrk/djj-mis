@@ -27,6 +27,9 @@ noCertification:
   -/setPassword@get
   -/checkPicture@get
   -/swagger-ui.html@get
+  -/swagger-resources/*/*@get
+  -/webjars/springfox-swagger-ui/*@get
+  -/webjars/springfox-swagger-ui/*/*@get
   -/webjars/**@get
   -/error@get
   -/swagger-resources/**@get
@@ -42,6 +45,9 @@ noCertification:
   -/admin/valiteCode@post
   -/error@*
   -/fdfs@*
+  -/api/*@*
+  -/api/*/*@*
+  -/api/*/*/*@*
 #token失效时间（分钟
 token_time: 30
 #mybatis设置
@@ -53,8 +59,8 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 server:
   servlet:
-    context-path: /AlipayAward
-  port: 8080
+    context-path: /applet
+  port: 8888
 # ===================================================================
 # 分布式文件系统FDFS配置
 # ===================================================================
@@ -71,3 +77,8 @@ fdfs:
   tracker-list:            #TrackerList参数,支持多个
     - 192.168.5.183:22122
   webServerUrl: http://192.168.5.183:8080/ #说路径
+wx:
+#  appID: wx6b1ca9e18b9b2fcb #(小程序ID)
+  appID: wx24698a11e7dda64c #(小程序ID)
+  appSecret: 7165a788acaad4c9712bd574552d1fb8 #(小程序密钥)
+#  appSecret: 45b8b0e9e7bf65de5720c2a916513e60 #(小程序密钥)
