@@ -9,7 +9,7 @@ import java.util.*;
 /**
 * 商店管理员方法类接口
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:23
+* 时间:2021-08-27 14:44:53
 */
 public interface ShopUserService {
     /**

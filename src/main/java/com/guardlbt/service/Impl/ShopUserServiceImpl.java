@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 /**
 * 商店管理员方法实现类
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:23
+* 时间:2021-08-27 14:44:53
 */
 @Service
 @Transactional
@@ -84,9 +84,6 @@ public class ShopUserServiceImpl implements ShopUserService {
         BeanUtils.copyProperties(dto,shopUser);
         shopUser.setUserId(UuidUtild.getUUID());
         try{
-            shopUser.setUpdateTime(new Date());
-            shopUser.setCreateTime(new Date());
-            shopUser.setStatus("0");
             dao.insert(shopUser);
             return Result.ok();
         }catch (Exception e){
@@ -100,7 +97,6 @@ public class ShopUserServiceImpl implements ShopUserService {
         ShopUser shopUser=new ShopUser();
         BeanUtils.copyProperties(dto,shopUser);
         try{
-            shopUser.setUpdateTime(new Date());
             dao.update(shopUser);
             return Result.ok();
         }catch (Exception e){

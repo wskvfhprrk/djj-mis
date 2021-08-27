@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
 * 商店管理员SQL语句
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:23
+* 时间:2021-08-27 14:44:53
 */
 public class ShopUserDaoSql {
 

@@ -9,7 +9,7 @@ import lombok.Data;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:23
+* 时间:2021-08-27 14:44:53
 */
 @ApiModel("商店管理员实体类")
 @Data
