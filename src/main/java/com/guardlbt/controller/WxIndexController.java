@@ -74,7 +74,8 @@ public class WxIndexController {
 
     @ApiOperation("浏览店铺内套餐")
     @GetMapping("shopGoods/{shopId}")
-    public Result<GoodsVo> shopGoods(@PathVariable String shopId){
+    public Result<GoodsPageVo> shopGoods(@PathVariable String shopId){
+        return wxIndexService.shopGoods(shopId);
     }
 
     @ApiOperation("浏览店铺代金券")

@@ -45,4 +45,6 @@ public interface WxIndexService {
     Result<ShopPageVo> shopCoupon(String shopId);
 
     Result useCoupon(UseCouponDto useCouponDto);
+
+    Result<GoodsPageVo> shopGoods(String shopId);
 }
