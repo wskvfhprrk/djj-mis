@@ -7,9 +7,10 @@ import lombok.Data;
        
       
 import java.util.Date;
+       
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:23
+* 时间:2021-08-28 13:20:39
 */
 @ApiModel("代金券明细实体类")
 @Data
@@ -25,7 +26,7 @@ public class CouponStock {
     private String shopId;
 
     @ApiModelProperty("状态（0-库存 1-已领取 2-已使用 3-过期 4-作废）") 
-    private String status;
+    private Integer status;
 
     @ApiModelProperty("会员ID（会员领取后绑定）") 
     private String memberId;

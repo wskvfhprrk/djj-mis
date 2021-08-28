@@ -10,51 +10,51 @@ import java.math.BigDecimal;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:23
+* 时间:2021-08-28 13:20:38
 */
 @ApiModel("代金券实体类")
 @Data
 public class CouponPageVo {
 
-    @ApiModelProperty("编号") 
+    @ApiModelProperty(value="编号")
     private String couponId;
 
-    @ApiModelProperty("空间名称") 
+    @ApiModelProperty(value="空间名称")
     private String name;
 
-    @ApiModelProperty("所属店铺") 
+    @ApiModelProperty(value="所属店铺")
     private String shopId;
 
-    @ApiModelProperty("图片") 
+    @ApiModelProperty(value="图片")
     private String images;
 
-    @ApiModelProperty("面值，单价（元）") 
+    @ApiModelProperty(value="面值，单价（元）")
     private BigDecimal price;
 
-    @ApiModelProperty("使用门槛（消费满多少元可以使用）") 
+    @ApiModelProperty(value="使用门槛（消费满多少元可以使用）")
     private BigDecimal useThreshold;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("标签") 
+    @ApiModelProperty(value="标签",example = "2001-10-10 11:11:11")
     private Date startDate;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("结束日期") 
+    @ApiModelProperty(value="结束日期",example = "2001-10-10 11:11:11")
     private Date stopDate;
 
-    @ApiModelProperty("优惠说明") 
+    @ApiModelProperty(value="优惠说明")
     private String description;
 
-    @ApiModelProperty("使用须知") 
+    @ApiModelProperty(value="使用须知")
     private String instruction;
 
-    @ApiModelProperty("类型（0-公开 1-内部）") 
-    private String type;
+    @ApiModelProperty(value="类型（0-公开 1-内部）")
+    private Integer type;
 
-    @ApiModelProperty("状态（0-新建 1-已上架 2-已下架）") 
-    private String status;
+    @ApiModelProperty(value="状态（0-新建 1-已上架 2-已下架）")
+    private Integer status;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("创建时间") 
+    @ApiModelProperty(value="创建时间",example = "2001-10-10 11:11:11")
     private Date createTime;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("修改时间") 
+    @ApiModelProperty(value="修改时间",example = "2001-10-10 11:11:11")
     private Date updateTime;
 }

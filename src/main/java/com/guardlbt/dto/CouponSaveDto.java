@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:23
+* 时间:2021-08-28 13:20:38
 */
 @ApiModel("代金券实体类")
 @Data
@@ -51,17 +51,15 @@ public class CouponSaveDto {
     @NotBlank(message = "使用须知不能为空值")
     private String instruction;
 
-    @ApiModelProperty("类型（0-公开 1-内部）") 
-    @NotBlank(message = "类型（0-公开 1-内部）不能为空值")
-    private String type;
+    @ApiModelProperty("类型（0-公开 1-内部）") @NotNull(message = "类型（0-公开 1-内部）不能为空值")
+    private Integer type;
 
-    @ApiModelProperty("状态（0-新建 1-已上架 2-已下架）") 
-    @NotBlank(message = "状态（0-新建 1-已上架 2-已下架）不能为空值")
-    private String status;
-//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-//    @ApiModelProperty("创建时间") @NotNull(message = "创建时间不能为空值")
-//    private Date createTime;
-//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-//    @ApiModelProperty("修改时间") @NotNull(message = "修改时间不能为空值")
-//    private Date updateTime;
+    @ApiModelProperty("状态（0-新建 1-已上架 2-已下架）") @NotNull(message = "状态（0-新建 1-已上架 2-已下架）不能为空值")
+    private Integer status;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @ApiModelProperty("创建时间") @NotNull(message = "创建时间不能为空值")
+    private Date createTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @ApiModelProperty("修改时间") @NotNull(message = "修改时间不能为空值")
+    private Date updateTime;
 }

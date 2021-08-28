@@ -8,7 +8,7 @@ import java.util.*;
 /**
 * 商店管理员dao方法
 * Created by 代码自动生成.
-* 时间:2021-08-27 14:44:53
+* 时间:2021-08-28 13:20:38
 */
 @Mapper
 public interface ShopUserDao {

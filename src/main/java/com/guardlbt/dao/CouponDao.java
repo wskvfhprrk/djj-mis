@@ -8,7 +8,7 @@ import java.util.*;
 /**
 * 代金券dao方法
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:23
+* 时间:2021-08-28 13:20:39
 */
 @Mapper
 public interface CouponDao {

@@ -7,9 +7,10 @@ import lombok.Data;
         
         
 import java.util.Date;
+        
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:24
+* 时间:2021-08-28 13:20:39
 */
 @ApiModel("定时任务实体类")
 @Data
@@ -31,7 +32,7 @@ public class ScheduleJob {
     private String cronExpression;
 
     @ApiModelProperty("任务状态  0：正常  1：暂停") 
-    private String status;
+    private Integer status;
 
     @ApiModelProperty("备注") 
     private String remark;

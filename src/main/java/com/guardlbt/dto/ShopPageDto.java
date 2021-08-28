@@ -11,7 +11,7 @@ import javax.validation.constraints.*;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:23
+* 时间:2021-08-28 13:20:38
 */
 @ApiModel("商店PageDto")
 @Data
@@ -75,7 +75,7 @@ public class  ShopPageDto {
     private Date createTime;
 
     @ApiModelProperty("状态（0-未审核 1-已发布 2-已下架）") 
-    private String status;
+    private Integer status;
 
     @ApiModelProperty("营业开始时间") 
     private String startTime;

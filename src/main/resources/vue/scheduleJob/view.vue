@@ -111,10 +111,6 @@
                             message: '请输入任务状态  0：正常  1：暂停',
                             trigger: 'blur'
                         }, 
-                        {
-                            pattern: /^[\u4E00-\u9FA5A-Za-z0-9_]+$/,
-                            message: '输入字符非法'
-                        }
                     ],                     remark: [
                         {
                             required: false,

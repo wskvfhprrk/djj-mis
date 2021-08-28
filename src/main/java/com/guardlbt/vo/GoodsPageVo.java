@@ -9,27 +9,27 @@ import lombok.Data;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:23
+* 时间:2021-08-28 13:20:39
 */
 @ApiModel("商品实体类")
 @Data
 public class GoodsPageVo {
 
-    @ApiModelProperty("商品编号") 
+    @ApiModelProperty(value="商品编号")
     private String goodsId;
 
-    @ApiModelProperty("名称") 
+    @ApiModelProperty(value="名称")
     private String name;
 
-    @ApiModelProperty("店铺编号") 
+    @ApiModelProperty(value="店铺编号")
     private String shopId;
 
-    @ApiModelProperty("图片（可以多张）") 
+    @ApiModelProperty(value="图片（可以多张）")
     private String images;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("创建时间") 
+    @ApiModelProperty(value="创建时间",example = "2001-10-10 11:11:11")
     private Date createTime;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("修改时间") 
+    @ApiModelProperty(value="修改时间",example = "2001-10-10 11:11:11")
     private Date updateTime;
 }

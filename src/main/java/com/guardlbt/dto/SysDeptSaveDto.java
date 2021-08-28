@@ -10,7 +10,7 @@ import lombok.Data;
      
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:23
+* 时间:2021-08-28 13:20:38
 */
 @ApiModel("商店部门管理实体类")
 @Data
@@ -27,7 +27,6 @@ public class SysDeptSaveDto {
     @ApiModelProperty("排序") @NotNull(message = "排序不能为空值")
     private Integer orderNum;
 
-    @ApiModelProperty("是否删除  -1：已删除  0：正常") 
-    @NotBlank(message = "是否删除  -1：已删除  0：正常不能为空值")
-    private String delFlag;
+    @ApiModelProperty("是否删除  -1：已删除  0：正常") @NotNull(message = "是否删除  -1：已删除  0：正常不能为空值")
+    private Integer delFlag;
 }

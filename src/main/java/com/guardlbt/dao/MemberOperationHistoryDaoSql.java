@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
 * 会员操作记录历史SQL语句
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:24
+* 时间:2021-08-28 13:20:39
 */
 public class MemberOperationHistoryDaoSql {
 

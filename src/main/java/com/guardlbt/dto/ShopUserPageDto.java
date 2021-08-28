@@ -11,7 +11,7 @@ import javax.validation.constraints.*;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-27 14:44:53
+* 时间:2021-08-28 13:20:38
 */
 @ApiModel("商店管理员PageDto")
 @Data
@@ -30,7 +30,7 @@ public class  ShopUserPageDto {
     private String name;
 
     @ApiModelProperty("性别（0:男，1:女）") 
-    private String sex;
+    private Integer sex;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty("生日") 
     private Date birthday;
@@ -39,7 +39,7 @@ public class  ShopUserPageDto {
     private String phone;
 
     @ApiModelProperty("角色（0-老板 1-店长 2-员工）") 
-    private String role;
+    private Integer role;
 
     @ApiModelProperty("店铺编号") 
     private String shopId;
@@ -51,7 +51,7 @@ public class  ShopUserPageDto {
     private Date updateTime;
 
     @ApiModelProperty("状态（0-正常 1-暂停 2-注销）") 
-    private String status;
+    private Integer status;
 
     @ApiModelProperty("用户在微信端的唯一标识") 
     private String openId;

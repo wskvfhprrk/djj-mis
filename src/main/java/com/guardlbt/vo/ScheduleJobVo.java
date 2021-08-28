@@ -9,33 +9,33 @@ import lombok.Data;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:24
+* 时间:2021-08-28 13:20:39
 */
 @ApiModel("定时任务实体类")
 @Data
 public class ScheduleJobVo {
 
-    @ApiModelProperty("任务id") 
+    @ApiModelProperty(value="任务id")
     private Long jobId;
 
-    @ApiModelProperty("spring bean名称") 
+    @ApiModelProperty(value="spring bean名称")
     private String beanName;
 
-    @ApiModelProperty("方法名") 
+    @ApiModelProperty(value="方法名")
     private String methodName;
 
-    @ApiModelProperty("参数") 
+    @ApiModelProperty(value="参数")
     private String params;
 
-    @ApiModelProperty("cron表达式") 
+    @ApiModelProperty(value="cron表达式")
     private String cronExpression;
 
-    @ApiModelProperty("任务状态  0：正常  1：暂停") 
-    private String status;
+    @ApiModelProperty(value="任务状态  0：正常  1：暂停")
+    private Integer status;
 
-    @ApiModelProperty("备注") 
+    @ApiModelProperty(value="备注")
     private String remark;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty("创建时间") 
+    @ApiModelProperty(value="创建时间",example = "2001-10-10 11:11:11")
     private Date createTime;
 }

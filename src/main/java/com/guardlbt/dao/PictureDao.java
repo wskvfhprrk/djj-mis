@@ -8,7 +8,7 @@ import java.util.*;
 /**
 * 图片管理dao方法
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:24
+* 时间:2021-08-28 13:20:40
 */
 @Mapper
 public interface PictureDao {

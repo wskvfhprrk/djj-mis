@@ -7,9 +7,10 @@ import lombok.Data;
          
          
 import java.util.Date;
+         
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:24
+* 时间:2021-08-28 13:20:40
 */
 @ApiModel("定时任务日志实体类")
 @Data
@@ -31,7 +32,7 @@ public class ScheduleJobLog {
     private String params;
 
     @ApiModelProperty("任务状态    0：成功    1：失败") 
-    private String status;
+    private Integer status;
 
     @ApiModelProperty("失败信息") 
     private String error;

@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
 * 定时任务日志SQL语句
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:24
+* 时间:2021-08-28 13:20:40
 */
 public class ScheduleJobLogDaoSql {
 
@@ -27,8 +27,9 @@ public class ScheduleJobLogDaoSql {
                 WHERE("a.Method_name like CONCAT('%',#{methodName},'%')");
             }            if(scheduleJobLog!=null && StringUtils.isNotBlank(scheduleJobLog.getParams())){
                 WHERE("a.Params like CONCAT('%',#{params},'%')");
-            }            if(scheduleJobLog!=null && StringUtils.isNotBlank(scheduleJobLog.getStatus())){
-                WHERE("a.Status like CONCAT('%',#{status},'%')");
+            }
+            if(scheduleJobLog!=null && scheduleJobLog.getStatus()!=null && scheduleJobLog.getStatus().toString().length()>0){
+                WHERE("a.Status = #{status}");
             }            if(scheduleJobLog!=null && StringUtils.isNotBlank(scheduleJobLog.getError())){
                 WHERE("a.Error like CONCAT('%',#{error},'%')");
             }
@@ -61,7 +62,8 @@ public class ScheduleJobLogDaoSql {
             if(StringUtils.isNotBlank(scheduleJobLog.getParams())){
                 VALUES("params", "#{params}");
             }
-            if(StringUtils.isNotBlank(scheduleJobLog.getStatus())){
+
+            if(scheduleJobLog.getStatus()!=null && scheduleJobLog.getStatus().toString().length()>0){
                 VALUES("status", "#{status}");
             }
             if(StringUtils.isNotBlank(scheduleJobLog.getError())){
@@ -98,7 +100,8 @@ public class ScheduleJobLogDaoSql {
                 if(StringUtils.isNotBlank(scheduleJobLog.getParams())){
                 SET("params = #{params}");
             }
-                if(StringUtils.isNotBlank(scheduleJobLog.getStatus())){
+
+                if(scheduleJobLog.getStatus()!=null && scheduleJobLog.getStatus().toString().length()>0){
                 SET("status = #{status}");
             }
                 if(StringUtils.isNotBlank(scheduleJobLog.getError())){
@@ -139,7 +142,8 @@ public class ScheduleJobLogDaoSql {
                 if(StringUtils.isNotBlank(scheduleJobLog.getParams())){
                 WHERE("params = #{params}");
             }
-                if(StringUtils.isNotBlank(scheduleJobLog.getStatus())){
+
+                if(scheduleJobLog.getStatus()!=null && scheduleJobLog.getStatus().toString().length()>0){
                 WHERE("status = #{status}");
             }
                 if(StringUtils.isNotBlank(scheduleJobLog.getError())){

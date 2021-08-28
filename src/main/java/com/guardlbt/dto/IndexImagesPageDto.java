@@ -10,7 +10,7 @@ import javax.validation.constraints.*;
     
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:23
+* 时间:2021-08-28 13:20:39
 */
 @ApiModel("轮播图PageDto")
 @Data
@@ -29,7 +29,7 @@ public class  IndexImagesPageDto {
     private String imageUrl;
 
     @ApiModelProperty("类型（0-店铺 1-代金券 2-网址 ）") 
-    private String type;
+    private Integer type;
 
     @ApiModelProperty("链接地址") 
     private String address;

@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
 * 商店管理员SQL语句
 * Created by 代码自动生成.
-* 时间:2021-08-27 14:44:53
+* 时间:2021-08-28 13:20:38
 */
 public class ShopUserDaoSql {
 
@@ -19,15 +19,17 @@ public class ShopUserDaoSql {
                 WHERE("a.User_id like CONCAT('%',#{userId},'%')");
             }            if(shopUser!=null && StringUtils.isNotBlank(shopUser.getName())){
                 WHERE("a.Name like CONCAT('%',#{name},'%')");
-            }            if(shopUser!=null && StringUtils.isNotBlank(shopUser.getSex())){
-                WHERE("a.Sex like CONCAT('%',#{sex},'%')");
+            }
+            if(shopUser!=null && shopUser.getSex()!=null && shopUser.getSex().toString().length()>0){
+                WHERE("a.Sex = #{sex}");
             }
             if(shopUser!=null && shopUser.getBirthday()!=null && shopUser.getBirthday().toString().length()>0){
                 WHERE("a.Birthday = #{birthday}");
             }            if(shopUser!=null && StringUtils.isNotBlank(shopUser.getPhone())){
                 WHERE("a.Phone like CONCAT('%',#{phone},'%')");
-            }            if(shopUser!=null && StringUtils.isNotBlank(shopUser.getRole())){
-                WHERE("a.Role like CONCAT('%',#{role},'%')");
+            }
+            if(shopUser!=null && shopUser.getRole()!=null && shopUser.getRole().toString().length()>0){
+                WHERE("a.Role = #{role}");
             }            if(shopUser!=null && StringUtils.isNotBlank(shopUser.getShopId())){
                 WHERE("a.Shop_id like CONCAT('%',#{shopId},'%')");
             }
@@ -36,8 +38,9 @@ public class ShopUserDaoSql {
             }
             if(shopUser!=null && shopUser.getUpdateTime()!=null && shopUser.getUpdateTime().toString().length()>0){
                 WHERE("a.Update_time = #{updateTime}");
-            }            if(shopUser!=null && StringUtils.isNotBlank(shopUser.getStatus())){
-                WHERE("a.Status like CONCAT('%',#{status},'%')");
+            }
+            if(shopUser!=null && shopUser.getStatus()!=null && shopUser.getStatus().toString().length()>0){
+                WHERE("a.Status = #{status}");
             }            if(shopUser!=null && StringUtils.isNotBlank(shopUser.getOpenId())){
                 WHERE("a.Open_id like CONCAT('%',#{openId},'%')");
             }
@@ -53,7 +56,8 @@ public class ShopUserDaoSql {
             if(StringUtils.isNotBlank(shopUser.getName())){
                 VALUES("name", "#{name}");
             }
-            if(StringUtils.isNotBlank(shopUser.getSex())){
+
+            if(shopUser.getSex()!=null && shopUser.getSex().toString().length()>0){
                 VALUES("sex", "#{sex}");
             }
 
@@ -63,7 +67,8 @@ public class ShopUserDaoSql {
             if(StringUtils.isNotBlank(shopUser.getPhone())){
                 VALUES("phone", "#{phone}");
             }
-            if(StringUtils.isNotBlank(shopUser.getRole())){
+
+            if(shopUser.getRole()!=null && shopUser.getRole().toString().length()>0){
                 VALUES("role", "#{role}");
             }
             if(StringUtils.isNotBlank(shopUser.getShopId())){
@@ -77,7 +82,8 @@ public class ShopUserDaoSql {
             if(shopUser.getUpdateTime()!=null && shopUser.getUpdateTime().toString().length()>0){
                 VALUES("update_time", "#{updateTime}");
             }
-            if(StringUtils.isNotBlank(shopUser.getStatus())){
+
+            if(shopUser.getStatus()!=null && shopUser.getStatus().toString().length()>0){
                 VALUES("status", "#{status}");
             }
             if(StringUtils.isNotBlank(shopUser.getOpenId())){
@@ -95,7 +101,8 @@ public class ShopUserDaoSql {
                 if(StringUtils.isNotBlank(shopUser.getName())){
                 SET("name = #{name}");
             }
-                if(StringUtils.isNotBlank(shopUser.getSex())){
+
+                if(shopUser.getSex()!=null && shopUser.getSex().toString().length()>0){
                 SET("sex = #{sex}");
             }
 
@@ -105,7 +112,8 @@ public class ShopUserDaoSql {
                 if(StringUtils.isNotBlank(shopUser.getPhone())){
                 SET("phone = #{phone}");
             }
-                if(StringUtils.isNotBlank(shopUser.getRole())){
+
+                if(shopUser.getRole()!=null && shopUser.getRole().toString().length()>0){
                 SET("role = #{role}");
             }
                 if(StringUtils.isNotBlank(shopUser.getShopId())){
@@ -119,7 +127,8 @@ public class ShopUserDaoSql {
                 if(shopUser.getUpdateTime()!=null && shopUser.getUpdateTime().toString().length()>0){
                 SET("update_time = #{updateTime}");
             }
-                if(StringUtils.isNotBlank(shopUser.getStatus())){
+
+                if(shopUser.getStatus()!=null && shopUser.getStatus().toString().length()>0){
                 SET("status = #{status}");
             }
                 if(StringUtils.isNotBlank(shopUser.getOpenId())){
@@ -140,7 +149,8 @@ public class ShopUserDaoSql {
                 if(StringUtils.isNotBlank(shopUser.getName())){
                 WHERE("name = #{name}");
             }
-                if(StringUtils.isNotBlank(shopUser.getSex())){
+
+                if(shopUser.getSex()!=null && shopUser.getSex().toString().length()>0){
                 WHERE("sex = #{sex}");
             }
 
@@ -150,7 +160,8 @@ public class ShopUserDaoSql {
                 if(StringUtils.isNotBlank(shopUser.getPhone())){
                 WHERE("phone = #{phone}");
             }
-                if(StringUtils.isNotBlank(shopUser.getRole())){
+
+                if(shopUser.getRole()!=null && shopUser.getRole().toString().length()>0){
                 WHERE("role = #{role}");
             }
                 if(StringUtils.isNotBlank(shopUser.getShopId())){
@@ -164,7 +175,8 @@ public class ShopUserDaoSql {
                 if(shopUser.getUpdateTime()!=null && shopUser.getUpdateTime().toString().length()>0){
                 WHERE("update_time = #{updateTime}");
             }
-                if(StringUtils.isNotBlank(shopUser.getStatus())){
+
+                if(shopUser.getStatus()!=null && shopUser.getStatus().toString().length()>0){
                 WHERE("status = #{status}");
             }
                 if(StringUtils.isNotBlank(shopUser.getOpenId())){

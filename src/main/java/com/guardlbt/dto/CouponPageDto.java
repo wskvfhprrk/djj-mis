@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:23
+* 时间:2021-08-28 13:20:38
 */
 @ApiModel("代金券PageDto")
 @Data
@@ -55,10 +55,10 @@ public class  CouponPageDto {
     private String instruction;
 
     @ApiModelProperty("类型（0-公开 1-内部）") 
-    private String type;
+    private Integer type;
 
     @ApiModelProperty("状态（0-新建 1-已上架 2-已下架）") 
-    private String status;
+    private Integer status;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty("创建时间") 
     private Date createTime;

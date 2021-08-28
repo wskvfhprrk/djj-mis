@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
 * 代金券SQL语句
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:23
+* 时间:2021-08-28 13:20:39
 */
 public class CouponDaoSql {
 
@@ -39,10 +39,12 @@ public class CouponDaoSql {
                 WHERE("a.Description like CONCAT('%',#{description},'%')");
             }            if(coupon!=null && StringUtils.isNotBlank(coupon.getInstruction())){
                 WHERE("a.Instruction like CONCAT('%',#{instruction},'%')");
-            }            if(coupon!=null && StringUtils.isNotBlank(coupon.getType())){
-                WHERE("a.Type like CONCAT('%',#{type},'%')");
-            }            if(coupon!=null && StringUtils.isNotBlank(coupon.getStatus())){
-                WHERE("a.Status like CONCAT('%',#{status},'%')");
+            }
+            if(coupon!=null && coupon.getType()!=null && coupon.getType().toString().length()>0){
+                WHERE("a.Type = #{type}");
+            }
+            if(coupon!=null && coupon.getStatus()!=null && coupon.getStatus().toString().length()>0){
+                WHERE("a.Status = #{status}");
             }
             if(coupon!=null && coupon.getCreateTime()!=null && coupon.getCreateTime().toString().length()>0){
                 WHERE("a.Create_time = #{createTime}");
@@ -90,10 +92,12 @@ public class CouponDaoSql {
             if(StringUtils.isNotBlank(coupon.getInstruction())){
                 VALUES("instruction", "#{instruction}");
             }
-            if(StringUtils.isNotBlank(coupon.getType())){
+
+            if(coupon.getType()!=null && coupon.getType().toString().length()>0){
                 VALUES("type", "#{type}");
             }
-            if(StringUtils.isNotBlank(coupon.getStatus())){
+
+            if(coupon.getStatus()!=null && coupon.getStatus().toString().length()>0){
                 VALUES("status", "#{status}");
             }
 
@@ -144,10 +148,12 @@ public class CouponDaoSql {
                 if(StringUtils.isNotBlank(coupon.getInstruction())){
                 SET("instruction = #{instruction}");
             }
-                if(StringUtils.isNotBlank(coupon.getType())){
+
+                if(coupon.getType()!=null && coupon.getType().toString().length()>0){
                 SET("type = #{type}");
             }
-                if(StringUtils.isNotBlank(coupon.getStatus())){
+
+                if(coupon.getStatus()!=null && coupon.getStatus().toString().length()>0){
                 SET("status = #{status}");
             }
 
@@ -201,10 +207,12 @@ public class CouponDaoSql {
                 if(StringUtils.isNotBlank(coupon.getInstruction())){
                 WHERE("instruction = #{instruction}");
             }
-                if(StringUtils.isNotBlank(coupon.getType())){
+
+                if(coupon.getType()!=null && coupon.getType().toString().length()>0){
                 WHERE("type = #{type}");
             }
-                if(StringUtils.isNotBlank(coupon.getStatus())){
+
+                if(coupon.getStatus()!=null && coupon.getStatus().toString().length()>0){
                 WHERE("status = #{status}");
             }
 

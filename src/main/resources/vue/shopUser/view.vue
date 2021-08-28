@@ -75,10 +75,6 @@
                             message: '请输入性别（0:男，1:女）',
                             trigger: 'blur'
                         }, 
-                        {
-                            pattern: /^[\u4E00-\u9FA5A-Za-z0-9_]+$/,
-                            message: '输入字符非法'
-                        }
                     ],                     birthday: [
                         {
                             required: true,
@@ -106,10 +102,6 @@
                             message: '请输入角色（0-老板 1-店长 2-员工）',
                             trigger: 'blur'
                         }, 
-                        {
-                            pattern: /^[\u4E00-\u9FA5A-Za-z0-9_]+$/,
-                            message: '输入字符非法'
-                        }
                     ],                     shopId: [
                         {
                             required: true,
@@ -143,10 +135,6 @@
                             message: '请输入状态（0-正常 1-暂停 2-注销）',
                             trigger: 'blur'
                         }, 
-                        {
-                            pattern: /^[\u4E00-\u9FA5A-Za-z0-9_]+$/,
-                            message: '输入字符非法'
-                        }
                     ],                     openId: [
                         {
                             required: false,

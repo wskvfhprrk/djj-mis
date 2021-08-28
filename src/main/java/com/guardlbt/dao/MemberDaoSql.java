@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
 * 会员SQL语句
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:24
+* 时间:2021-08-28 13:20:39
 */
 public class MemberDaoSql {
 
@@ -21,8 +21,9 @@ public class MemberDaoSql {
                 WHERE("a.Open_id like CONCAT('%',#{openId},'%')");
             }            if(member!=null && StringUtils.isNotBlank(member.getPhone())){
                 WHERE("a.Phone like CONCAT('%',#{phone},'%')");
-            }            if(member!=null && StringUtils.isNotBlank(member.getSex())){
-                WHERE("a.Sex like CONCAT('%',#{sex},'%')");
+            }
+            if(member!=null && member.getSex()!=null && member.getSex().toString().length()>0){
+                WHERE("a.Sex = #{sex}");
             }
             if(member!=null && member.getBirthday()!=null && member.getBirthday().toString().length()>0){
                 WHERE("a.Birthday = #{birthday}");
@@ -57,7 +58,8 @@ public class MemberDaoSql {
             if(StringUtils.isNotBlank(member.getPhone())){
                 VALUES("phone", "#{phone}");
             }
-            if(StringUtils.isNotBlank(member.getSex())){
+
+            if(member.getSex()!=null && member.getSex().toString().length()>0){
                 VALUES("sex", "#{sex}");
             }
 
@@ -101,7 +103,8 @@ public class MemberDaoSql {
                 if(StringUtils.isNotBlank(member.getPhone())){
                 SET("phone = #{phone}");
             }
-                if(StringUtils.isNotBlank(member.getSex())){
+
+                if(member.getSex()!=null && member.getSex().toString().length()>0){
                 SET("sex = #{sex}");
             }
 
@@ -148,7 +151,8 @@ public class MemberDaoSql {
                 if(StringUtils.isNotBlank(member.getPhone())){
                 WHERE("phone = #{phone}");
             }
-                if(StringUtils.isNotBlank(member.getSex())){
+
+                if(member.getSex()!=null && member.getSex().toString().length()>0){
                 WHERE("sex = #{sex}");
             }
 

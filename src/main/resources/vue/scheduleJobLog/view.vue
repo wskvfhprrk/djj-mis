@@ -105,10 +105,6 @@
                             message: '请输入任务状态    0：成功    1：失败',
                             trigger: 'blur'
                         }, 
-                        {
-                            pattern: /^[\u4E00-\u9FA5A-Za-z0-9_]+$/,
-                            message: '输入字符非法'
-                        }
                     ],                     error: [
                         {
                             required: false,

@@ -11,7 +11,7 @@ import javax.validation.constraints.*;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:24
+* 时间:2021-08-28 13:20:39
 */
 @ApiModel("会员PageDto")
 @Data
@@ -33,7 +33,7 @@ public class  MemberPageDto {
     private String phone;
 
     @ApiModelProperty("性别（0：未知,1:男，2:女）") 
-    private String sex;
+    private Integer sex;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty("生日") 
     private Date birthday;

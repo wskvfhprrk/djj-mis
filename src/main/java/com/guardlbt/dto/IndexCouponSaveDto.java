@@ -10,15 +10,12 @@ import lombok.Data;
   
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:23
+* 时间:2021-08-28 13:20:39
 */
 @ApiModel("首页促销代金券实体类")
 @Data
 public class IndexCouponSaveDto {
 
-    @ApiModelProperty("排序")
-    @NotNull(message = "排序编号不能为空值")
-    private Integer sorting;
 
     @ApiModelProperty("代金券编号") 
     @NotBlank(message = "代金券编号不能为空值")
