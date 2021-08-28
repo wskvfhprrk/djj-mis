@@ -16,9 +16,9 @@ import com.guardlbt.entity.Member;
 import com.guardlbt.entity.Shop;
 import com.guardlbt.entity.ShopUser;
 import com.guardlbt.eum.Role;
+import com.guardlbt.eum.ShopStatusEnum;
 import com.guardlbt.service.WxMyService;
 import com.guardlbt.vo.BusinessDistrictPageVo;
-import com.guardlbt.vo.ShopVo;
 import com.guardlbt.vo.ShopsVo;
 import com.guardlbt.vo.UserInfoVo;
 import org.springframework.beans.BeanUtils;
@@ -95,7 +95,7 @@ public class WxMyServiceImpl implements WxMyService {
         Shop shop=new Shop();
         BeanUtils.copyProperties(dto,shop);
         shop.setCreateTime(new Date());
-        shop.setStatus(1);
+        shop.setStatus(ShopStatusEnum.NOTAPPROVED.ordinal());
         shopDao.insert(shop);
         return Result.ok();
     }
@@ -126,6 +126,7 @@ public class WxMyServiceImpl implements WxMyService {
     public Result<ShopsVo> shops(String businessDistrictId) {
         Shop shop=new Shop();
         shop.setBusinessDistrictId(businessDistrictId);
+        shop.setStatus(ShopStatusEnum.PUBLISHED.ordinal());
         List<ShopsVo> collect = shopDao.selectShops(shop).stream().map(shop1 -> {
             ShopsVo vo = new ShopsVo();
             BeanUtils.copyProperties(shop1,vo);
