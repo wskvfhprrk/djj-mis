@@ -45,23 +45,24 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <table schema="" tableName="business_district" domainObjectName="BusinessDistrict"></table>
-        <table schema="" tableName="coupon" domainObjectName="Coupon"></table>
-        <table schema="" tableName="coupon_history" domainObjectName="CouponHistory"></table>
-        <table schema="" tableName="coupon_stock" domainObjectName="CouponStock"></table>
-        <table schema="" tableName="goods" domainObjectName="Goods"></table>
-        <table schema="" tableName="index_coupon" domainObjectName="IndexCoupon"></table>
-        <table schema="" tableName="index_images" domainObjectName="IndexImages"></table>
-        <table schema="" tableName="index_shop" domainObjectName="IndexShop"></table>
-        <table schema="" tableName="m_role_menu" domainObjectName="MRoleMenu"></table>
-        <table schema="" tableName="m_user_role" domainObjectName="MUserRole"></table>
-        <table schema="" tableName="member" domainObjectName="Member"></table>
-        <table schema="" tableName="member_operation_history" domainObjectName="MemberOperationHistory"></table>
-        <table schema="" tableName="operation_type" domainObjectName="OperationType"></table>
-        <table schema="" tableName="report_site" domainObjectName="ReportSite"></table>
-        <table schema="" tableName="schedule_job" domainObjectName="ScheduleJob"></table>
-        <table schema="" tableName="schedule_job_log" domainObjectName="ScheduleJobLog"></table>
-        <table schema="" tableName="shop" domainObjectName="Shop"></table>
-        <table schema="" tableName="shop_user" domainObjectName="ShopUser"></table>
+<!--        <table schema="" tableName="business_district" domainObjectName="BusinessDistrict"></table>-->
+<!--        <table schema="" tableName="coupon" domainObjectName="Coupon"></table>-->
+<!--        <table schema="" tableName="coupon_history" domainObjectName="CouponHistory"></table>-->
+<!--        <table schema="" tableName="coupon_stock" domainObjectName="CouponStock"></table>-->
+<!--        <table schema="" tableName="goods" domainObjectName="Goods"></table>-->
+<!--        <table schema="" tableName="index_coupon" domainObjectName="IndexCoupon"></table>-->
+<!--        <table schema="" tableName="index_images" domainObjectName="IndexImages"></table>-->
+<!--        <table schema="" tableName="index_shop" domainObjectName="IndexShop"></table>-->
+<!--        <table schema="" tableName="m_role_menu" domainObjectName="MRoleMenu"></table>-->
+<!--        <table schema="" tableName="m_user_role" domainObjectName="MUserRole"></table>-->
+<!--        <table schema="" tableName="member" domainObjectName="Member"></table>-->
+<!--        <table schema="" tableName="member_operation_history" domainObjectName="MemberOperationHistory"></table>-->
+<!--        <table schema="" tableName="operation_type" domainObjectName="OperationType"></table>-->
+<!--        <table schema="" tableName="report_site" domainObjectName="ReportSite"></table>-->
+<!--        <table schema="" tableName="schedule_job" domainObjectName="ScheduleJob"></table>-->
+<!--        <table schema="" tableName="schedule_job_log" domainObjectName="ScheduleJobLog"></table>-->
+<!--        <table schema="" tableName="shop" domainObjectName="Shop"></table>-->
+<!--        <table schema="" tableName="shop_user" domainObjectName="ShopUser"></table>-->
+<!--        <table schema="" tableName="m_user_role" domainObjectName="MUserRole"></table>-->
     </context>
 </generatorConfiguration>

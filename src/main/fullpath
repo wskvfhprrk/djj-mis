@@ -1,8 +1,0 @@
-,{
-    path: '/shopUser',
-    name: '商店管理员',                     //商店管理员
-    meta: {
-      name: '商店管理员'
-    },
-    component: (resolve) => require(['@/views/shopUser/index.vue'], resolve)}
-

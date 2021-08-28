@@ -7,13 +7,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="hbhmisserver" />
+        <module name="djjmisserver" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="common" target="8" />
       <module name="djj" target="8" />
       <module name="djj-mis" target="1.8" />
+      <module name="djjmisserver" target="1.8" />
       <module name="hbhmisserver" target="1.8" />
       <module name="mis" target="8" />
       <module name="parent" target="8" />
@@ -24,6 +25,7 @@
       <module name="common" options="-parameters" />
       <module name="djj" options="-parameters" />
       <module name="djj-mis" options="-parameters" />
+      <module name="djjmisserver" options="-parameters" />
       <module name="hbhmisserver" options="-parameters" />
       <module name="mis" options="-parameters" />
       <module name="parent" options="-parameters" />
