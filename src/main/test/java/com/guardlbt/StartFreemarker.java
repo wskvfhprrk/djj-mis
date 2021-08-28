@@ -27,24 +27,24 @@ public class StartFreemarker {
     @Test
     public void createCode() {
         List<Entity> entities=new ArrayList<>();
-//        entities.add(new Entity("business_district", "商圈"));
-//        entities.add(new Entity("shop", "商店"));
+        entities.add(new Entity("business_district", "商圈"));
+        entities.add(new Entity("shop", "商店"));
         entities.add(new Entity("shop_user", "商店管理员"));
-//        entities.add(new Entity("sys_dept", "商店部门管理"));
-//        entities.add(new Entity("coupon","代金券"));
-//        entities.add(new Entity("coupon_history","代金券历史"));
-//        entities.add(new Entity("coupon_stock","代金券明细"));
-//        entities.add(new Entity("goods","商品"));
-//        entities.add(new Entity("index_coupon","首页促销代金券"));
-//        entities.add(new Entity("index_images","轮播图"));
-//        entities.add(new Entity("index_shop","首页促销店铺"));
-//        entities.add(new Entity("member","会员"));
-//        entities.add(new Entity("member_operation_history","会员操作记录历史"));
-//        entities.add(new Entity("operation_type","操作类型"));
-//        entities.add(new Entity("report_site","定位信息上报"));
-//        entities.add(new Entity("schedule_job","定时任务"));
-//        entities.add(new Entity("schedule_job_log","定时任务日志"));
-//        entities.add(new Entity("picture","图片管理"));
+        entities.add(new Entity("sys_dept", "商店部门管理"));
+        entities.add(new Entity("coupon","代金券"));
+        entities.add(new Entity("coupon_history","代金券历史"));
+        entities.add(new Entity("coupon_stock","代金券明细"));
+        entities.add(new Entity("goods","商品"));
+        entities.add(new Entity("index_coupon","首页促销代金券"));
+        entities.add(new Entity("index_images","轮播图"));
+        entities.add(new Entity("index_shop","首页促销店铺"));
+        entities.add(new Entity("member","会员"));
+        entities.add(new Entity("member_operation_history","会员操作记录历史"));
+        entities.add(new Entity("operation_type","操作类型"));
+        entities.add(new Entity("report_site","定位信息上报"));
+        entities.add(new Entity("schedule_job","定时任务"));
+        entities.add(new Entity("schedule_job_log","定时任务日志"));
+        entities.add(new Entity("picture","图片管理"));
         //生成实体类
         //生成代码
         for (Entity entity : entities) {

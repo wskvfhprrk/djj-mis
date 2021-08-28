@@ -10,7 +10,7 @@ import javax.validation.constraints.*;
      
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-25 18:06:23
+* 时间:2021-08-28 13:20:38
 */
 @ApiModel("商店部门管理PageDto")
 @Data
@@ -35,5 +35,5 @@ public class  SysDeptPageDto {
     private Integer orderNum;
 
     @ApiModelProperty("是否删除  -1：已删除  0：正常") 
-    private String delFlag;
+    private Integer delFlag;
 }
