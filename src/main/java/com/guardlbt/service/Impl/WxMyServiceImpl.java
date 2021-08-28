@@ -2,9 +2,11 @@ package com.guardlbt.service.Impl;
 
 import com.guardlbt.common.util.Result;
 import com.guardlbt.dao.ShopUserDao;
+import com.guardlbt.dto.SaveUserInfoDto;
 import com.guardlbt.entity.ShopUser;
 import com.guardlbt.eum.Role;
 import com.guardlbt.service.WxMyService;
+import com.guardlbt.vo.UserInfoVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +31,17 @@ public class WxMyServiceImpl implements WxMyService {
             }
         }
         return Result.ok();
+    }
+
+    @Override
+    public Result<UserInfoVo> userInfo(String openid) {
+        //查看会员表中的信息
+        return null;
+    }
+
+    @Override
+    public Result saveUserInfo(SaveUserInfoDto dto) {
+        //修改会员信息，如果是shopuser也要修改里面的信息
+        return null;
     }
 }

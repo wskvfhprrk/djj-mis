@@ -1,15 +1,16 @@
 package com.guardlbt.controller;
 
+import cn.hutool.system.UserInfo;
 import com.guardlbt.common.util.Result;
+import com.guardlbt.dto.SaveUserInfoDto;
 import com.guardlbt.eum.Role;
 import com.guardlbt.service.WxMyService;
+import com.guardlbt.vo.UserInfoVo;
+import com.guardlbt.wx.dto.GetUserInfoDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("api")
 @RestController
@@ -23,6 +24,18 @@ public class WxMyController {
     @GetMapping("getRole/{openid}")
     public Result<Role> getRole(@PathVariable String openid){
         return wxMyService.getRole(openid);
+    }
+
+
+    @ApiOperation("查看本人基本信息")
+    @GetMapping("userInfo/{openid}")
+    public Result<UserInfoVo> userInfo(@PathVariable String openid){
+        return wxMyService.userInfo(openid);
+    }
+    @ApiOperation("修改基本信息")
+    @PostMapping("userInfo")
+    public Result saveUserInfo(SaveUserInfoDto dto){
+        return wxMyService.saveUserInfo(dto);
     }
 
 }
