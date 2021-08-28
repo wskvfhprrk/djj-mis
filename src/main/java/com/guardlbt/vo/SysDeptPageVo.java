@@ -8,7 +8,7 @@ import lombok.Data;
      
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:55
+* 时间:2021-08-28 11:42:14
 */
 @ApiModel("商店部门管理实体类")
 @Data
@@ -27,5 +27,5 @@ public class SysDeptPageVo {
     private Integer orderNum;
 
     @ApiModelProperty(value ="是否删除  -1：已删除  0：正常")
-    private String delFlag;
+    private Integer delFlag;
 }

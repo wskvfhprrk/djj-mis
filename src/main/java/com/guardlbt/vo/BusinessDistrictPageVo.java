@@ -8,7 +8,7 @@ import lombok.Data;
            
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:55
+* 时间:2021-08-28 11:42:13
 */
 @ApiModel("商圈实体类")
 @Data

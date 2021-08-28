@@ -14,6 +14,6 @@ import lombok.Data;
 public class SaveRoleDto {
     @NotBlank(message = "roleName不能为空")
     @ApiModelProperty("角色名称")
-    private String roleName;
-    private String roleDescribe;
+    private Integer roleName;
+    private Integer roleDescribe;
 }

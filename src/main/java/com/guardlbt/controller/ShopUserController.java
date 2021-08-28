@@ -17,7 +17,7 @@ import javax.validation.*;
 
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:55
+* 时间:2021-08-28 11:42:14
 */
 @Api("商店管理员控制器")
 @RestController
@@ -53,7 +53,7 @@ public class ShopUserController {
     @DeleteMapping("/{userId}")
 	@ApiOperation("根据ID删除")
     public Result deleteAll(@PathVariable String userId){
-        return service.deleteAll(userId.toString().toString().toString());
+        return service.deleteAll(userId.toString().toString().toString().toString().toString().toString());
     }
 
     @GetMapping("/{userId}")

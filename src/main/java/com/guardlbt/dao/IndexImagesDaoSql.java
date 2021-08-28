@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
 * 轮播图SQL语句
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:56
+* 时间:2021-08-28 11:42:16
 */
 public class IndexImagesDaoSql {
 
@@ -20,8 +20,9 @@ public class IndexImagesDaoSql {
                 WHERE("a.Id = #{id}");
             }            if(indexImages!=null && StringUtils.isNotBlank(indexImages.getImageUrl())){
                 WHERE("a.Image_url like CONCAT('%',#{imageUrl},'%')");
-            }            if(indexImages!=null && StringUtils.isNotBlank(indexImages.getType())){
-                WHERE("a.Type like CONCAT('%',#{type},'%')");
+            }
+            if(indexImages!=null && indexImages.getType()!=null && indexImages.getType().toString().length()>0){
+                WHERE("a.Type = #{type}");
             }            if(indexImages!=null && StringUtils.isNotBlank(indexImages.getAddress())){
                 WHERE("a.Address like CONCAT('%',#{address},'%')");
             }
@@ -38,7 +39,8 @@ public class IndexImagesDaoSql {
             if(StringUtils.isNotBlank(indexImages.getImageUrl())){
                 VALUES("image_url", "#{imageUrl}");
             }
-            if(StringUtils.isNotBlank(indexImages.getType())){
+
+            if(indexImages.getType()!=null && indexImages.getType().toString().length()>0){
                 VALUES("type", "#{type}");
             }
             if(StringUtils.isNotBlank(indexImages.getAddress())){
@@ -57,7 +59,8 @@ public class IndexImagesDaoSql {
                 if(StringUtils.isNotBlank(indexImages.getImageUrl())){
                 SET("image_url = #{imageUrl}");
             }
-                if(StringUtils.isNotBlank(indexImages.getType())){
+
+                if(indexImages.getType()!=null && indexImages.getType().toString().length()>0){
                 SET("type = #{type}");
             }
                 if(StringUtils.isNotBlank(indexImages.getAddress())){
@@ -80,7 +83,8 @@ public class IndexImagesDaoSql {
                 if(StringUtils.isNotBlank(indexImages.getImageUrl())){
                 WHERE("image_url = #{imageUrl}");
             }
-                if(StringUtils.isNotBlank(indexImages.getType())){
+
+                if(indexImages.getType()!=null && indexImages.getType().toString().length()>0){
                 WHERE("type = #{type}");
             }
                 if(StringUtils.isNotBlank(indexImages.getAddress())){

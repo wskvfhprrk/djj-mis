@@ -9,7 +9,7 @@ import lombok.Data;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:55
+* 时间:2021-08-28 11:42:14
 */
 @ApiModel("商店管理员实体类")
 @Data
@@ -22,7 +22,7 @@ public class ShopUserVo {
     private String name;
 
     @ApiModelProperty(value ="性别（0:男，1:女）")
-    private String sex;
+    private Integer sex;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty(value ="生日")
     private Date birthday;
@@ -31,7 +31,7 @@ public class ShopUserVo {
     private String phone;
 
     @ApiModelProperty(value ="角色（0-老板 1-店长 2-员工）")
-    private String role;
+    private Integer role;
 
     @ApiModelProperty(value ="店铺编号")
     private String shopId;
@@ -43,7 +43,7 @@ public class ShopUserVo {
     private Date updateTime;
 
     @ApiModelProperty(value ="状态（0-正常 1-暂停 2-注销）")
-    private String status;
+    private Integer status;
 
     @ApiModelProperty(value ="用户在微信端的唯一标识")
     private String openId;

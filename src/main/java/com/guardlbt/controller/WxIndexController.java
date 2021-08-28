@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api")
-@Api("小程序登陆及首页接口")
+@Api(value = "小程序登陆及首页接口",tags = "小程序登陆及首页接口")
 public class WxIndexController {
 
     @Autowired
@@ -34,13 +34,13 @@ public class WxIndexController {
 
     @ApiOperation(value = "小程序上传用户信息", notes = "小程序上传用户信息")
     @PostMapping("getUserInfo")
-    public Result getUserInfo(@RequestBody MemberSaveDto memberSaveDto) {
+    public Result getUserInfo(@RequestBody @Validated MemberSaveDto memberSaveDto) {
         return wxIndexService.getUserInfo(memberSaveDto);
     }
 
     @ApiOperation(value = "定位（确定商超位置）")
     @PostMapping("reportSite")
-    public Result reportSite(@RequestBody ReportSiteSaveDto reportSiteSaveDto) {
+    public Result reportSite(@RequestBody @Validated ReportSiteSaveDto reportSiteSaveDto) {
         return wxIndexService.reportSite(reportSiteSaveDto);
     }
 
@@ -81,7 +81,7 @@ public class WxIndexController {
     }
 
     @ApiOperation("无门槛领取代金券")
-    @GetMapping("useCoupon")
+    @PostMapping("useCoupon")
     public Result useCoupon(@RequestBody @Validated UseCouponDto useCouponDto){
         return wxIndexService.useCoupon(useCouponDto);
     }

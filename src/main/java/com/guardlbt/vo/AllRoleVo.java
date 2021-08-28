@@ -17,8 +17,8 @@ public class AllRoleVo {
     private Integer roleId;
     
     @ApiModelProperty("角色名称")
-    private String roleName;
+    private Integer roleName;
     
     @ApiModelProperty("角色描述")
-    private String roleDescribe;
+    private Integer roleDescribe;
 }

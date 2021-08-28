@@ -10,7 +10,7 @@ import java.util.Date;
        
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:55
+* 时间:2021-08-28 11:42:14
 */
 @ApiModel("代金券明细实体类")
 @Data
@@ -26,7 +26,7 @@ public class CouponStock {
     private String shopId;
 
     @ApiModelProperty(value ="状态（0-库存 1-已领取 2-已使用 3-过期 4-作废）")
-    private String status;
+    private Integer status;
 
     @ApiModelProperty(value ="会员ID（会员领取后绑定）")
     private String memberId;

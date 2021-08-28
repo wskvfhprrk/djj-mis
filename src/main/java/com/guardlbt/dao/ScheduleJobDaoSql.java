@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
 * 定时任务SQL语句
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:56
+* 时间:2021-08-28 11:42:19
 */
 public class ScheduleJobDaoSql {
 
@@ -26,8 +26,9 @@ public class ScheduleJobDaoSql {
                 WHERE("a.Params like CONCAT('%',#{params},'%')");
             }            if(scheduleJob!=null && StringUtils.isNotBlank(scheduleJob.getCronExpression())){
                 WHERE("a.Cron_expression like CONCAT('%',#{cronExpression},'%')");
-            }            if(scheduleJob!=null && StringUtils.isNotBlank(scheduleJob.getStatus())){
-                WHERE("a.Status like CONCAT('%',#{status},'%')");
+            }
+            if(scheduleJob!=null && scheduleJob.getStatus()!=null && scheduleJob.getStatus().toString().length()>0){
+                WHERE("a.Status = #{status}");
             }            if(scheduleJob!=null && StringUtils.isNotBlank(scheduleJob.getRemark())){
                 WHERE("a.Remark like CONCAT('%',#{remark},'%')");
             }
@@ -56,7 +57,8 @@ public class ScheduleJobDaoSql {
             if(StringUtils.isNotBlank(scheduleJob.getCronExpression())){
                 VALUES("cron_expression", "#{cronExpression}");
             }
-            if(StringUtils.isNotBlank(scheduleJob.getStatus())){
+
+            if(scheduleJob.getStatus()!=null && scheduleJob.getStatus().toString().length()>0){
                 VALUES("status", "#{status}");
             }
             if(StringUtils.isNotBlank(scheduleJob.getRemark())){
@@ -88,7 +90,8 @@ public class ScheduleJobDaoSql {
                 if(StringUtils.isNotBlank(scheduleJob.getCronExpression())){
                 SET("cron_expression = #{cronExpression}");
             }
-                if(StringUtils.isNotBlank(scheduleJob.getStatus())){
+
+                if(scheduleJob.getStatus()!=null && scheduleJob.getStatus().toString().length()>0){
                 SET("status = #{status}");
             }
                 if(StringUtils.isNotBlank(scheduleJob.getRemark())){
@@ -124,7 +127,8 @@ public class ScheduleJobDaoSql {
                 if(StringUtils.isNotBlank(scheduleJob.getCronExpression())){
                 WHERE("cron_expression = #{cronExpression}");
             }
-                if(StringUtils.isNotBlank(scheduleJob.getStatus())){
+
+                if(scheduleJob.getStatus()!=null && scheduleJob.getStatus().toString().length()>0){
                 WHERE("status = #{status}");
             }
                 if(StringUtils.isNotBlank(scheduleJob.getRemark())){

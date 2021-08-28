@@ -17,7 +17,7 @@ import javax.validation.*;
 
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:55
+* 时间:2021-08-28 11:42:14
 */
 @Api("代金券明细控制器")
 @RestController
@@ -53,7 +53,7 @@ public class CouponStockController {
     @DeleteMapping("/{couponNo}")
 	@ApiOperation("根据ID删除")
     public Result deleteAll(@PathVariable String couponNo){
-        return service.deleteAll(couponNo.toString().toString());
+        return service.deleteAll(couponNo.toString().toString().toString());
     }
 
     @GetMapping("/{couponNo}")

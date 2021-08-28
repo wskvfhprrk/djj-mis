@@ -20,12 +20,13 @@ import java.util.Date;<#break></#if></#list>
 public class  ${className?cap_first}PageDto {
 
     @NotNull(message = "pageNumber不能为空")
-    @ApiModelProperty("查询页码（默认值为1）")
+    @ApiModelProperty(value = "查询页码（默认值为1）",example = "1")
     private Integer pageNumber;
 
     @NotNull(message = "pageSize不能为空")
-    @ApiModelProperty("每页多少条（默认值为30）")
+    @ApiModelProperty(value = "每页多少条（默认值为30）",example = "1")
     private Integer pageSize;
+
 <#list data as d><#if d.id==false><#if d.type=="Timestamp" || d.type=='Date'>
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")</#if>
     @ApiModelProperty(value ="${d.commentName}"<#if d.type=='Timestamp'>,example = "2000-12-12 10:10:10"</#if>)

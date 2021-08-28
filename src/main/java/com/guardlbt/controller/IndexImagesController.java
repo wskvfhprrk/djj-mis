@@ -17,7 +17,7 @@ import javax.validation.*;
 
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:56
+* 时间:2021-08-28 11:42:16
 */
 @Api("轮播图控制器")
 @RestController
@@ -53,7 +53,7 @@ public class IndexImagesController {
     @DeleteMapping("/{id}")
 	@ApiOperation("根据ID删除")
     public Result deleteAll(@PathVariable Integer id){
-        return service.deleteAll(id.toString());
+        return service.deleteAll(id.toString().toString());
     }
 
     @GetMapping("/{id}")

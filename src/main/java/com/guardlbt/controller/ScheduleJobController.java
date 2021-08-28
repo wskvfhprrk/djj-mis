@@ -17,7 +17,7 @@ import javax.validation.*;
 
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:56
+* 时间:2021-08-28 11:42:19
 */
 @Api("定时任务控制器")
 @RestController
@@ -53,7 +53,7 @@ public class ScheduleJobController {
     @DeleteMapping("/{jobId}")
 	@ApiOperation("根据ID删除")
     public Result deleteAll(@PathVariable Long jobId){
-        return service.deleteAll(jobId.toString().toString());
+        return service.deleteAll(jobId.toString().toString().toString());
     }
 
     @GetMapping("/{jobId}")

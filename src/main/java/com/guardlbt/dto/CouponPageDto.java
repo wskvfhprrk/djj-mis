@@ -13,19 +13,20 @@ import java.util.Date;
 
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:55
+* 时间:2021-08-28 11:42:14
 */
 @ApiModel("代金券PageDto")
 @Data
 public class  CouponPageDto {
 
     @NotNull(message = "pageNumber不能为空")
-    @ApiModelProperty("查询页码（默认值为1）")
+    @ApiModelProperty(value = "查询页码（默认值为1）",example = "1")
     private Integer pageNumber;
 
     @NotNull(message = "pageSize不能为空")
-    @ApiModelProperty("每页多少条（默认值为30）")
+    @ApiModelProperty(value = "每页多少条（默认值为30）",example = "1")
     private Integer pageSize;
+
 
 
     @ApiModelProperty(value ="空间名称")
@@ -56,10 +57,10 @@ public class  CouponPageDto {
     private String instruction;
 
     @ApiModelProperty(value ="类型（0-公开 1-内部）")
-    private String type;
+    private Integer type;
 
     @ApiModelProperty(value ="状态（0-新建 1-已上架 2-已下架）")
-    private String status;
+    private Integer status;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty(value ="创建时间",example = "2000-12-12 10:10:10")
     private Date createTime;

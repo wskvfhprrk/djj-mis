@@ -11,7 +11,7 @@ import lombok.Data;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:56
+* 时间:2021-08-28 11:42:19
 */
 @ApiModel("定时任务日志实体类")
 @Data
@@ -34,8 +34,8 @@ public class ScheduleJobLogSaveDto {
     private String params;
 
     @ApiModelProperty(value ="任务状态    0：成功    1：失败",example = "")
-    @NotBlank(message = "任务状态    0：成功    1：失败不能为空值")
-    private String status;
+    @NotNull(message = "任务状态    0：成功    1：失败不能为空值")
+    private Integer status;
 
     @ApiModelProperty(value ="失败信息",example = "")
     @NotBlank(message = "失败信息不能为空值")

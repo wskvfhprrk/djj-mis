@@ -11,7 +11,7 @@ import lombok.Data;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:56
+* 时间:2021-08-28 11:42:19
 */
 @ApiModel("定时任务实体类")
 @Data
@@ -34,8 +34,8 @@ public class ScheduleJobSaveDto {
     private String cronExpression;
 
     @ApiModelProperty(value ="任务状态  0：正常  1：暂停",example = "")
-    @NotBlank(message = "任务状态  0：正常  1：暂停不能为空值")
-    private String status;
+    @NotNull(message = "任务状态  0：正常  1：暂停不能为空值")
+    private Integer status;
 
     @ApiModelProperty(value ="备注",example = "")
     @NotBlank(message = "备注不能为空值")

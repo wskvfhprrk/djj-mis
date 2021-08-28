@@ -83,9 +83,9 @@ public class RoleServiceImpl implements RoleService {
 
         RoleExample roleExample = new RoleExample();
         RoleExample.Criteria criteria = roleExample.createCriteria();
-        if (null != selectRolePageDto.getRoleName() && !"".equals(selectRolePageDto.getRoleName().trim())) {
-            criteria.andRoleNameLike(selectRolePageDto.getRoleName());
-        }
+//        if (null != selectRolePageDto.getRoleName() && !"".equals(selectRolePageDto.getRoleName().trim())) {
+//            criteria.andRoleNameLike(selectRolePageDto.getRoleName());
+//        }
         PageHelper.startPage(selectRolePageDto.getPageNumber(), selectRolePageDto.getPageSize());
         List<Role> roles = roleMapper.selectByExample(roleExample);
         PageInfo<Role> pageInfo = new PageInfo<>(roles, selectRolePageDto.getPageSize());

@@ -96,7 +96,7 @@ public class AutoCodeUtil {
         TIME("TIME", "java.sql.Time"),
         CHAR("CHAR", "java.lang.String"),
         VARCHAR("VARCHAR", "java.lang.String"),
-        TINYINT("TINYINT", "java.lang.String"),
+        TINYINT("TINYINT", "java.lang.Integer"),
         TEXT("TEXT", "java.lang.String"),
         MEDIUMTEXT("MEDIUMTEXT", "java.lang.String"),
         LONGTEXT("LONGTEXT", "java.lang.String"),

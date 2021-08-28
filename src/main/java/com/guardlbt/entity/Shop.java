@@ -10,7 +10,7 @@ import java.util.Date;
                    import java.sql.Time;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:55
+* 时间:2021-08-28 11:42:13
 */
 @ApiModel("商店实体类")
 @Data
@@ -68,7 +68,7 @@ public class Shop {
     private Date createTime;
 
     @ApiModelProperty(value ="状态（0-未审核 1-已发布 2-已下架）")
-    private String status;
+    private Integer status;
 
     @ApiModelProperty(value ="营业开始时间")
     private Time startTime;

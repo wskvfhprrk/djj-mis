@@ -78,10 +78,6 @@
                             message: '请输入状态（0-库存 1-已领取 2-已使用 3-过期 4-作废）',
                             trigger: 'blur'
                         }, 
-                        {
-                            pattern: /^[\u4E00-\u9FA5A-Za-z0-9_]+$/,
-                            message: '输入字符非法'
-                        }
                     ],                     memberId: [
                         {
                             required: false,

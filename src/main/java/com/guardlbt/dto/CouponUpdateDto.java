@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:55
+* 时间:2021-08-28 11:42:14
 */
 @ApiModel("代金券实体类")
 @Data
@@ -48,11 +48,11 @@ public class CouponUpdateDto {
     @ApiModelProperty(value ="使用须知") 
     @NotBlank(message = "使用须知不能为空值")     private String instruction;
 
-    @ApiModelProperty(value ="类型（0-公开 1-内部）") 
-    @NotBlank(message = "类型（0-公开 1-内部）不能为空值")     private String type;
+    @ApiModelProperty(value ="类型（0-公开 1-内部）") @NotNull(message = "类型（0-公开 1-内部）不能为空值")
+     private Integer type;
 
-    @ApiModelProperty(value ="状态（0-新建 1-已上架 2-已下架）") 
-    @NotBlank(message = "状态（0-新建 1-已上架 2-已下架）不能为空值")     private String status;
+    @ApiModelProperty(value ="状态（0-新建 1-已上架 2-已下架）") @NotNull(message = "状态（0-新建 1-已上架 2-已下架）不能为空值")
+     private Integer status;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty(value ="创建时间",example = "2000-12-12 10:10:10") @NotNull(message = "创建时间不能为空值")
      private Date createTime;

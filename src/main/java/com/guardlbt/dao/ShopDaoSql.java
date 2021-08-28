@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
 * 商店SQL语句
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:55
+* 时间:2021-08-28 11:42:13
 */
 public class ShopDaoSql {
 
@@ -52,8 +52,9 @@ public class ShopDaoSql {
             }
             if(shop!=null && shop.getCreateTime()!=null && shop.getCreateTime().toString().length()>0){
                 WHERE("a.Create_time = #{createTime}");
-            }            if(shop!=null && StringUtils.isNotBlank(shop.getStatus())){
-                WHERE("a.Status like CONCAT('%',#{status},'%')");
+            }
+            if(shop!=null && shop.getStatus()!=null && shop.getStatus().toString().length()>0){
+                WHERE("a.Status = #{status}");
             }
             if(shop!=null && shop.getStartTime()!=null && shop.getStartTime().toString().length()>0){
                 WHERE("a.Start_time = #{startTime}");
@@ -121,7 +122,8 @@ public class ShopDaoSql {
             if(shop.getCreateTime()!=null && shop.getCreateTime().toString().length()>0){
                 VALUES("create_time", "#{createTime}");
             }
-            if(StringUtils.isNotBlank(shop.getStatus())){
+
+            if(shop.getStatus()!=null && shop.getStatus().toString().length()>0){
                 VALUES("status", "#{status}");
             }
 
@@ -192,7 +194,8 @@ public class ShopDaoSql {
                 if(shop.getCreateTime()!=null && shop.getCreateTime().toString().length()>0){
                 SET("create_time = #{createTime}");
             }
-                if(StringUtils.isNotBlank(shop.getStatus())){
+
+                if(shop.getStatus()!=null && shop.getStatus().toString().length()>0){
                 SET("status = #{status}");
             }
 
@@ -266,7 +269,8 @@ public class ShopDaoSql {
                 if(shop.getCreateTime()!=null && shop.getCreateTime().toString().length()>0){
                 WHERE("create_time = #{createTime}");
             }
-                if(StringUtils.isNotBlank(shop.getStatus())){
+
+                if(shop.getStatus()!=null && shop.getStatus().toString().length()>0){
                 WHERE("status = #{status}");
             }
 

@@ -1,11 +1,14 @@
 package com.guardlbt.entity;
 
+import lombok.Data;
+
+@Data
 public class Role {
     private Integer roleId;
 
-    private String roleName;
+    private Integer roleName;
 
-    private String roleDescribe;
+    private Integer roleDescribe;
 
     public Integer getRoleId() {
         return roleId;
@@ -15,19 +18,5 @@ public class Role {
         this.roleId = roleId;
     }
 
-    public String getRoleName() {
-        return roleName;
-    }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName == null ? null : roleName.trim();
-    }
-
-    public String getRoleDescribe() {
-        return roleDescribe;
-    }
-
-    public void setRoleDescribe(String roleDescribe) {
-        this.roleDescribe = roleDescribe == null ? null : roleDescribe.trim();
-    }
 }

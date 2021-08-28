@@ -11,7 +11,7 @@ import lombok.Data;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:55
+* 时间:2021-08-28 11:42:13
 */
 @ApiModel("商店实体类")
 @Data
@@ -84,8 +84,8 @@ public class ShopSaveDto {
     private Date createTime;
 
     @ApiModelProperty(value ="状态（0-未审核 1-已发布 2-已下架）",example = "")
-    @NotBlank(message = "状态（0-未审核 1-已发布 2-已下架）不能为空值")
-    private String status;
+    @NotNull(message = "状态（0-未审核 1-已发布 2-已下架）不能为空值")
+    private Integer status;
 
     @ApiModelProperty(value ="营业开始时间",example = "")
     @NotNull(message = "营业开始时间不能为空值")

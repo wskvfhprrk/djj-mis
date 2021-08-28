@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
 * 商店部门管理SQL语句
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:55
+* 时间:2021-08-28 11:42:14
 */
 public class SysDeptDaoSql {
 
@@ -26,8 +26,9 @@ public class SysDeptDaoSql {
             }
             if(sysDept!=null && sysDept.getOrderNum()!=null && sysDept.getOrderNum().toString().length()>0){
                 WHERE("a.Order_num = #{orderNum}");
-            }            if(sysDept!=null && StringUtils.isNotBlank(sysDept.getDelFlag())){
-                WHERE("a.Del_flag like CONCAT('%',#{delFlag},'%')");
+            }
+            if(sysDept!=null && sysDept.getDelFlag()!=null && sysDept.getDelFlag().toString().length()>0){
+                WHERE("a.Del_flag = #{delFlag}");
             }
         }}.toString();
     }
@@ -50,7 +51,8 @@ public class SysDeptDaoSql {
             if(sysDept.getOrderNum()!=null && sysDept.getOrderNum().toString().length()>0){
                 VALUES("order_num", "#{orderNum}");
             }
-            if(StringUtils.isNotBlank(sysDept.getDelFlag())){
+
+            if(sysDept.getDelFlag()!=null && sysDept.getDelFlag().toString().length()>0){
                 VALUES("del_flag", "#{delFlag}");
             }
     }}.toString();
@@ -74,7 +76,8 @@ public class SysDeptDaoSql {
                 if(sysDept.getOrderNum()!=null && sysDept.getOrderNum().toString().length()>0){
                 SET("order_num = #{orderNum}");
             }
-                if(StringUtils.isNotBlank(sysDept.getDelFlag())){
+
+                if(sysDept.getDelFlag()!=null && sysDept.getDelFlag().toString().length()>0){
                 SET("del_flag = #{delFlag}");
             }
 
@@ -102,7 +105,8 @@ public class SysDeptDaoSql {
                 if(sysDept.getOrderNum()!=null && sysDept.getOrderNum().toString().length()>0){
                 WHERE("order_num = #{orderNum}");
             }
-                if(StringUtils.isNotBlank(sysDept.getDelFlag())){
+
+                if(sysDept.getDelFlag()!=null && sysDept.getDelFlag().toString().length()>0){
                 WHERE("del_flag = #{delFlag}");
             }
         }}.toString();

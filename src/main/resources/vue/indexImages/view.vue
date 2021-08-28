@@ -54,10 +54,6 @@
                             message: '请输入类型（0-店铺 1-代金券 2-网址 ）',
                             trigger: 'blur'
                         }, 
-                        {
-                            pattern: /^[\u4E00-\u9FA5A-Za-z0-9_]+$/,
-                            message: '输入字符非法'
-                        }
                     ],                     address: [
                         {
                             required: false,

@@ -300,10 +300,6 @@
                             message: '请输入状态（0-未审核 1-已发布 2-已下架）',
                             trigger: 'blur'
                         }, 
-                        {
-                            pattern: /^[\u4E00-\u9FA5A-Za-z0-9_]+$/,
-                            message: '输入字符非法'
-                        }
                     ],                     startTime: [
                         {
                             required: true,

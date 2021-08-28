@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 /**
 * 代金券明细SQL语句
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:55
+* 时间:2021-08-28 11:42:14
 */
 public class CouponStockDaoSql {
 
@@ -21,8 +21,9 @@ public class CouponStockDaoSql {
                 WHERE("a.Coupon_id like CONCAT('%',#{couponId},'%')");
             }            if(couponStock!=null && StringUtils.isNotBlank(couponStock.getShopId())){
                 WHERE("a.Shop_id like CONCAT('%',#{shopId},'%')");
-            }            if(couponStock!=null && StringUtils.isNotBlank(couponStock.getStatus())){
-                WHERE("a.Status like CONCAT('%',#{status},'%')");
+            }
+            if(couponStock!=null && couponStock.getStatus()!=null && couponStock.getStatus().toString().length()>0){
+                WHERE("a.Status = #{status}");
             }            if(couponStock!=null && StringUtils.isNotBlank(couponStock.getMemberId())){
                 WHERE("a.Member_id like CONCAT('%',#{memberId},'%')");
             }
@@ -47,7 +48,8 @@ public class CouponStockDaoSql {
             if(StringUtils.isNotBlank(couponStock.getShopId())){
                 VALUES("shop_id", "#{shopId}");
             }
-            if(StringUtils.isNotBlank(couponStock.getStatus())){
+
+            if(couponStock.getStatus()!=null && couponStock.getStatus().toString().length()>0){
                 VALUES("status", "#{status}");
             }
             if(StringUtils.isNotBlank(couponStock.getMemberId())){
@@ -76,7 +78,8 @@ public class CouponStockDaoSql {
                 if(StringUtils.isNotBlank(couponStock.getShopId())){
                 SET("shop_id = #{shopId}");
             }
-                if(StringUtils.isNotBlank(couponStock.getStatus())){
+
+                if(couponStock.getStatus()!=null && couponStock.getStatus().toString().length()>0){
                 SET("status = #{status}");
             }
                 if(StringUtils.isNotBlank(couponStock.getMemberId())){
@@ -108,7 +111,8 @@ public class CouponStockDaoSql {
                 if(StringUtils.isNotBlank(couponStock.getShopId())){
                 WHERE("shop_id = #{shopId}");
             }
-                if(StringUtils.isNotBlank(couponStock.getStatus())){
+
+                if(couponStock.getStatus()!=null && couponStock.getStatus().toString().length()>0){
                 WHERE("status = #{status}");
             }
                 if(StringUtils.isNotBlank(couponStock.getMemberId())){

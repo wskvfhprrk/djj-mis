@@ -11,7 +11,7 @@ import lombok.Data;
 import java.util.Date;
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:55
+* 时间:2021-08-28 11:42:14
 */
 @ApiModel("代金券明细实体类")
 @Data
@@ -26,8 +26,8 @@ public class CouponStockUpdateDto {
     @ApiModelProperty(value ="店铺（最后在哪个店铺发出）") 
     @NotBlank(message = "店铺（最后在哪个店铺发出）不能为空值")     private String shopId;
 
-    @ApiModelProperty(value ="状态（0-库存 1-已领取 2-已使用 3-过期 4-作废）") 
-    @NotBlank(message = "状态（0-库存 1-已领取 2-已使用 3-过期 4-作废）不能为空值")     private String status;
+    @ApiModelProperty(value ="状态（0-库存 1-已领取 2-已使用 3-过期 4-作废）") @NotNull(message = "状态（0-库存 1-已领取 2-已使用 3-过期 4-作废）不能为空值")
+     private Integer status;
 
     @ApiModelProperty(value ="会员ID（会员领取后绑定）") 
     @NotBlank(message = "会员ID（会员领取后绑定）不能为空值")     private String memberId;

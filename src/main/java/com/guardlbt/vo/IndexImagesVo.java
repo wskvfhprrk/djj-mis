@@ -8,7 +8,7 @@ import lombok.Data;
     
 /**
 * Created by 代码自动生成.
-* 时间:2021-08-27 13:42:55
+* 时间:2021-08-28 11:42:16
 */
 @ApiModel("轮播图实体类")
 @Data
@@ -21,7 +21,7 @@ public class IndexImagesVo {
     private String imageUrl;
 
     @ApiModelProperty(value ="类型（0-店铺 1-代金券 2-网址 ）")
-    private String type;
+    private Integer type;
 
     @ApiModelProperty(value ="链接地址")
     private String address;

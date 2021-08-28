@@ -168,20 +168,12 @@
                             message: '请输入类型（0-公开 1-内部）',
                             trigger: 'blur'
                         }, 
-                        {
-                            pattern: /^[\u4E00-\u9FA5A-Za-z0-9_]+$/,
-                            message: '输入字符非法'
-                        }
                     ],                     status: [
                         {
                             required: true,
                             message: '请输入状态（0-新建 1-已上架 2-已下架）',
                             trigger: 'blur'
                         }, 
-                        {
-                            pattern: /^[\u4E00-\u9FA5A-Za-z0-9_]+$/,
-                            message: '输入字符非法'
-                        }
                     ],                     createTime: [
                         {
                             required: true,

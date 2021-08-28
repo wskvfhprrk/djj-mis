@@ -13,7 +13,7 @@ import lombok.Data;
 @Data
 public class SelectRolePageDto {
     @ApiModelProperty("角色名称（模糊）")
-    private String roleName;
+    private Integer roleName;
     @NotNull(message = "pageNumber不能为空")
     @ApiModelProperty("查询页码")
     private Integer pageNumber;
