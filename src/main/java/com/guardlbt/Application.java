@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class Application {
 
     public static void main(String[] args) {
-        log.info("当前版本为：hbhmisserver-0.0.1-SNAPSHOT");
+        log.info("当前版本为：djjmisserver-0.0.1-SNAPSHOT");
         log.info("版本日期：2021-8-1");
         SpringApplication.run(Application.class, args);
     }

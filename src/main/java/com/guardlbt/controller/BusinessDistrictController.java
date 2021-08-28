@@ -29,7 +29,7 @@ public class BusinessDistrictController {
 
     @GetMapping
 	@ApiOperation("分页条件查询商圈")
-    public Result getPage(@Validated BusinessDistrictPageDto dto){
+    public Result getPage(@Validated @RequestBody BusinessDistrictPageDto dto){
         return service.findPageBusinessDistrict(dto);
     }
 
