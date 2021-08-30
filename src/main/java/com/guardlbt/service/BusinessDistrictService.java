@@ -3,8 +3,7 @@ package com.guardlbt.service;
 import com.guardlbt.entity.BusinessDistrict;
 import com.guardlbt.dto.*;
 import com.guardlbt.common.util.*;
-
-import java.util.*;
+import com.guardlbt.entity.MemberOperationHistory;
 
 /**
 * 商圈方法类接口
@@ -44,7 +43,7 @@ public interface BusinessDistrictService {
     * @param dto 条件参数
     * @return 结果集
     */
-    Result insert(BusinessDistrictSaveDto dto);
+    Result insert(MemberOperationHistory dto);
     /**
     * 修改商圈
     * @param dto 条件参数

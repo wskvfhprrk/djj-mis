@@ -14,7 +14,7 @@ public interface WxMyService {
 
     Result<UserInfoVo> userInfo(String openid);
 
-    Result saveUserInfo(SaveUserInfoDto dto);
+    Result updateUserInfo(SaveUserInfoDto dto);
 
     Result applyShop(ApplyShopDto dto);
 

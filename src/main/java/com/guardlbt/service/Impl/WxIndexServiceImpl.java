@@ -3,14 +3,11 @@ package com.guardlbt.service.Impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.guardlbt.common.util.Result;
 import com.guardlbt.dao.*;
-import com.guardlbt.dto.MemberSaveDto;
 import com.guardlbt.dto.ReportSiteSaveDto;
 import com.guardlbt.dto.UseCouponDto;
 import com.guardlbt.entity.*;
-import com.guardlbt.eum.OperationType;
 import com.guardlbt.https.HttpsUtil;
 import com.guardlbt.service.WxIndexService;
-import com.guardlbt.util.UuidUtild;
 import com.guardlbt.vo.*;
 import com.guardlbt.wx.WxConfigurationProperties;
 import com.guardlbt.wx.vo.Code2SessionVo;
@@ -19,10 +16,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -95,36 +90,36 @@ public class WxIndexServiceImpl implements WxIndexService {
         return vo;
     }
 
-    @Override
-    @Transactional
-    public Result getUserInfo(MemberSaveDto memberSaveDto) {
-        //要判断一下是身份，如果不是管理员就写入会员数据库，如果已经写入数据库的不要再记录了
-        ShopUser shopUser = new ShopUser();
-        shopUser.setOpenId(memberSaveDto.getOpenId());
-        List<ShopUser> shopUsers = shopUserDao.selectShopUsers(shopUser);
-        Member member = new Member();
-        member.setOpenId(memberSaveDto.getOpenId());
-        List<Member> members = memberDao.selectMembers(member);
-        if (shopUsers.isEmpty() && members.isEmpty()) {
-            Member member1 = new Member();
-            BeanUtils.copyProperties(memberSaveDto, member1);
-            member1.setRegisterTime(new Date());
-            member1.setMemberId(UuidUtild.getUUID());
-            memberDao.insert(member1);
-        }
-        // 记录会员操作记录表
-        if (!members.isEmpty()) {
-            MemberOperationHistory m = new MemberOperationHistory();
-            m.setMemberId(memberSaveDto.getOpenId());
-            m.setCreateTime(new Date());
-            m.setDetail(OperationType.LOGIN.getInfo());
-            m.setRelationInfo(OperationType.LOGIN.getInfo());
-            m.setOperationId(String.valueOf(OperationType.LOGIN.getState()));
-            memberOperationHistoryDao.insert(m);
-        }
-        //如果是店员记录不用记录
-        return Result.ok();
-    }
+//    @Override
+//    @Transactional
+//    public Result getUserInfo(MemberSaveDto memberSaveDto) {
+//        //要判断一下是身份，如果不是管理员就写入会员数据库，如果已经写入数据库的不要再记录了
+//        ShopUser shopUser = new ShopUser();
+//        shopUser.setOpenId(memberSaveDto.getOpenId());
+//        List<ShopUser> shopUsers = shopUserDao.selectShopUsers(shopUser);
+//        Member member = new Member();
+//        member.setOpenId(memberSaveDto.getOpenId());
+//        List<Member> members = memberDao.selectMembers(member);
+//        if (shopUsers.isEmpty() && members.isEmpty()) {
+//            Member member1 = new Member();
+//            BeanUtils.copyProperties(memberSaveDto, member1);
+//            member1.setRegisterTime(new Date());
+//            member1.setMemberId(UuidUtild.getUUID());
+//            memberDao.insert(member1);
+//        }
+//        // 记录会员操作记录表
+//        if (!members.isEmpty()) {
+//            MemberOperationHistory m = new MemberOperationHistory();
+//            m.setMemberId(memberSaveDto.getOpenId());
+//            m.setCreateTime(new Date());
+//            m.setDetail(OperationType.LOGIN.getInfo());
+//            m.setRelationInfo(OperationType.LOGIN.getInfo());
+//            m.setOperationId(String.valueOf(OperationType.LOGIN.getState()));
+//            memberOperationHistoryDao.insert(m);
+//        }
+//        //如果是店员记录不用记录
+//        return Result.ok();
+//    }
 
     @Override
     public Result reportSite(ReportSiteSaveDto reportSiteSaveDto) {

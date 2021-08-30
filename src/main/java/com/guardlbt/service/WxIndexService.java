@@ -30,7 +30,7 @@ public interface WxIndexService {
      */
     GetAccessTokenVo getAccessToken() throws  Exception;
 
-    Result getUserInfo(MemberSaveDto memberSaveDto);
+//    Result getUserInfo(MemberSaveDto memberSaveDto);
 
     Result reportSite(ReportSiteSaveDto reportSiteSaveDto);
 

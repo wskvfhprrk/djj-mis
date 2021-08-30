@@ -34,8 +34,8 @@ public class OperationTypeServiceImpl implements OperationTypeService {
     public Result findPageOperationType(OperationTypePageDto dto) {
         PageResult pageResult=new PageResult();
         PageHelper.startPage(dto.getPageNumber(),dto.getPageSize());
-        OperationType operationType=new OperationType();
-        BeanUtils.copyProperties(dto,operationType);
+        OperationType operationType =new OperationType();
+        BeanUtils.copyProperties(dto, operationType);
         List<OperationType> list = dao.selectOperationTypes(operationType);
         PageInfo<OperationType> info=new PageInfo<>(list);
         pageResult.setTotle(info.getTotal());
@@ -80,8 +80,8 @@ public class OperationTypeServiceImpl implements OperationTypeService {
 
     @Override
     public Result insert(OperationTypeSaveDto dto) {
-        OperationType operationType=new OperationType();
-        BeanUtils.copyProperties(dto,operationType);
+        OperationType operationType =new OperationType();
+        BeanUtils.copyProperties(dto, operationType);
         operationType.setOperationId(UuidUtild.getUUID());
         try{
             dao.insert(operationType);
@@ -94,8 +94,8 @@ public class OperationTypeServiceImpl implements OperationTypeService {
 
     @Override
     public Result update(OperationTypeUpdateDto dto) {
-        OperationType operationType=new OperationType();
-        BeanUtils.copyProperties(dto,operationType);
+        OperationType operationType =new OperationType();
+        BeanUtils.copyProperties(dto, operationType);
         try{
             dao.update(operationType);
             return Result.ok();
@@ -134,7 +134,7 @@ public class OperationTypeServiceImpl implements OperationTypeService {
 
     @Override
     public Result getById(String operationId) {
-        OperationType operationType=new OperationType();
+        OperationType operationType =new OperationType();
         operationType.setOperationId(operationId);
         List<OperationType> operationTypes = dao.selectOperationTypes(operationType);
         if(operationTypes.isEmpty()){

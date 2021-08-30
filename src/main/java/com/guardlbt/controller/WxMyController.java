@@ -34,15 +34,15 @@ public class WxMyController {
         return wxMyService.userInfo(openid);
     }
 
-    @ApiOperation("修改基本信息")
+    @ApiOperation("保存和修改基本信息")
     @PostMapping("userInfo")
-    public Result saveUserInfo( @RequestBody @Validated SaveUserInfoDto dto) {
-        return wxMyService.saveUserInfo(dto);
+    public Result updateUserInfo(@RequestBody @Validated SaveUserInfoDto dto) {
+        return wxMyService.updateUserInfo(dto);
     }
 
     @ApiOperation("申请店铺")
     @PostMapping("applyShop")
-    public Result applyShop(ApplyShopDto dto){
+    public Result applyShop(@RequestBody @Validated ApplyShopDto dto){
         return wxMyService.applyShop(dto);
     }
 

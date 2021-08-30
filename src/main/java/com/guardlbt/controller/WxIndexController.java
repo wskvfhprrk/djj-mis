@@ -32,11 +32,11 @@ public class WxIndexController {
         return wxIndexService.login(code);
     }
 
-    @ApiOperation(value = "小程序上传用户信息", notes = "小程序上传用户信息")
-    @PostMapping("getUserInfo")
-    public Result getUserInfo(@RequestBody @Validated MemberSaveDto memberSaveDto) {
-        return wxIndexService.getUserInfo(memberSaveDto);
-    }
+//    @ApiOperation(value = "小程序上传用户信息", notes = "小程序上传用户信息")
+//    @PostMapping("getUserInfo")
+//    public Result getUserInfo(@RequestBody @Validated MemberSaveDto memberSaveDto) {
+//        return wxIndexService.getUserInfo(memberSaveDto);
+//    }
 
     @ApiOperation(value = "定位（确定商超位置）")
     @PostMapping("reportSite")

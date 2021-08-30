@@ -15,9 +15,9 @@ public class OperationTypeDaoSql {
         return new SQL(){{
             SELECT("a.operation_id ,a.name");
             FROM("operation_type a");
-            if(operationType!=null && StringUtils.isNotBlank(operationType.getOperationId())){
+            if(operationType !=null && StringUtils.isNotBlank(operationType.getOperationId())){
                 WHERE("a.Operation_id like CONCAT('%',#{operationId},'%')");
-            }            if(operationType!=null && StringUtils.isNotBlank(operationType.getName())){
+            }            if(operationType !=null && StringUtils.isNotBlank(operationType.getName())){
                 WHERE("a.Name like CONCAT('%',#{name},'%')");
             }
         }}.toString();

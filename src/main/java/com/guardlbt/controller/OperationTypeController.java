@@ -4,16 +4,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 import com.guardlbt.common.util.*;
-import com.guardlbt.entity.OperationType;
 import com.guardlbt.service.OperationTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.annotation.Validated;
-import javax.validation.constraints.*;
 import com.guardlbt.dto.*;
-
-import java.util.*;
-import javax.validation.*;
 
 /**
 * Created by 代码自动生成.

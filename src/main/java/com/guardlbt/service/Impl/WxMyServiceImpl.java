@@ -4,20 +4,16 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.guardlbt.common.util.PageResult;
 import com.guardlbt.common.util.Result;
-import com.guardlbt.dao.BusinessDistrictDao;
-import com.guardlbt.dao.MemberDao;
-import com.guardlbt.dao.ShopDao;
-import com.guardlbt.dao.ShopUserDao;
+import com.guardlbt.dao.*;
 import com.guardlbt.dto.ApplyShopDto;
 import com.guardlbt.dto.BusinessDistrictPageDto;
 import com.guardlbt.dto.SaveUserInfoDto;
-import com.guardlbt.entity.BusinessDistrict;
-import com.guardlbt.entity.Member;
-import com.guardlbt.entity.Shop;
-import com.guardlbt.entity.ShopUser;
+import com.guardlbt.entity.*;
+import com.guardlbt.eum.OperationTypeEnum;
 import com.guardlbt.eum.Role;
 import com.guardlbt.eum.ShopStatusEnum;
 import com.guardlbt.service.WxMyService;
+import com.guardlbt.util.UuidUtild;
 import com.guardlbt.vo.BusinessDistrictPageVo;
 import com.guardlbt.vo.ShopsVo;
 import com.guardlbt.vo.UserInfoVo;
@@ -40,6 +36,8 @@ public class WxMyServiceImpl implements WxMyService {
     private ShopDao shopDao;
     @Autowired
     private BusinessDistrictDao businessDistrictDao;
+    @Autowired
+    private MemberOperationHistoryDao memberOperationHistoryDao;
 
     @Override
     public Result<Role> getRole(String openid) {
@@ -73,11 +71,49 @@ public class WxMyServiceImpl implements WxMyService {
 
     @Override
     @Transactional
-    public Result saveUserInfo(SaveUserInfoDto dto) {
+    public Result updateUserInfo(SaveUserInfoDto dto) {
+        //要判断一下是身份，如果不是管理员就写入会员数据库，如果已经写入数据库的不要再记录了
+//        ShopUser shopUser = new ShopUser();
+//        shopUser.setOpenId(memberSaveDto.getOpenId());
+//        List<ShopUser> shopUsers = shopUserDao.selectShopUsers(shopUser);
+//        Member member = new Member();
+//        member.setOpenId(memberSaveDto.getOpenId());
+//        List<Member> members = memberDao.selectMembers(member);
+//        if (shopUsers.isEmpty() && members.isEmpty()) {
+//            Member member1 = new Member();
+//            BeanUtils.copyProperties(memberSaveDto, member1);
+//            member1.setRegisterTime(new Date());
+//            member1.setMemberId(UuidUtild.getUUID());
+//            memberDao.insert(member1);
+//        }
+//        // 记录会员操作记录表
+//        if (!members.isEmpty()) {
+//            MemberOperationHistory m = new MemberOperationHistory();
+//            m.setMemberId(memberSaveDto.getOpenId());
+//            m.setCreateTime(new Date());
+//            m.setDetail(OperationType.LOGIN.getInfo());
+//            m.setRelationInfo(OperationType.LOGIN.getInfo());
+//            m.setOperationId(String.valueOf(OperationType.LOGIN.getState()));
+//            memberOperationHistoryDao.insert(m);
+//        }
+//        //如果是店员记录不用记录
+//        return Result.ok();
         //修改会员信息，如果是shopuser也要修改里面的信息
         Member member = new Member();
+        member.setOpenId(dto.getOpenId());
+        List<Member> members = memberDao.selectMembers(member);
         BeanUtils.copyProperties(dto, member);
+        if(members.isEmpty()){
+            member.setRegisterTime(new Date());
+            member.setMemberId(UuidUtild.getUUID());
+            memberDao.insert(member);
+            //会员操作记录
+            memberRecod(member,OperationTypeEnum.LOGIN);
+        }
+        member.setMemberId(members.get(0).getMemberId());
         memberDao.update(member);
+        //会员操作记录
+        memberRecod(member,OperationTypeEnum.UPDATE);
         ShopUser shopUser = new ShopUser();
         shopUser.setOpenId(dto.getOpenId());
         List<ShopUser> shopUsers = shopUserDao.selectShopUsers(shopUser);
@@ -88,6 +124,16 @@ public class WxMyServiceImpl implements WxMyService {
             shopUserDao.update(shopUser);
         }
         return Result.ok();
+    }
+
+    private void memberRecod(Member member, OperationTypeEnum operationTypeEnum) {
+        MemberOperationHistory m = new MemberOperationHistory();
+            m.setMemberId(member.getOpenId());
+            m.setCreateTime(new Date());
+            m.setDetail(operationTypeEnum.getInfo());
+            m.setRelationInfo(operationTypeEnum.getInfo());
+            m.setOperationId(String.valueOf(operationTypeEnum.getState()));
+            memberOperationHistoryDao.insert(m);
     }
 
     @Override

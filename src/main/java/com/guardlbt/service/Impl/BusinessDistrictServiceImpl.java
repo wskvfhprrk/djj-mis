@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.guardlbt.dao.BusinessDistrictDao;
 import com.guardlbt.entity.BusinessDistrict;
+import com.guardlbt.entity.MemberOperationHistory;
 import com.guardlbt.service.BusinessDistrictService;
 import com.guardlbt.util.*;
 import com.guardlbt.common.util.*;
@@ -79,7 +80,7 @@ public class BusinessDistrictServiceImpl implements BusinessDistrictService {
     }
 
     @Override
-    public Result insert(BusinessDistrictSaveDto dto) {
+    public Result insert(MemberOperationHistory dto) {
         BusinessDistrict businessDistrict=new BusinessDistrict();
         BeanUtils.copyProperties(dto,businessDistrict);
         businessDistrict.setBusinessDistrictId(UuidUtild.getUUID());

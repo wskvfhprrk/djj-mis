@@ -38,11 +38,11 @@ public class BusinessDistrictController {
     public Result getAll(){
         return service.getAll();
     }
-    @PostMapping
-	@ApiOperation("添加商圈")
-    public Result add(@Validated @RequestBody BusinessDistrictSaveDto dto){
-        return service.insert(dto);
-    }
+//    @PostMapping
+//	@ApiOperation("添加商圈")
+//    public Result add(@Validated @RequestBody BusinessDistrictSaveDto dto){
+//        return service.insert(dto);
+//    }
 
     @PutMapping
 	@ApiOperation("修改商圈")

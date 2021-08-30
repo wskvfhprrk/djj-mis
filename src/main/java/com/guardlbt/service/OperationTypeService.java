@@ -4,8 +4,6 @@ import com.guardlbt.entity.OperationType;
 import com.guardlbt.dto.*;
 import com.guardlbt.common.util.*;
 
-import java.util.*;
-
 /**
 * 操作类型方法类接口
 * Created by 代码自动生成.
