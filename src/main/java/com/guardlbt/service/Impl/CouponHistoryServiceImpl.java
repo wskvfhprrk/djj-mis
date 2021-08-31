@@ -135,7 +135,6 @@ public class CouponHistoryServiceImpl implements CouponHistoryService {
     @Override
     public Result getById(Long id) {
         CouponHistory couponHistory=new CouponHistory();
-        couponHistory.setId(id);
         List<CouponHistory> couponHistorys = dao.selectCouponHistorys(couponHistory);
         if(couponHistorys.isEmpty()){
             return Result.ok();

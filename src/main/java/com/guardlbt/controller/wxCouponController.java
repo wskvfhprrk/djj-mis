@@ -3,6 +3,7 @@ package com.guardlbt.controller;
 import com.guardlbt.common.util.PageResult;
 import com.guardlbt.common.util.Result;
 import com.guardlbt.dto.CouponPageDto;
+import com.guardlbt.dto.ShareCouponDto;
 import com.guardlbt.service.WxCouponService;
 import com.guardlbt.vo.CouponHistoryPageVo;
 import com.guardlbt.vo.CouponPageVo;
@@ -32,5 +33,11 @@ public class wxCouponController {
     @GetMapping("getCouponHistory/{couponId}")
     public Result<List<CouponHistoryPageVo>> getCouponHistory(@PathVariable String couponId){
         return wxCouponService.getCouponHistory(couponId);
+    }
+
+    @ApiOperation("分享转让代金券")
+    @PostMapping("shareCoupon")
+    public Result shareCoupon(ShareCouponDto dto){
+        return wxCouponService.shareCoupon(dto);
     }
 }

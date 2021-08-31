@@ -16,8 +16,6 @@ import java.util.Date;
 @Data
 public class CouponHistory {
 
-    @ApiModelProperty(value ="编号（每张代金券唯一编号）")
-    private Long id;
 
     @ApiModelProperty(value ="编号（每张代金券唯一编号）")
     private String couponNo;
