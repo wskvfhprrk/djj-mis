@@ -135,7 +135,6 @@ public class MemberOperationHistoryServiceImpl implements MemberOperationHistory
     @Override
     public Result getById(Long id) {
         MemberOperationHistory memberOperationHistory=new MemberOperationHistory();
-        memberOperationHistory.setId(id);
         List<MemberOperationHistory> memberOperationHistorys = dao.selectMemberOperationHistorys(memberOperationHistory);
         if(memberOperationHistorys.isEmpty()){
             return Result.ok();

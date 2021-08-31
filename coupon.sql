@@ -54,7 +54,7 @@ COMMIT;
 DROP TABLE IF EXISTS `coupon`;
 CREATE TABLE `coupon` (
   `coupon_id` varchar(32) NOT NULL COMMENT '编号',
-  `name` varchar(255) NOT NULL COMMENT '空间名称',
+  `name` varchar(255) NOT NULL COMMENT '商圈名称',
   `shop_id` varchar(32) NOT NULL COMMENT '所属店铺',
   `images` varchar(1000) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL COMMENT '图片',
   `price` decimal(10,2) NOT NULL COMMENT '面值，单价（元）',

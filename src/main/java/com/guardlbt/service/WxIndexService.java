@@ -2,12 +2,9 @@ package com.guardlbt.service;
 
 
 import com.guardlbt.common.util.Result;
-import com.guardlbt.dto.MemberSaveDto;
 import com.guardlbt.dto.ReportSiteSaveDto;
 import com.guardlbt.dto.UseCouponDto;
-import com.guardlbt.entity.Shop;
 import com.guardlbt.vo.*;
-import com.guardlbt.wx.dto.GetUserInfoDto;
 import com.guardlbt.wx.vo.GetAccessTokenVo;
 
 /**
@@ -38,7 +35,7 @@ public interface WxIndexService {
 
     Result<ShopPageVo> indexShop();
 
-    Result<CouponPageVo> indexCoupon();
+    Result<CouponPageVo> indexCoupon(String openid);
 
     Result<ShopVo> shopInfo(String shopId);
 

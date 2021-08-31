@@ -1,5 +1,6 @@
 package com.guardlbt.dao;
 
+import com.guardlbt.entity.CouponHistory;
 import com.guardlbt.entity.CouponStock;
 import org.apache.ibatis.annotations.*;
 

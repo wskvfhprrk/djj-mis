@@ -20,7 +20,7 @@ public class Coupon {
     @ApiModelProperty(value ="编号")
     private String couponId;
 
-    @ApiModelProperty(value ="空间名称")
+    @ApiModelProperty(value ="商圈名称")
     private String name;
 
     @ApiModelProperty(value ="所属店铺")

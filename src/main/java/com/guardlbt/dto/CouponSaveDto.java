@@ -18,8 +18,8 @@ import java.util.Date;
 @Data
 public class CouponSaveDto {
 
-    @ApiModelProperty(value ="空间名称",example = "")
-    @NotBlank(message = "空间名称不能为空值")
+    @ApiModelProperty(value ="商圈名称",example = "")
+    @NotBlank(message = "商圈名称不能为空值")
     private String name;
 
     @ApiModelProperty(value ="所属店铺",example = "")

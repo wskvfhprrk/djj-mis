@@ -3,7 +3,9 @@ package com.guardlbt.eum;
 public enum OperationTypeEnum {
     LOGIN(0,"登录"),
     UPDATE(1,"更新"),
-    SHARE(2,"分享");
+    SHARE(2,"分享"),
+    IMAGERECEIVE(3,"首页无门槛领取"),
+    ;
 
 
     private int state;

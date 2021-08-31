@@ -30,9 +30,11 @@ public class CouponStock {
 
     @ApiModelProperty(value ="会员ID（会员领取后绑定）")
     private String memberId;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty(value ="创建时间")
     private Date createTime;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty(value ="修改时间")
     private Date updateTime;

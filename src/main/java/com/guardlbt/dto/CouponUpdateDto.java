@@ -21,8 +21,8 @@ public class CouponUpdateDto {
     @ApiModelProperty(value ="编号") 
     @NotBlank(message = "编号不能为空值")     private String couponId;
 
-    @ApiModelProperty(value ="空间名称") 
-    @NotBlank(message = "空间名称不能为空值")     private String name;
+    @ApiModelProperty(value ="商圈名称") 
+    @NotBlank(message = "商圈名称不能为空值")     private String name;
 
     @ApiModelProperty(value ="所属店铺") 
     @NotBlank(message = "所属店铺不能为空值")     private String shopId;

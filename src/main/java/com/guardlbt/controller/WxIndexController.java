@@ -57,9 +57,9 @@ public class WxIndexController {
     }
 
     @ApiOperation("代金券列表")
-    @GetMapping("indexCoupon")
-    public Result<CouponPageVo> indexCoupon() {
-        return wxIndexService.indexCoupon();
+    @GetMapping("indexCoupon/{openid}")
+    public Result<CouponPageVo> indexCoupon(@PathVariable String openid) {
+        return wxIndexService.indexCoupon(openid);
     }
 
     @ApiOperation("浏览店铺信息")

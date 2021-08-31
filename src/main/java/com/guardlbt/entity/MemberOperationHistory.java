@@ -16,8 +16,6 @@ import java.util.Date;
 @Data
 public class MemberOperationHistory {
 
-    @ApiModelProperty(value ="")
-    private Long id;
 
     @ApiModelProperty(value ="编号")
     private String memberId;
