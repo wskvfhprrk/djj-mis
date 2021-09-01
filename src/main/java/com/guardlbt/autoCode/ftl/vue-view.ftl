@@ -4,8 +4,8 @@
             <el-col :span="12"><#list data as d><#if d.id==false>
                 <el-form-item label="${d.commentName}" :label-width="formLabelWidth" prop="${d.beanName}"><#if d.type=='Date'|| d.type=='Timestamp'>
                     <el-date-picker :disabled="disabled=='1'" v-model="form.${d.beanName}" type="date" placeholder="选择日期" value-format="yyyy-MM-dd HH:mm:ss" autocomplete="off"></el-date-picker><#else >
-                        <el-input :disabled="disabled=='1'" v-model="form.${d.beanName}" autocomplete="off"></el-input></#if></#if>
-                </el-form-item></#list>
+                    <el-input :disabled="disabled=='1'" v-model="form.${d.beanName}" autocomplete="off"></el-input></#if>
+                </el-form-item></#if></#list>
             </el-col>
         </el-row>
     </el-form>
